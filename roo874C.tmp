@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dp3h87sbulig4"]
+
+[ext_resource type="Script" path="res://root.gd" id="1_80yoo"]
+[ext_resource type="PackedScene" uid="uid://cwq0rgmq24veh" path="res://blocks/grass.tscn" id="3_66wto"]
+[ext_resource type="Script" path="res://camera.gd" id="3_n7au1"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_80yoo")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.32205)
+light_energy = 1.405
+shadow_enabled = true
+omni_range = 82.1128
+omni_attenuation = 0.0185813
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-3.78552e-08, 0.5, -0.866025, 2.18557e-08, 0.866025, 0.5, 1, 1.95399e-14, -4.37114e-08, -2, 2, 0)
+fov = 90.5091
+size = 5.0
+script = ExtResource("3_n7au1")
+
+[node name="BaseBlock" parent="." instance=ExtResource("3_66wto")]
+
+[node name="BaseBlock2" parent="." instance=ExtResource("3_66wto")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="BaseBlock3" parent="." instance=ExtResource("3_66wto")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
