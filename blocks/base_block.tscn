@@ -51,35 +51,30 @@ size = Vector2(1, 1)
 [node name="BaseBlock" type="Node3D"]
 script = ExtResource("1_3epln")
 
-[node name="blockrep" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-
-[node name="+Y" type="MeshInstance3D" parent="blockrep"]
+[node name="top" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("PlaneMesh_jb5ow")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../..")
 
-[node name="+X" type="MeshInstance3D" parent="blockrep"]
+[node name="north" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.5, 0, 0)
 mesh = SubResource("PlaneMesh_2lnei")
-skeleton = NodePath("../..")
 
-[node name="-X" type="MeshInstance3D" parent="blockrep"]
+[node name="south" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.31134e-07, -1, 4.37114e-08, 3.55271e-15, -4.37114e-08, -1, 1, 1.31134e-07, -5.4634e-15, -0.5, 0, 0)
 mesh = SubResource("PlaneMesh_2lnei")
-skeleton = NodePath("../+X")
+skeleton = NodePath("../north")
 
-[node name="-Z" type="MeshInstance3D" parent="blockrep"]
+[node name="west" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, -8.74228e-08, 3.55271e-15, 3.55271e-15, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0, -0.5)
 mesh = SubResource("PlaneMesh_2lnei")
-skeleton = NodePath("../+X")
+skeleton = NodePath("../north")
 
-[node name="+Z" type="MeshInstance3D" parent="blockrep"]
+[node name="east" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -4.37114e-08, -1, -8.74228e-08, 1, -4.37114e-08, 0, 0, 0.5)
 mesh = SubResource("PlaneMesh_2lnei")
-skeleton = NodePath("../+X")
+skeleton = NodePath("../north")
 
-[node name="-Y" type="MeshInstance3D" parent="blockrep"]
+[node name="bottom" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("PlaneMesh_u8onp")
-skeleton = NodePath("../..")

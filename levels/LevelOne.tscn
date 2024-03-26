@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgiqw5wo431t2"]
+
+[ext_resource type="Script" path="res://levels/LevelOne.gd" id="1_3cm2k"]
+[ext_resource type="PackedScene" uid="uid://cqme67amutp8q" path="res://blocks/grass.tscn" id="2_vben3"]
+
+[node name="LevelOne" type="Node3D"]
+script = ExtResource("1_3cm2k")
+
+[node name="grass" parent="." instance=ExtResource("2_vben3")]
+grass_color = Color(0.568627, 0.470588, 0.776471, 1)
+StandPoint = Vector3(0, 0.5, 0)
+
+[node name="grass2" parent="." instance=ExtResource("2_vben3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+grass_color = Color(0.960784, 0, 0, 1)
+StandPoint = Vector3(0, 0.5, 0)
+
+[node name="grass3" parent="." instance=ExtResource("2_vben3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2)
+StandPoint = Vector3(0, 0.5, 0)

@@ -4,9 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://rnnp4kmbadm8" path="res://choiceblocks.png" id="2_xsabq"]
 
 [resource]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_3ckq5")
 shader_parameter/uv_aa = Vector2(0.1, 0.05)
 shader_parameter/uv_size = Vector2(0.05, 0.05)
-shader_parameter/color = Color(0.729412, 0, 0.309804, 1)
+shader_parameter/color = Color(0.658824, 0.658824, 0.658824, 1)
 shader_parameter/overlay = ExtResource("2_xsabq")
