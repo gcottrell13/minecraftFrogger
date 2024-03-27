@@ -13,7 +13,7 @@ func _child_by_name(str: String) -> MeshInstance3D:
 	return null;
 
 func _should_hide_face(dir: String, neighbor: BaseBlock) -> bool:
-	if neighbor.position.y != position.y:
+	if neighbor.position != position + Vector3(BlockManager.deltas[dir]):
 		return false;
 	if neighbor.transparency_mask == transparency_mask:
 		return true;

@@ -89,8 +89,8 @@ func opposite_face(dir: String) -> String:
 	match dir:
 		'up': return 'down';
 		'down': return 'up';
+		'north': return 'south';
 		'south': return 'north';
 		'east': return 'west';
 		'west': return 'east';
-		'north': return 'south';
 	return '';
