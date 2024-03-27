@@ -9,10 +9,10 @@ var blockToId = {};
 static var deltas = {
 	"up": Vector3i.UP,
 	"down": Vector3i.DOWN,
-	"left": Vector3i.LEFT,
-	"right": Vector3i.RIGHT,
-	"forward": Vector3i.FORWARD,
-	"back": Vector3i.BACK,
+	"west": Vector3i.LEFT,
+	"east": Vector3i.RIGHT,
+	"north": Vector3i.FORWARD,
+	"south": Vector3i.BACK,
 }
 
 static var diagonals = [
@@ -42,7 +42,6 @@ func _pos_to_id(pos: Vector3i):
 			break;
 	
 	assert (octant != -1);
-	print(pos, octpos, octant, ' ', abs(pos.z) << 16);
 	var id = abs(pos.x) + abs(pos.y) << 8 + abs(pos.z) << 16 + octant << 24;
 	return id;
 
@@ -59,19 +58,22 @@ func unregister_block(block: BaseBlock):
 
 func register_block(pos: Vector3i, block: BaseBlock):
 	if block in blockToId:
+		if pos == blockToId[block]:
+			return;
 		var oldid = blockToId[block];
 		data.erase(oldid);
 		blockToId.erase(block);
 	
 	data[pos] = block;
 	blockToId[block] = pos;
-	print('registered', ' ', pos, ' ', block);
+	print('registered', ' ', block, ' ', pos);
 
 
-func get_neighbors(pos: Vector3i) -> Array[BaseBlock]:
-	var neighbors : Array[BaseBlock] = [];
-	for delta in deltas.values():
+func get_neighbors(pos: Vector3i) -> NeighborData:
+	var neighbors : NeighborData = NeighborData.new();
+	for dir in deltas.keys():
+		var delta = deltas[dir];
 		var npos : Vector3i = pos + delta;
 		if data.has(npos):
-			neighbors.append(data[npos])
+			neighbors.set_neighbor(dir, data[npos]);
 	return neighbors

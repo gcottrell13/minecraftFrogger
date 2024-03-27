@@ -50,32 +50,31 @@ size = Vector2(1, 1)
 
 [node name="grass" type="Node3D"]
 script = ExtResource("1_fq5pk")
-StandPoint = null
 
-[node name="top" type="MeshInstance3D" parent="."]
+[node name="up" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("PlaneMesh_jb5ow")
 skeleton = NodePath("../..")
 
-[node name="north" type="MeshInstance3D" parent="."]
+[node name="east" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.5, 0, 0)
 mesh = SubResource("PlaneMesh_2lnei")
 
-[node name="-X" type="MeshInstance3D" parent="."]
+[node name="west" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.31134e-07, -1, 4.37114e-08, 3.55271e-15, -4.37114e-08, -1, 1, 1.31134e-07, -5.4634e-15, -0.5, 0, 0)
 mesh = SubResource("PlaneMesh_2lnei")
-skeleton = NodePath("../north")
+skeleton = NodePath("../south")
 
-[node name="-Z" type="MeshInstance3D" parent="."]
+[node name="north" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, -8.74228e-08, 3.55271e-15, 3.55271e-15, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0, -0.5)
 mesh = SubResource("PlaneMesh_2lnei")
-skeleton = NodePath("../north")
+skeleton = NodePath("../south")
 
-[node name="+Z" type="MeshInstance3D" parent="."]
+[node name="south" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -4.37114e-08, -1, -8.74228e-08, 1, -4.37114e-08, 0, 0, 0.5)
 mesh = SubResource("PlaneMesh_2lnei")
-skeleton = NodePath("../north")
+skeleton = NodePath(".")
 
-[node name="-Y" type="MeshInstance3D" parent="."]
+[node name="down" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("PlaneMesh_u8onp")

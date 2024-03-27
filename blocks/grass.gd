@@ -1,22 +1,14 @@
 @tool
 class_name GrassBlock
-extends SolidBlock
+extends FullSolidBlock
 
 @export_color_no_alpha var grass_color:
 	set = set_color
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	super();
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func set_color(color: Color):
 	grass_color = color;
-	var mat : StandardMaterial3D = $top.mesh.surface_get_material(0);
+	var mat : StandardMaterial3D = $up.mesh.surface_get_material(0);
 	mat.albedo_color = color;
 	
 	mat = $north.mesh.surface_get_material(0);
