@@ -8,7 +8,10 @@ enum TransparencyMask {
 	Water,
 }
 
-var old_neighbors: NeighborData = null;
+var old_neighbors: Array[BaseBlock] = [];
+
+var face_hiding_decisions_made = {};
+var last_updater: float;
 
 @export var transparency_mask : TransparencyMask = TransparencyMask.Solid:
 	set = set_mask;
@@ -21,16 +24,6 @@ func _ready():
 func _process(delta):
 	pass
 
-func _enter_tree():
-	if Engine.is_editor_hint():
-		var parent : Level = get_parent();
-		parent.manager.register_block(nearest_gridline(), self);
-
-func _exit_tree():
-	if Engine.is_editor_hint():
-		var parent : Level = get_parent();
-		parent.manager.unregister_block(self);
-
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_TRANSFORM_CHANGED:
@@ -38,6 +31,7 @@ func _notification(what: int) -> void:
 			var parent : Level = get_parent();
 			parent.manager.register_block(nearest_gridline(), self);
 			do_face_hiding();
+			update_gizmos();
 
 
 func nearest_gridline():
@@ -48,49 +42,52 @@ func set_mask(value):
 		transparency_mask = value;
 		do_face_hiding();
 
-func do_face_hiding(RECURSE = 1):
+func do_face_hiding(RECURSE = 1, updater: float = 0):
+	if updater == 0:
+		updater = Time.get_unix_time_from_system();
+	
+	if last_updater != updater:
+		last_updater = updater;
+		face_hiding_decisions_made = {};
+		
 	var parent : Level = get_parent();
-	if old_neighbors != null:
-		for key in old_neighbors.set_directions.keys():
-			var n : BaseBlock = old_neighbors.get_neighbor(key);
-			if RECURSE > 0:
-				n.do_face_hiding(RECURSE - 1);
+	for neighbor in old_neighbors:
+		if RECURSE > 0:
+			neighbor.do_face_hiding(RECURSE - 1, updater);
 			
-	var neighbors : NeighborData = parent.get_neighbors(nearest_gridline());
-	for key in _face_names():
-		if neighbors.has_neighbor(key):
-			var n : BaseBlock = neighbors.get_neighbor(key);
-			if _should_hide_face(key, n):
-				_hide_face(key);
-			else:
-				_unhide_face(key);
-			if RECURSE > 0:
-				n.do_face_hiding(RECURSE - 1);
-		else:
-			_unhide_face(key);
+	var neighbors : Array[BaseBlock] = parent.get_neighbors(nearest_gridline());
+	for face in get_children():
+		if face in face_hiding_decisions_made:
+			continue;
+			
+		if neighbors.size() == 0:
+			_unhide_face(face);
+		for neighbor in neighbors:
+			if face is MeshInstance3D:
+				if _should_hide_face(face, neighbor):
+					_hide_face(face);
+				else:
+					_unhide_face(face);
+				if RECURSE > 0:
+					neighbor.do_face_hiding(RECURSE - 1, updater);
 	old_neighbors = neighbors;
 
-func _should_hide_face(dir: String, neighbor: BaseBlock) -> bool:
-	return false
+func _should_hide_face(face: MeshInstance3D, neighbor: BaseBlock) -> bool:
+	for nface in neighbor.get_children():
+		if nface is MeshInstance3D:
+			if neighbor.transparency_mask == transparency_mask and \
+				nface.global_position.is_equal_approx(face.global_position) and \
+				nface.scale.is_equal_approx(face.scale):
+				return true;
+	return false;
 
-func _hide_face(dir: String):
-	pass
+func _hide_face(face: MeshInstance3D):
+	if face.visible:
+		face.visible = false;
+		face_hiding_decisions_made[face] = false;
+		print('hide face ', name, ' ', face.name);
 
-func _unhide_face(dir: String):
-	pass
-
-func _child_by_name(dir: String) -> MeshInstance3D:
-	return null;
-
-func _face_names() -> Array[String]:
-	return ['up', 'down', 'south', 'north', 'east', 'west'];
-
-func opposite_face(dir: String) -> String:
-	match dir:
-		'up': return 'down';
-		'down': return 'up';
-		'north': return 'south';
-		'south': return 'north';
-		'east': return 'west';
-		'west': return 'east';
-	return '';
+func _unhide_face(face: MeshInstance3D):
+	if not face.visible:
+		face.visible = true;
+		face_hiding_decisions_made[face] = true;

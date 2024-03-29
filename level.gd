@@ -17,7 +17,7 @@ func _ready():
 func _process(delta):
 	pass
 
-func get_neighbors(vec: Vector3i) -> NeighborData:
+func get_neighbors(vec: Vector3i) -> Array[BaseBlock]:
 	for child in get_children():
 		manager.register_block(Vector3i(child.position), child);
 	return manager.get_neighbors(vec);

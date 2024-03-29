@@ -7,14 +7,16 @@
 script = ExtResource("1_3cm2k")
 
 [node name="grass" parent="." instance=ExtResource("2_vben3")]
-grass_color = Color(0.568627, 0.470588, 0.776471, 1)
+grass_color = Color(0.568627, 1, 0.776471, 1)
 
 [node name="grass2" parent="." instance=ExtResource("2_vben3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
-grass_color = Color(0.960784, 0, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+grass_color = Color(0.223529, 0.603922, 0.282353, 1)
 
 [node name="grass3" parent="." instance=ExtResource("2_vben3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+grass_color = Color(1, 0, 1, 1)
 
 [node name="grass4" parent="." instance=ExtResource("2_vben3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+grass_color = Color(1, 1, 0, 1)

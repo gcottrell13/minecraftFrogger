@@ -54,7 +54,6 @@ func unregister_block(block: BaseBlock):
 	if block in blockToId:
 		data.erase(blockToId[block]);
 		blockToId.erase(block);
-		print('unregistered', ' ', block);
 
 func register_block(pos: Vector3i, block: BaseBlock):
 	if block in blockToId:
@@ -66,14 +65,13 @@ func register_block(pos: Vector3i, block: BaseBlock):
 	
 	data[pos] = block;
 	blockToId[block] = pos;
-	print('registered', ' ', block, ' ', pos);
 
 
-func get_neighbors(pos: Vector3i) -> NeighborData:
-	var neighbors : NeighborData = NeighborData.new();
+func get_neighbors(pos: Vector3i) -> Array[BaseBlock]:
+	var neighbors : Array[BaseBlock] = [];
 	for dir in deltas.keys():
 		var delta = deltas[dir];
 		var npos : Vector3i = pos + delta;
 		if data.has(npos):
-			neighbors.set_neighbor(dir, data[npos]);
+			neighbors.append(data[npos]);
 	return neighbors
