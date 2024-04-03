@@ -8,9 +8,11 @@ enum TransparencyMask {
 	Water,
 }
 
-var old_neighbors: Array[BaseBlock] = [];
+@export var hidden_faces := {};
 
-var face_hiding_decisions_made = {};
+@export var old_neighbors: Array[BaseBlock] = [];
+
+var face_hiding_decisions_made = [];
 var last_updater: float;
 
 @export var transparency_mask : TransparencyMask = TransparencyMask.Solid:
@@ -18,7 +20,12 @@ var last_updater: float;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	if hidden_faces == null:
+		hidden_faces = {};
+	for child in get_meshes():
+		if child.name in hidden_faces:
+			child.visible = false;
+				
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -28,8 +35,6 @@ func _process(delta):
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_TRANSFORM_CHANGED:
 		if Engine.is_editor_hint():
-			var parent : Level = get_parent();
-			parent.manager.register_block(nearest_gridline(), self);
 			do_face_hiding();
 			update_gizmos();
 
@@ -43,37 +48,47 @@ func set_mask(value):
 		do_face_hiding();
 
 func do_face_hiding(RECURSE = 1, updater: float = 0):
+	var level : Level = get_parent();
+	if level == null:
+		print(name, "LEVEL NULL");
+		return;
+	
 	if updater == 0:
 		updater = Time.get_unix_time_from_system();
+		level.register_children();
 	
 	if last_updater != updater:
 		last_updater = updater;
-		face_hiding_decisions_made = {};
+		face_hiding_decisions_made = [];
 		
-	var parent : Level = get_parent();
 	for neighbor in old_neighbors:
 		if RECURSE > 0:
 			neighbor.do_face_hiding(RECURSE - 1, updater);
 			
-	var neighbors : Array[BaseBlock] = parent.get_neighbors(nearest_gridline());
-	for face in get_children():
-		if face in face_hiding_decisions_made:
-			continue;
-			
-		if neighbors.size() == 0:
-			_unhide_face(face);
+	var neighbors : Array[BaseBlock] = level.get_neighbors(nearest_gridline());
+	if neighbors.size() > 0:
+		for face in get_meshes():
+			if face.name in face_hiding_decisions_made:
+				continue;
+			_unhide_face(face, true);
+			for neighbor in neighbors:
+				if face is MeshInstance3D:
+					if _should_hide_face(face, neighbor):
+						_hide_face(face, true);
 		for neighbor in neighbors:
-			if face is MeshInstance3D:
-				if _should_hide_face(face, neighbor):
-					_hide_face(face);
-				else:
-					_unhide_face(face);
-				if RECURSE > 0:
-					neighbor.do_face_hiding(RECURSE - 1, updater);
+			if RECURSE > 0:
+				neighbor.do_face_hiding(RECURSE - 1, updater);
+	else:
+		for face in get_meshes():
+			if face.name in face_hiding_decisions_made:
+				continue;
+			_unhide_face(face, true);
+			
 	old_neighbors = neighbors;
+	update_gizmos();
 
 func _should_hide_face(face: MeshInstance3D, neighbor: BaseBlock) -> bool:
-	for nface in neighbor.get_children():
+	for nface in neighbor.get_meshes():
 		if nface is MeshInstance3D:
 			if neighbor.transparency_mask == transparency_mask and \
 				nface.global_position.is_equal_approx(face.global_position) and \
@@ -81,13 +96,23 @@ func _should_hide_face(face: MeshInstance3D, neighbor: BaseBlock) -> bool:
 				return true;
 	return false;
 
-func _hide_face(face: MeshInstance3D):
-	if face.visible:
+func _hide_face(face: MeshInstance3D, commit=false):
+	if face.name not in hidden_faces:
 		face.visible = false;
-		face_hiding_decisions_made[face] = false;
-		print('hide face ', name, ' ', face.name);
+		hidden_faces[face.name] = true;
+		if commit:
+			face_hiding_decisions_made.append(face.name);
 
-func _unhide_face(face: MeshInstance3D):
-	if not face.visible:
+func _unhide_face(face: MeshInstance3D, commit=false):
+	if face.name in hidden_faces:
 		face.visible = true;
-		face_hiding_decisions_made[face] = true;
+		hidden_faces.erase(face.name);
+		if commit:
+			face_hiding_decisions_made.append(face.name);
+
+func get_meshes():
+	var meshes: Array[MeshInstance3D] = []
+	for child in get_children():
+		if child is MeshInstance3D:
+			meshes.append(child);
+	return meshes;

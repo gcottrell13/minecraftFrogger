@@ -53,26 +53,20 @@ func _commit_handle(gizmo, handle_id, secondary, restore, cancel):
 
 
 func _redraw(gizmo):
-	gizmo.clear()
+	gizmo.clear();
 
 	var node3d : SolidBlock = gizmo.get_node_3d();
-	if node3d.StandPoint == null:
-		return;
-
-	var lines = PackedVector3Array();
 	
 	var inverserotation = -node3d.quaternion;
 	
-	lines.push_back(Vector3(0, 0, 0))
-	lines.push_back(node3d.StandPoint * inverserotation)
-	gizmo.add_lines(lines, get_material("main", gizmo), false);
+	#var lines = PackedVector3Array();
+	#lines.push_back(Vector3(0, 0, 0))
+	#lines.push_back(node3d.StandPoint * inverserotation)
+	#gizmo.add_lines(lines, get_material("main", gizmo), false);
 	
 	for neighbor in node3d.old_neighbors:
-		var neighbor_lines = PackedVector3Array()
-		neighbor_lines.push_back(node3d.StandPoint * inverserotation);
-		neighbor_lines.push_back((neighbor.position + neighbor.StandPoint - node3d.position) * inverserotation);
+		var neighbor_lines = PackedVector3Array();
+		neighbor_lines.push_back(Vector3.ZERO);
+		neighbor_lines.push_back((neighbor.position - node3d.position) * inverserotation);
 		gizmo.add_lines(neighbor_lines, get_material("main", gizmo), false);
 
-	var handles = PackedVector3Array()
-	handles.push_back(node3d.StandPoint * inverserotation)
-	gizmo.add_handles(handles, get_material("handles", gizmo), [])

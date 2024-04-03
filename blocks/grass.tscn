@@ -78,3 +78,44 @@ skeleton = NodePath(".")
 [node name="down" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("PlaneMesh_u8onp")
+
+[node name="rayeast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+enabled = false
+target_position = Vector3(0.5, 0, 0)
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
+
+[node name="raywest" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+enabled = false
+target_position = Vector3(-0.5, 0, 0)
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
+
+[node name="raynorth" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+enabled = false
+target_position = Vector3(0, 0, -0.5)
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
+
+[node name="raysouth" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+enabled = false
+target_position = Vector3(0, 0, 0.5)
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
+
+[node name="rayup" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+target_position = Vector3(0, 0.5, 0)
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
+
+[node name="raydown" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+enabled = false
+target_position = Vector3(0, -0.5, 0)
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5

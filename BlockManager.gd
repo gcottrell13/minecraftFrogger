@@ -26,25 +26,6 @@ static var diagonals = [
 	Vector3i(-1, -1, -1),
 ]
 
-func _pos_to_id(pos: Vector3i):
-	var octant = -1;
-	var octpos = Vector3i(pos);
-	if octpos.x == 0:
-		octpos.x = 1;
-	if octpos.y == 0:
-		octpos.y = 1;
-	if octpos.z == 0:
-		octpos.z = 1;
-	var sign = octpos.sign();
-	for i in range(diagonals.size()):
-		if diagonals[i] == sign:
-			octant = i;
-			break;
-	
-	assert (octant != -1);
-	var id = abs(pos.x) + abs(pos.y) << 8 + abs(pos.z) << 16 + octant << 24;
-	return id;
-
 func get_block(pos: Vector3i) -> BaseBlock:
 	if data.has(pos):
 		return data[pos]
