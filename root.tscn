@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://root.gd" id="1_80yoo"]
 [ext_resource type="PackedScene" uid="uid://dgiqw5wo431t2" path="res://levels/LevelOne.tscn" id="3_huxd0"]
-[ext_resource type="Script" path="res://camera.gd" id="3_n7au1"]
+[ext_resource type="Script" path="res://addons/interpolated_camera_3d/interpolated_camera_3d.gd" id="3_mwkyu"]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_80yoo")
@@ -14,11 +14,8 @@ shadow_enabled = true
 omni_range = 82.1128
 omni_attenuation = 0.0185813
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-3.78552e-08, 0.5, -0.866025, 2.18557e-08, 0.866025, 0.5, 1, 1.95399e-14, -4.37114e-08, -2, 2, 0)
-fov = 90.5091
-size = 5.0
-script = ExtResource("3_n7au1")
-
 [node name="LevelOne" parent="." instance=ExtResource("3_huxd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3, 0)
+
+[node name="Camera" type="Camera3D" parent="."]
+current = true
+script = ExtResource("3_mwkyu")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://uepib4o0x2nl"]
+[gd_scene load_steps=11 format=3 uid="uid://uepib4o0x2nl"]
 
 [ext_resource type="Script" path="res://blocks/base_block.gd" id="1_3epln"]
 [ext_resource type="Texture2D" uid="uid://rnnp4kmbadm8" path="res://choiceblocks.png" id="2_dr750"]
@@ -48,6 +48,8 @@ material = SubResource("StandardMaterial3D_2nqmn")
 uv2_padding = 0.0
 size = Vector2(1, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_afrab"]
+
 [node name="BaseBlock" type="Node3D"]
 script = ExtResource("1_3epln")
 
@@ -78,3 +80,68 @@ skeleton = NodePath("../north")
 [node name="bottom" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("PlaneMesh_u8onp")
+
+[node name="rayeast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+exclude_parent = false
+target_position = Vector3(0.5, 0, 0)
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
+
+[node name="raywest" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+exclude_parent = false
+target_position = Vector3(-0.5, 0, 0)
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
+
+[node name="raynorth" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+exclude_parent = false
+target_position = Vector3(0, 0, -0.5)
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
+
+[node name="raysouth" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+exclude_parent = false
+target_position = Vector3(0, 0, 0.5)
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
+
+[node name="rayup" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+exclude_parent = false
+target_position = Vector3(0, 0.5, 0)
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
+
+[node name="raydown" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+exclude_parent = false
+target_position = Vector3(0, -0.5, 0)
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_afrab")

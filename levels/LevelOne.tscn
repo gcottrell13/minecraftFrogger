@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgiqw5wo431t2"]
+[gd_scene load_steps=5 format=3 uid="uid://dgiqw5wo431t2"]
 
 [ext_resource type="Script" path="res://levels/LevelOne.gd" id="1_3cm2k"]
 [ext_resource type="PackedScene" uid="uid://cqme67amutp8q" path="res://blocks/grass.tscn" id="2_vben3"]
+[ext_resource type="PackedScene" uid="uid://oycb1vnx8d7i" path="res://characters/frog.tscn" id="3_m2b8o"]
+
+[sub_resource type="Curve3D" id="Curve3D_ryjse"]
+bake_interval = 0.1
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
 
 [node name="LevelOne" type="Node3D"]
 script = ExtResource("1_3cm2k")
@@ -53,9 +62,16 @@ hidden_faces = {
 old_neighbors = [NodePath("../grass3"), NodePath("../grass"), NodePath("../grass6")]
 
 [node name="grass6" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 hidden_faces = {
-"down": true,
-"east": true
+"east": true,
+"north": true
 }
 old_neighbors = [NodePath("../grass2"), NodePath("../grass5")]
+
+[node name="Frog" parent="." groups=["CameraTarget"] instance=ExtResource("3_m2b8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51791, 1)
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.59451, 0)
+curve = SubResource("Curve3D_ryjse")

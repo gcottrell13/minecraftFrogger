@@ -31,7 +31,6 @@ func _ready():
 func _process(delta):
 	pass
 
-
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_TRANSFORM_CHANGED:
 		if Engine.is_editor_hint():
