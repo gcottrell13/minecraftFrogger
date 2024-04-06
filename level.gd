@@ -36,7 +36,6 @@ func _unhandled_input(event: InputEvent):
 		
 		var vec = Vector3(Input.get_axis("Left", "Right"), Input.get_axis("Down", "Up"), 0);
 		var delta = vec * -current_camera.quaternion;
-		print('camera project: ', delta);
 		
 		var controllables: Array[Node3D] = ControllableManager.get_controllables(get_tree(), current_control_layer);
 		for controllable in controllables:
@@ -44,7 +43,6 @@ func _unhandled_input(event: InputEvent):
 				continue;
 			if controllable is BaseCharacter:
 				var dir = delta * controllable.quaternion;
-				print('controllable ', dir);
 				dir = Vector3(dir.x, 0, dir.z);
 				if abs(dir.x) > abs(dir.z):
 					controllable.move_character(Vector3(sign(dir.x), 0, 0));
