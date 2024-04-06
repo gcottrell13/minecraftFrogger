@@ -5,13 +5,11 @@ static var camera_group_name = "camera";
 static var camera_prop_name = "camera_priority";
 
 
-static func add_camera_target(target: Node3D, prio: int):
-	for child in target.get_children():
-		if child is Camera3D:
-			target.add_to_group(camera_group_name);
-			target.set(camera_prop_name, prio);
+static func add_camera_target(target: Camera3D, prio: int):
+	target.add_to_group(camera_group_name);
+	target.set(camera_prop_name, prio);
 
-static func remove_camera_target(target: Node3D):
+static func remove_camera_target(target: Camera3D):
 	target.remove_from_group(camera_group_name);
 
 
@@ -29,7 +27,5 @@ static func get_camera_targets(tree: SceneTree) -> Array[Camera3D]:
 			targets = [group_member];
 			highest_prio = prio;
 		elif prio == highest_prio:
-			for child in group_member.get_children():
-				if child is Camera3D:
-					targets.append(child);
+			targets.append(group_member);
 	return targets;

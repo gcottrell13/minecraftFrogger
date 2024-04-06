@@ -90,7 +90,11 @@ monitoring = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="collision"]
 shape = SubResource("BoxShape3D_5r2la")
 
+[node name="normalnorth" parent="." instance=ExtResource("4_jqxia")]
+transform = Transform3D(1, 0, 0, 0, -2.18557e-07, 1, 0, -1, -2.18557e-07, 0, 0, -0.5)
+
 [node name="normaldown" parent="." instance=ExtResource("4_jqxia")]
-transform = Transform3D(1, 0, 0, 0, 1.31134e-07, -1, 0, 1, 1.31134e-07, 0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, -1, -8.74226e-08, 0, 8.74226e-08, -1, 0, -0.5, 0)
 
 [node name="normalup" parent="." instance=ExtResource("4_jqxia")]
+transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0.5, 0)
