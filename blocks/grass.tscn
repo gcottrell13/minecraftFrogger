@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://blocks/grass.gd" id="1_fq5pk"]
 [ext_resource type="Texture2D" uid="uid://rnnp4kmbadm8" path="res://choiceblocks.png" id="2_ihto2"]
 [ext_resource type="Material" uid="uid://d33r3oms3emf2" path="res://overlayshader.tres" id="3_lip5q"]
+[ext_resource type="PackedScene" uid="uid://br004r67nju56" path="res://blocks/blocknormal.tscn" id="4_jqxia"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tuhql"]
 resource_local_to_scene = true
@@ -51,8 +52,6 @@ size = Vector2(1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_5r2la"]
 margin = 0.0
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_v4kyf"]
-
 [node name="grass" type="Node3D"]
 script = ExtResource("1_fq5pk")
 
@@ -91,14 +90,7 @@ monitoring = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="collision"]
 shape = SubResource("BoxShape3D_5r2la")
 
-[node name="normalup" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.5, 0)
+[node name="normaldown" parent="." instance=ExtResource("4_jqxia")]
+transform = Transform3D(1, 0, 0, 0, 1.31134e-07, -1, 0, 1, 1.31134e-07, 0, -0.5, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="normalup"]
-shape = SubResource("SphereShape3D_v4kyf")
-
-[node name="RayCast3D" type="RayCast3D" parent="normalup"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-enabled = false
-exclude_parent = false
-collide_with_bodies = false
+[node name="normalup" parent="." instance=ExtResource("4_jqxia")]

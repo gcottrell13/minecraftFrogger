@@ -1,12 +1,13 @@
 class_name BaseCharacter
 extends Node3D
 
+var angle_tolerance = 0.3;
 
 var global_up = Vector3.UP;
-var home_ray: RayCast3D;
+var home_ray: BlockNormal;
 var home_block: SolidBlock;
 
-var target_position: RayCast3D;
+var target_position: BlockNormal;
 var target_block: SolidBlock;
 
 

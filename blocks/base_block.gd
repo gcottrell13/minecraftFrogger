@@ -33,9 +33,8 @@ func _process(delta):
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_TRANSFORM_CHANGED:
-		if Engine.is_editor_hint():
-			do_face_hiding();
-			update_gizmos();
+		do_face_hiding();
+		update_gizmos();
 
 
 func nearest_gridline():
@@ -61,7 +60,7 @@ func do_face_hiding(RECURSE = 1, updater: float = 0):
 		face_hiding_decisions_made = [];
 		
 	for neighbor in old_neighbors:
-		if RECURSE > 0:
+		if neighbor != self and RECURSE > 0:
 			neighbor.do_face_hiding(RECURSE - 1, updater);
 			
 	var neighbors : Array[BaseBlock] = level.get_neighbors(nearest_gridline());
@@ -71,11 +70,11 @@ func do_face_hiding(RECURSE = 1, updater: float = 0):
 				continue;
 			_unhide_face(face, true);
 			for neighbor in neighbors:
-				if face is MeshInstance3D:
+				if neighbor != self and face is MeshInstance3D:
 					if _should_hide_face(face, neighbor):
 						_hide_face(face, true);
 		for neighbor in neighbors:
-			if RECURSE > 0:
+			if neighbor != self and RECURSE > 0:
 				neighbor.do_face_hiding(RECURSE - 1, updater);
 	else:
 		for face in get_meshes():

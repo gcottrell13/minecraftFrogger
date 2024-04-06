@@ -1,3 +1,4 @@
+@tool
 extends Level
 
 
@@ -11,4 +12,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if not Engine.is_editor_hint():
+		var grass5: GrassBlock = $grass5;
+		grass5.position += Vector3(0.1, 0, 0) * delta;
+		grass5.do_face_hiding();
