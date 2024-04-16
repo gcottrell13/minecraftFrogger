@@ -5,10 +5,14 @@
 [ext_resource type="Shape3D" uid="uid://coolujm5p0rir" path="res://characters/frog.collision.tres" id="3_1ojgm"]
 
 [node name="Frog" type="Node3D"]
+rotation_order = 1
 script = ExtResource("1_pmhf0")
+camera_position = null
 
-[node name="frogidle" parent="." instance=ExtResource("1_h4y7s")]
-transform = Transform3D(-0.06, 0, -5.24537e-09, 0, 0.06, 0, 5.24537e-09, 0, -0.06, -0.0198186, -1.19209e-07, 0.0711633)
+[node name="display" type="Node3D" parent="."]
+
+[node name="frogidle" parent="display" instance=ExtResource("1_h4y7s")]
+transform = Transform3D(-0.06, 0, -5.24537e-09, 0, 0.06, 0, 5.24537e-09, 0, -0.06, -0.01208, 0, 0.102934)
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)

@@ -42,7 +42,7 @@ func _unhandled_input(event: InputEvent):
 			if not self.is_ancestor_of(controllable):
 				continue;
 			if controllable is BaseCharacter:
-				var dir = delta * controllable.quaternion;
+				var dir = controllable.to_local(delta + controllable.global_position);
 				dir = Vector3(dir.x, 0, dir.z);
 				if abs(dir.x) > abs(dir.z):
 					controllable.move_character(Vector3(sign(dir.x), 0, 0));
