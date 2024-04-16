@@ -11,7 +11,7 @@ var cannot_move = false;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var shape = hitbox.shape.size.abs();
-	radius = (shape.x + shape.y + shape.z) / 3;
+	radius = (shape.x + shape.z) / 4;
 	super();
 
 
