@@ -35,7 +35,7 @@ func _unhandled_input(event: InputEvent):
 			return;
 		
 		var vec = Vector3(Input.get_axis("Left", "Right"), Input.get_axis("Down", "Up"), 0);
-		var delta = vec * -current_camera.quaternion;
+		var delta = current_camera.to_global(vec) - current_camera.global_position;
 		
 		var controllables: Array[Node3D] = ControllableManager.get_controllables(get_tree(), current_control_layer);
 		for controllable in controllables:

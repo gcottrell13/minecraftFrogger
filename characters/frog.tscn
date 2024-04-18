@@ -7,7 +7,6 @@
 [node name="Frog" type="Node3D"]
 rotation_order = 1
 script = ExtResource("1_pmhf0")
-camera_position = null
 
 [node name="display" type="Node3D" parent="."]
 

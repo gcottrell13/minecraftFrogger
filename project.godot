@@ -13,7 +13,7 @@ config_version=5
 config/name="minecraftFrogger"
 run/main_scene="res://root.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Godot_v4.2.1-stable_mono_win64_GtHr60ArLL.png"
 
 [dotnet]
 

@@ -1,7 +1,7 @@
 class_name BaseCharacter
 extends Node3D
 
-var angle_tolerance = 0.3;
+var angle_tolerance = 0.4;
 
 var global_up = Vector3.UP;
 var home_ray: BlockNormal;
@@ -38,7 +38,7 @@ func check_hitbox(hitbox: ShapeCast3D, die_if_fall = true, radius=1):
 			var angle = dir.angle_to(global_up);
 			if angle < angle_tolerance:
 				var d = (collision.global_position - hitbox.global_position).length_squared();
-				if d < closest_ground_dist and d <= radius * radius:
+				if d < closest_ground_dist:
 					closest_ground = collision;
 					closest_ground_dist = d;
 	
@@ -73,15 +73,29 @@ func base_move_character(dir: Vector3, lookahead: ShapeCast3D):
 		meshCollection.rotate_y(Vector3.FORWARD.signed_angle_to(dir, Vector3.UP) - meshCollection.rotation.y);
 	lookahead.position = dir;
 	
-	lookahead.force_shapecast_update();
-	var pushed_vector: Vector3 = Vector3.ZERO;
-	for i in range(lookahead.get_collision_count()):
-		var collision = lookahead.get_collider(i);
-		if collision is BlockNormal:
-			pass
-		elif collision is Area3D:
-			return;
-			
+	var max_y = 0.5;
+	while lookahead.position.y < max_y:
+		lookahead.force_shapecast_update();
+		var moved_up = false;
+		for i in range(lookahead.get_collision_count()):
+			var collision = lookahead.get_collider(i);
+			if collision is BlockNormal:
+				pass
+			elif collision is Area3D:
+				if lookahead.position.y < max_y:
+					lookahead.position.y += 0.1;
+					moved_up = true;
+					print("move up ", lookahead.position.y)
+					break;
+				else:
+					return;
+		if not moved_up:
+			break;
+	
+	if lookahead.position.y <= 0:
+		lookahead.position.y = -0.1;
+		lookahead.force_shapecast_update();
+	
 	check_hitbox(lookahead, true, 1);
 	#lookahead.position = Vector3.ZERO;
 

@@ -28,6 +28,8 @@ func _process(delta):
 				grass5.position.x -= delta;
 			else:
 				grassdir = 1;
+		
+		$grass6.rotation.z += 0.05 * delta;
 		#grass5.position += Vector3(-0.1, 0, 0) * delta;
 		#grass5.rotation += Vector3(0, 2.5, 0) * delta;
 		#grass5.do_face_hiding();

@@ -7,28 +7,36 @@
 [node name="LevelOne" type="Node3D"]
 script = ExtResource("1_3cm2k")
 
+[node name="Frog" parent="." instance=ExtResource("3_m2b8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51791, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Frog"]
+transform = Transform3D(-1, 1.23718e-14, -8.74227e-08, -6.18172e-08, 0.707107, 0.707107, 6.18172e-08, 0.707107, -0.707107, 0, 2, -2)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Frog"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
 [node name="grass" parent="." instance=ExtResource("2_vben3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, 0)
 grass_color = Color(0.203922, 0.603922, 0.305882, 1)
 
 [node name="grass2" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 1)
 grass_color = Color(0.203922, 0.603922, 0.305882, 1)
-old_neighbors = [NodePath("../grass4")]
+old_neighbors = [NodePath(".")]
 
 [node name="grass3" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
-transform = Transform3D(0.121662, 0.122129, 0.985029, -0.0149705, 0.992514, -0.121208, -0.992459, 0, 0.12258, 2.10705, -0.131873, 0.0751846)
+transform = Transform3D(0.121662, 0.0881952, 0.988645, -0.0149705, 0.996094, -0.0870175, -0.992459, -0.00421382, 0.122508, 2.12662, 0.0271489, 0.0751846)
 grass_color = Color(0.203922, 0.603922, 0.305882, 1)
-old_neighbors = [NodePath("../grass4"), NodePath("../grass7")]
+old_neighbors = [NodePath("../grass4"), NodePath("../grass9")]
 
 [node name="grass4" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 grass_color = Color(0.203922, 0.603922, 0.305882, 1)
 hidden_faces = {
-"south": true,
 "west": true
 }
-old_neighbors = [NodePath("../grass5"), NodePath("../grass3"), NodePath("../grass2")]
+old_neighbors = [NodePath("../grass5"), NodePath("../grass3"), NodePath("../grass26"), NodePath("../grass2")]
 
 [node name="grass5" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
 transform = Transform3D(-1, -8.74228e-08, 9.03217e-15, -8.74228e-08, 1, -1.03316e-07, 0, -1.03316e-07, -1, 0, 0, 0)
@@ -41,14 +49,89 @@ old_neighbors = [NodePath("../grass4")]
 [node name="grass6" parent="." instance=ExtResource("2_vben3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 1)
 
-[node name="Frog" parent="." instance=ExtResource("3_m2b8o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51791, 0)
-camera_position = null
-
-[node name="Camera3D" type="Camera3D" parent="Frog"]
-transform = Transform3D(-1, 1.23718e-14, -8.74227e-08, -6.18172e-08, 0.707107, 0.707107, 6.18172e-08, 0.707107, -0.707107, 0, 2, -2)
-
 [node name="grass7" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
-transform = Transform3D(0.118091, 0.26813, 0.956118, -0.0328672, 0.963383, -0.266108, -0.992459, -9.24351e-10, 0.12258, 3.23845, -0.357943, 0.0751846)
+transform = Transform3D(0.118091, 0.26813, 0.956118, -0.0328672, 0.963383, -0.266108, -0.992459, -9.24351e-10, 0.12258, 3.23845, -0.164642, 0.0751846)
 grass_color = Color(0.203922, 0.603922, 0.305882, 1)
 old_neighbors = [NodePath("../grass3")]
+
+[node name="grass8" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
+transform = Transform3D(0.118091, 0.467677, 0.875976, -0.0328672, 0.883506, -0.467266, -0.992459, 0.026389, 0.119706, 4.27291, -0.612503, 0.213106)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+old_neighbors = [NodePath("../grass9")]
+
+[node name="grass9" parent="." instance=ExtResource("2_vben3")]
+transform = Transform3D(0.118091, 0.649339, 0.751275, -0.0328672, 0.75871, -0.6506, -0.992459, 0.0521376, 0.110939, 5.11539, -1.20634, 0.307886)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+
+[node name="grass10" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
+transform = Transform3D(0.118091, 0.816011, 0.565846, -0.0328672, 0.572733, -0.819083, -0.992459, 0.0781285, 0.094455, 5.80824, -2.08227, 0.419336)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+old_neighbors = [NodePath("../grass11"), NodePath(".")]
+
+[node name="grass11" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
+transform = Transform3D(0.118091, 0.943425, 0.309846, -0.0328672, 0.315572, -0.948333, -0.992459, 0.101805, 0.0682744, 6.2204, -3.04955, 0.550458)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+old_neighbors = [NodePath("")]
+
+[node name="grass12" parent="." instance=ExtResource("2_vben3")]
+transform = Transform3D(0.118091, 0.992795, 0.0202861, -0.0328672, 0.0243257, -0.999164, -0.992459, 0.117325, 0.0355036, 6.38158, -3.98424, 0.550544)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+
+[node name="grass14" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
+transform = Transform3D(-0.385624, 0.91897, -0.0823979, 0.00302956, -0.0880437, -0.996113, -0.922651, -0.384374, 0.0311682, 6.19814, -3.95206, -1.4473)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+old_neighbors = [NodePath("."), NodePath("../grass13")]
+
+[node name="grass15" parent="." instance=ExtResource("2_vben3")]
+transform = Transform3D(-0.581547, 0.810698, -0.0676159, 0.0190512, -0.0695217, -0.997399, -0.81329, -0.581322, 0.0249858, 5.63811, -3.91521, -2.33737)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+
+[node name="grass16" parent="." instance=ExtResource("2_vben3")]
+transform = Transform3D(-0.682821, 0.727451, -0.0676159, 0.028002, -0.0664237, -0.997399, -0.730049, -0.682938, 0.0249858, 4.95864, -3.92843, -3.12811)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+
+[node name="grass17" parent="." instance=ExtResource("2_vben3")]
+transform = Transform3D(-0.76508, 0.640377, -0.0676159, 0.0357606, -0.0625892, -0.997399, -0.642943, -0.765507, 0.0249858, 4.23326, -3.87771, -3.81677)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+
+[node name="grass13" parent="." instance=ExtResource("2_vben3")]
+transform = Transform3D(-0.101724, 0.994606, 0.0202861, -0.0373888, 0.0165549, -0.999164, -0.99411, -0.102397, 0.0355036, 6.35226, -4.01956, -0.426738)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+
+[node name="grass18" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
+transform = Transform3D(-0.921515, 0.382412, -0.0676159, 0.0528341, -0.0490388, -0.997399, -0.384733, -0.92269, 0.0249858, 3.39506, -3.86409, -4.32295)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+old_neighbors = [NodePath(".")]
+
+[node name="grass19" parent="." instance=ExtResource("2_vben3")]
+transform = Transform3D(-0.993267, 0.0940759, -0.0676159, 0.0649327, -0.0313051, -0.997399, -0.095948, -0.995073, 0.0249858, 2.40514, -3.77315, -4.58993)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+
+[node name="grass20" parent="." instance=ExtResource("2_vben3")]
+transform = Transform3D(-0.9919, 0.107537, -0.0676159, 0.0645022, -0.0321828, -0.997399, -0.109433, -0.99368, 0.0249858, 1.3484, -3.7329, -4.68354)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+
+[node name="grass21" parent="." instance=ExtResource("2_vben3")]
+transform = Transform3D(-0.9919, 0.122379, -0.0340523, 0.0645022, 0.254289, -0.964975, -0.109433, -0.959354, -0.260123, 1.40771, -2.81605, -4.54254)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+
+[node name="grass22" parent="." instance=ExtResource("2_vben3")]
+transform = Transform3D(-0.9919, 0.127027, -0.000442011, 0.0645022, 0.500661, -0.863238, -0.109433, -0.856273, -0.504799, 1.4042, -1.93511, -4.1296)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+
+[node name="grass23" parent="." instance=ExtResource("2_vben3")]
+transform = Transform3D(-0.9919, 0.124535, 0.0250442, 0.0645022, 0.663623, -0.745282, -0.109433, -0.737629, -0.66628, 1.39343, -1.15306, -3.57107)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+
+[node name="grass24" parent="." instance=ExtResource("2_vben3")]
+transform = Transform3D(-0.9919, 0.111091, 0.0616032, 0.0645022, 0.858256, -0.509152, -0.109433, -0.501054, -0.85847, 1.34578, -0.573445, -2.90296)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+
+[node name="grass25" parent="." instance=ExtResource("2_vben3")]
+transform = Transform3D(-0.9919, 0.0816055, 0.0973488, 0.0645022, 0.983768, -0.167454, -0.109433, -0.159818, -0.981062, 1.27406, -0.185959, -2.02452)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+
+[node name="grass26" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
+transform = Transform3D(-0.9919, 0.0564724, 0.113786, 0.0645022, 0.995587, 0.0681672, -0.109433, 0.0749542, -0.991164, 1.18436, -0.00190947, -1.10297)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+old_neighbors = [NodePath("../grass4")]

@@ -99,3 +99,12 @@ transform = Transform3D(1, 0, 0, 0, -1, -8.74226e-08, 0, 8.74226e-08, -1, 0, -0.
 
 [node name="normalup" parent="." instance=ExtResource("4_jqxia")]
 transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0.5, 0)
+
+[node name="normalsouth" parent="." instance=ExtResource("4_jqxia")]
+transform = Transform3D(1, 0, 0, 0, 2.68221e-07, -1, 0, 1, 2.68221e-07, 0, 0, 0.5)
+
+[node name="normaleast" parent="." instance=ExtResource("4_jqxia")]
+transform = Transform3D(-4.37114e-08, 1, 2.18557e-07, 0, -2.18557e-07, 1, 1, 4.37114e-08, 9.55343e-15, 0.5, 0, 0)
+
+[node name="normalwest" parent="." instance=ExtResource("4_jqxia")]
+transform = Transform3D(4.37114e-08, -1, -1.31134e-07, 3.82137e-15, 1.31134e-07, -1, 1, 4.37114e-08, 9.55343e-15, -0.5, 0, 0)
