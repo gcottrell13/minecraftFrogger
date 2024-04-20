@@ -15,40 +15,44 @@ enum TransparencyMask {
 var face_hiding_decisions_made = [];
 var last_updater: float;
 
-@export var transparency_mask : TransparencyMask = TransparencyMask.Solid:
-	set = set_mask;
+var level: Level;
+
+@export var transparency_mask : TransparencyMask = TransparencyMask.Solid;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	set_notify_local_transform(true);
 	if hidden_faces == null:
 		hidden_faces = {};
 	for child in get_meshes():
 		if child.name in hidden_faces:
 			child.visible = false;
-				
+	var current = get_parent();
+	while current != null and not (current is Level):
+		current = current.get_parent();
+	level = current;
+	print(name, ' ready');
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
 func _notification(what: int) -> void:
-	if what == NOTIFICATION_TRANSFORM_CHANGED:
+	if what == NOTIFICATION_LOCAL_TRANSFORM_CHANGED:
 		do_face_hiding();
-		update_gizmos();
-
 
 func nearest_gridline():
 	return Vector3i(position.snapped(Vector3.ONE));
 
-func set_mask(value):
-	if value != transparency_mask:
-		transparency_mask = value;
-		do_face_hiding();
+#func set_mask(value):
+	#if value != transparency_mask:
+		#transparency_mask = value;
+		#do_face_hiding();
 
 func do_face_hiding(RECURSE = 1, updater: float = 0):
-	var level : Level = get_parent();
+	#print(name, ' hiding ', RECURSE);
 	if level == null:
-		print(name, "LEVEL NULL");
+		print(name, " LEVEL NULL");
 		return;
 	
 	if updater == 0:
@@ -60,7 +64,7 @@ func do_face_hiding(RECURSE = 1, updater: float = 0):
 		face_hiding_decisions_made = [];
 		
 	for neighbor in old_neighbors:
-		if neighbor != self and RECURSE > 0:
+		if neighbor != null and neighbor != self and RECURSE > 0:
 			neighbor.do_face_hiding(RECURSE - 1, updater);
 			
 	var neighbors : Array[BaseBlock] = level.get_neighbors(nearest_gridline());

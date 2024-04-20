@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://oycb1vnx8d7i"]
+
+[ext_resource type="Script" path="res://characters/frog1/frog.gd" id="1_ihstt"]
+[ext_resource type="PackedScene" uid="uid://butdoukwltnrb" path="res://characters/frog1/frogidle.gltf" id="2_ludme"]
+[ext_resource type="Texture2D" uid="uid://cxs7qgtf837sc" path="res://characters/frog1/frogger.png" id="3_gmv5g"]
+[ext_resource type="Shape3D" uid="uid://coolujm5p0rir" path="res://characters/frog1/frog.collision.tres" id="3_w3h01"]
+[ext_resource type="ArrayMesh" uid="uid://e04gssv3d54j" path="res://characters/frog1/frogger.obj" id="4_qd8bu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jf76c"]
+albedo_texture = ExtResource("3_gmv5g")
+texture_filter = 0
+
+[node name="Frog" type="Node3D"]
+rotation_order = 1
+script = ExtResource("1_ihstt")
+
+[node name="display" type="Node3D" parent="."]
+
+[node name="Frogger" type="MeshInstance3D" parent="display"]
+transform = Transform3D(-0.62, 0, -5.42021e-08, 0, 0.62, 0, 5.42021e-08, 0, -0.62, 0, 0, 0.156471)
+mesh = ExtResource("4_qd8bu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jf76c")
+
+[node name="frogidle" parent="display" instance=ExtResource("2_ludme")]
+transform = Transform3D(-0.06, 0, -5.24537e-09, 0, 0.06, 0, 5.24537e-09, 0, -0.06, -0.01208, 0, 0.102934)
+visible = false
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+
+[node name="hitbox" type="ShapeCast3D" parent="Node3D"]
+shape = ExtResource("3_w3h01")
+target_position = Vector3(0, 0, 0)
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_custom_color = Color(0, 0.756863, 0, 1)
+
+[node name="lookahead" type="ShapeCast3D" parent="Node3D"]
+shape = ExtResource("3_w3h01")
+target_position = Vector3(0, 0, 0)
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_custom_color = Color(0.780392, 0, 0, 1)

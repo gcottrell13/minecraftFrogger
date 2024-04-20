@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://e04gssv3d54j"
+path="res://.godot/imported/frogger.obj-85a47341b29668bb66f0645190345c4a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/frogger.obj-85a47341b29668bb66f0645190345c4a.mesh"]
+
+source_file="res://characters/frog1/frogger.obj"
+dest_files=["res://.godot/imported/frogger.obj-85a47341b29668bb66f0645190345c4a.mesh", "res://.godot/imported/frogger.obj-85a47341b29668bb66f0645190345c4a.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

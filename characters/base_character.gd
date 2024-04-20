@@ -85,7 +85,6 @@ func base_move_character(dir: Vector3, lookahead: ShapeCast3D):
 				if lookahead.position.y < max_y:
 					lookahead.position.y += 0.1;
 					moved_up = true;
-					print("move up ", lookahead.position.y)
 					break;
 				else:
 					return;

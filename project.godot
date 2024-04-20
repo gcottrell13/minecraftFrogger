@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="minecraftFrogger"
+config/name="frogger"
 run/main_scene="res://root.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://Godot_v4.2.1-stable_mono_win64_GtHr60ArLL.png"
@@ -21,7 +21,7 @@ project/assembly_name="minecraftFrogger"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gizmo/plugin.cfg", "res://addons/interpolated_camera_3d/plugin.cfg")
+enabled=PackedStringArray("res://addons/interpolated_camera_3d/plugin.cfg")
 
 [input]
 

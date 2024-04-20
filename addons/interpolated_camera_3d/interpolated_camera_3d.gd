@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 	local_transform_only_origin = local_transform_only_origin.interpolate_with(target_xform, translate_factor)
 	local_transform_only_basis = local_transform_only_basis.interpolate_with(target_xform, rotate_factor)
 	set_global_transform(Transform3D(local_transform_only_basis.basis, local_transform_only_origin.origin))
-
+	
 	if target is Camera3D:
 		var camera := target as Camera3D
 		# The target node can be a Camera3D, which allows interpolating additional properties.
@@ -61,3 +61,6 @@ func _process(delta: float) -> void:
 			else:
 				var new_fov := lerp(fov, camera.fov, fov_factor) as float
 				set_perspective(new_fov, new_near, new_far)
+		else:
+			projection = camera.projection;
+		environment = camera.environment;

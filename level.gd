@@ -16,6 +16,8 @@ func _process(delta):
 	pass
 
 func register_children():
+	if manager == null:
+		manager = BlockManager.new();
 	for child in get_children():
 		if child is BaseBlock:
 			manager.register_block(Vector3i(child.position), child);
@@ -31,7 +33,7 @@ func _unhandled_input(event: InputEvent):
 	var handled = false;
 		
 	if event is InputEventKey:
-		if not event.pressed:
+		if not event.pressed or event.is_echo():
 			return;
 		
 		var vec = Vector3(Input.get_axis("Left", "Right"), Input.get_axis("Down", "Up"), 0);
