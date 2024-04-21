@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cigoiillqgcbd"]
+
+[ext_resource type="ArrayMesh" uid="uid://dhtm4cni6n6kp" path="res://entity/birch-leaves/as_birch_leaves.obj" id="1_x64h2"]
+
+[node name="BirchLeaves" type="Node3D"]
+
+[node name="AsBirchLeaves" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_x64h2")

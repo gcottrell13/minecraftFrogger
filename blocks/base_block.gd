@@ -31,7 +31,6 @@ func _ready():
 	while current != null and not (current is Level):
 		current = current.get_parent();
 	level = current;
-	print(name, ' ready');
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

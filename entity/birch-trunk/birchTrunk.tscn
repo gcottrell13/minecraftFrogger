@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://coo6u0jxsp0xg"]
+
+[ext_resource type="ArrayMesh" uid="uid://nj1n52rki6ed" path="res://entity/birch-trunk/as_birch_trunk.obj" id="1_1tsf7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f7b8d"]
+
+[node name="BirchTrunk" type="Node3D"]
+
+[node name="AsBirchTrunk" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.72, 0, 0, 0, 0.624532, 0, 0, 0, 0.72, 0, 0, 0)
+mesh = ExtResource("1_1tsf7")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.258478, 0)
+shape = SubResource("SphereShape3D_f7b8d")

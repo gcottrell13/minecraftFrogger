@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0po3nuxc2k2f"]
+
+[ext_resource type="Script" path="res://entity/spawnPoint/spawnPoint.gd" id="1_4x2ry"]
+[ext_resource type="ArrayMesh" uid="uid://d236ykuavmi32" path="res://entity/spawnPoint/checkerboard.obj" id="2_eg7d7"]
+
+[node name="SpawnPoint" type="Node3D"]
+script = ExtResource("1_4x2ry")
+
+[node name="Checkerboard" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.61, 0, 0, 0, 0.61, 0, 0, 0, 0.61, 0, 0, 0)
+mesh = ExtResource("2_eg7d7")

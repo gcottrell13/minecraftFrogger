@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dhtm4cni6n6kp"
+path="res://.godot/imported/as_birch_leaves.obj-3f6a94b6c15b35b95c5517e35ed4328b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/as_birch_leaves.obj-3f6a94b6c15b35b95c5517e35ed4328b.mesh"]
+
+source_file="res://entity/birch-leaves/as_birch_leaves.obj"
+dest_files=["res://.godot/imported/as_birch_leaves.obj-3f6a94b6c15b35b95c5517e35ed4328b.mesh", "res://.godot/imported/as_birch_leaves.obj-3f6a94b6c15b35b95c5517e35ed4328b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

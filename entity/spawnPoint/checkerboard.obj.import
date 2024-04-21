@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d236ykuavmi32"
+path="res://.godot/imported/checkerboard.obj-80f55d4a29ff1a0521b81334971c4875.mesh"
+
+[deps]
+
+files=["res://.godot/imported/checkerboard.obj-80f55d4a29ff1a0521b81334971c4875.mesh"]
+
+source_file="res://entity/spawnPoint/checkerboard.obj"
+dest_files=["res://.godot/imported/checkerboard.obj-80f55d4a29ff1a0521b81334971c4875.mesh", "res://.godot/imported/checkerboard.obj-80f55d4a29ff1a0521b81334971c4875.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

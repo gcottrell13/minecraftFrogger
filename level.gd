@@ -44,13 +44,16 @@ func _unhandled_input(event: InputEvent):
 			if not self.is_ancestor_of(controllable):
 				continue;
 			if controllable is BaseCharacter:
-				var dir = controllable.to_local(delta + controllable.global_position);
-				dir = Vector3(dir.x, 0, dir.z);
-				if abs(dir.x) > abs(dir.z):
-					controllable.move_character(Vector3(sign(dir.x), 0, 0));
+				if event.is_action("Jump"):
+					controllable.do_special();
 				else:
-					controllable.move_character(Vector3(0, 0, sign(dir.z)));
-				handled = true;
+					var dir = controllable.to_local(delta + controllable.global_position);
+					dir = Vector3(dir.x, 0, dir.z);
+					if abs(dir.x) > abs(dir.z):
+						controllable.move_character(Vector3(sign(dir.x), 0, 0));
+					else:
+						controllable.move_character(Vector3(0, 0, sign(dir.z)));
+					handled = true;
 	
 	if handled:
 		get_viewport().set_input_as_handled();
