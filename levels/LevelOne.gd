@@ -8,6 +8,9 @@ func _ready():
 	super();
 	if Engine.is_editor_hint():
 		return;
+	spawn_characters();
+
+func spawn_characters():
 	for child in find_children("", "SpawnPoint"):
 		var spawn_children: Array[Node] = child.get_children();
 		var frog: Node3D = frogScene.instantiate();
@@ -22,7 +25,7 @@ func _ready():
 			frog.add_child(dup);
 			if spawnchild is Camera3D:
 				CameraManager.add_camera_target(dup, 0);
-	
+				fade_to(dup, on_fadefromblack_end, 1);
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,3 +33,16 @@ func _process(delta):
 	super(delta);
 	if not Engine.is_editor_hint():
 		pass
+
+func _on_no_controllables_left():
+	fade_to(get_viewport().get_camera_3d(), on_fadetoblack_end, 0);
+
+
+func on_fadetoblack_end(anim: FadeToBlackAnimation):
+	remove_child(anim);
+	fade_to(get_viewport().get_camera_3d(), on_fadefromblack_end, 1);
+	
+
+func on_fadefromblack_end(anim: FadeToBlackAnimation):
+	remove_child(anim);
+	spawn_characters();

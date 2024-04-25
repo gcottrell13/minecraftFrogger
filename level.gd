@@ -13,6 +13,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Engine.is_editor_hint():
+		return;
+	if ControllableManager.get_controllables(get_tree(), -1).size() == 0:
+		_on_no_controllables_left();
+
+func _on_no_controllables_left():
 	pass
 
 func register_children():
@@ -39,7 +45,7 @@ func _unhandled_input(event: InputEvent):
 		var vec = Vector3(Input.get_axis("Left", "Right"), Input.get_axis("Down", "Up"), 0);
 		var delta = current_camera.to_global(vec) - current_camera.global_position;
 		
-		var controllables: Array[Node3D] = ControllableManager.get_controllables(get_tree(), current_control_layer);
+		var controllables: Array[Node] = ControllableManager.get_controllables(get_tree(), current_control_layer);
 		for controllable in controllables:
 			if not self.is_ancestor_of(controllable):
 				continue;
@@ -57,3 +63,8 @@ func _unhandled_input(event: InputEvent):
 	
 	if handled:
 		get_viewport().set_input_as_handled();
+
+func fade_to(camera: Camera3D, handler, target_fade: float):
+	var fade = FadeToBlackAnimation.new(camera, 1, target_fade);
+	fade.done.connect(handler);
+	add_child(fade);

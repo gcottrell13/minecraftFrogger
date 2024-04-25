@@ -23,6 +23,7 @@ hide = true
 [node name="Camera3D" type="Camera3D" parent="SpawnPoint"]
 transform = Transform3D(-1, 3.05174e-08, -8.19232e-08, -6.18172e-08, 0.415789, 0.909461, 6.18172e-08, 0.909461, -0.415789, 0, 3.47533, -1.47086)
 visible = false
+environment = ExtResource("2_2xl0w")
 projection = 1
 size = 8.44825
 far = 40.0

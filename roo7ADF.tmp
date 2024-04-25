@@ -14,7 +14,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.66318)
 current = true
 script = ExtResource("3_mwkyu")
 translate_speed = 0.98
-instant_if_null_target_before = true
 
 [node name="PlayArea" type="Node3D" parent="."]
 

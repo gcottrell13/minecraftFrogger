@@ -32,7 +32,6 @@ func fix_children():
 		if scene == null:
 			continue;
 		var v1 : PackedScene = scene;
-		print(v1.resource_path);
 			
 		var button = LevelSelectButton.new(v1.resource_path);
 		button.name = v1.resource_path;

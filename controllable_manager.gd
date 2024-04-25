@@ -3,8 +3,10 @@ class_name ControllableManager;
 static var group_name = "controllable";
 static var prop_name = "control_layer";
 
-static func get_controllables(tree: SceneTree, layer: int) -> Array[Node3D]:
-	var nodes: Array[Node3D] = [];
+static func get_controllables(tree: SceneTree, layer: int) -> Array[Node]:
+	if layer == -1:
+		return tree.get_nodes_in_group(group_name);
+	var nodes: Array[Node] = [];
 	for node in tree.get_nodes_in_group(group_name):
 		var node_layer = node.get(prop_name);
 		if node_layer == null:

@@ -22,14 +22,29 @@ class_name InterpolatedCamera3D
 # Note: Only works if the target node is a Camera3D.
 @export_range(0, 1, 0.001) var near_far_speed := 0.95
 
+@export var instant_if_null_target_before = false;
+
 # The node to target.
 # Can optionally be a Camera3D to support smooth FOV and Z near/far plane distance changes.
 @export var target: Node3D
+
+var target_before: Node3D;
 
 
 func _process(delta: float) -> void:
 	if not target is Node3D:
 		return
+	
+	if target != target_before:
+		if target_before == null and instant_if_null_target_before:
+			set_global_transform(target.global_transform);
+			if target is Camera3D:
+				projection = target.projection;
+				if target.projection == Camera3D.PROJECTION_ORTHOGONAL:
+					set_orthogonal(target.size, target.near, target.far)
+				else:
+					set_perspective(target.fov, target.near, target.far)
+		target_before = target;
 
 	var translate_factor := 1 - pow(1 - translate_speed, delta * 3.45233)
 	var rotate_factor := 1 - pow(1 - rotate_speed, delta * 3.45233)
