@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxikvuxhpa1di"]
+
+[ext_resource type="ArrayMesh" uid="uid://221c01e0f5ee" path="res://entity/boulder/ptrn_boulder.obj" id="1_uw2i3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vvxa2"]
+
+[node name="Boulder" type="Node3D"]
+
+[node name="PtrnBoulder" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+mesh = ExtResource("1_uw2i3")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.258478, 0)
+shape = SubResource("SphereShape3D_vvxa2")

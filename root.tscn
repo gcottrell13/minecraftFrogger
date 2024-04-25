@@ -1,15 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dp3h87sbulig4"]
+[gd_scene load_steps=4 format=3 uid="uid://dp3h87sbulig4"]
 
 [ext_resource type="Script" path="res://root.gd" id="1_80yoo"]
-[ext_resource type="PackedScene" uid="uid://dgiqw5wo431t2" path="res://levels/LevelOne.tscn" id="3_huxd0"]
+[ext_resource type="PackedScene" uid="uid://fyfrxkop2yos" path="res://ui/levelSelect.tscn" id="2_s6m1k"]
 [ext_resource type="Script" path="res://addons/interpolated_camera_3d/interpolated_camera_3d.gd" id="3_mwkyu"]
-
-[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_kheda"]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_80yoo")
 
-[node name="LevelOne" parent="." instance=ExtResource("3_huxd0")]
+[node name="LevelSelect" parent="." instance=ExtResource("2_s6m1k")]
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.66318)
@@ -17,7 +15,6 @@ current = true
 script = ExtResource("3_mwkyu")
 translate_speed = 0.98
 
-[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 2.15077)
-enabled = false
-shape = SubResource("SeparationRayShape3D_kheda")
+[node name="PlayArea" type="Node3D" parent="."]
+
+[connection signal="on_click_level" from="LevelSelect" to="." method="_on_level_select_on_click_level"]

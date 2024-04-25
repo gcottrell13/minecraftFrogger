@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://fyfrxkop2yos"]
+
+[ext_resource type="Script" path="res://ui/levelSelect.gd" id="1_k6vgx"]
+[ext_resource type="PackedScene" uid="uid://dgiqw5wo431t2" path="res://levels/LevelOne.tscn" id="2_jm76n"]
+[ext_resource type="Script" path="res://ui/levelSelectButton.gd" id="3_36gsf"]
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k6vgx")
+levels = Array[PackedScene]([ExtResource("2_jm76n")])
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="res___levels_LevelOne_tscn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "res://levels/LevelOne.tscn"
+script = ExtResource("3_36gsf")
+
+[connection signal="button_pressed_value" from="VBoxContainer/res___levels_LevelOne_tscn" to="." method="_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/res___levels_LevelOne_tscn" to="VBoxContainer/res___levels_LevelOne_tscn" method="on_press"]

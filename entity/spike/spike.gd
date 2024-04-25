@@ -17,20 +17,29 @@ var state = 0;
 @export var extended_seconds: float = 2;
 
 @onready var timer: Timer = $Timer;
+@onready var hitbox: Area3D = $Area3D;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	timer.wait_time = offset_seconds;
 	$idle.visible = true;
 	$telegraph.visible = false;
 	$spike.visible = false;
-	state = 2;
+	hitbox.monitoring = false;
+	if offset_seconds > 0:
+		timer.wait_time = offset_seconds;
+		state = -1;
+	else:
+		timer.wait_time = idle_seconds;
+		state = 0;
 	timer.start();
 
 
 
 func _on_timer_timeout():
 	match state:
+		-1:
+			timer.wait_time = idle_seconds;
+			state = 0;
 		0:
 			$idle.visible = false;
 			$telegraph.visible = true;
@@ -40,10 +49,18 @@ func _on_timer_timeout():
 			$telegraph.visible = false;
 			$spike.visible = true;
 			timer.wait_time = extended_seconds;
+			hitbox.monitoring = true;
 			state = 2;
 		2:
 			$spike.visible = false;
 			$idle.visible = true;
 			timer.wait_time = idle_seconds;
+			hitbox.monitoring = false;
 			state = 0;
 	timer.start();
+
+
+func _on_area_3d_area_entered(area: Area3D):
+	if area.name == "CharacterHitbox":
+		# kill character
+		print(area.name);

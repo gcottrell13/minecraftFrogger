@@ -50,6 +50,8 @@ func nearest_gridline():
 
 func do_face_hiding(RECURSE = 1, updater: float = 0):
 	#print(name, ' hiding ', RECURSE);
+	if !is_inside_tree():
+		return;
 	if level == null:
 		print(name, " LEVEL NULL");
 		return;
@@ -65,19 +67,19 @@ func do_face_hiding(RECURSE = 1, updater: float = 0):
 	for neighbor in old_neighbors:
 		if neighbor != null and neighbor != self and RECURSE > 0:
 			neighbor.do_face_hiding(RECURSE - 1, updater);
-			
-	var neighbors : Array[BaseBlock] = level.get_neighbors(nearest_gridline());
+	
+	var neighbors : Array[BaseBlock] = level.get_neighbors(position);
 	if neighbors.size() > 0:
 		for face in get_meshes():
 			if face.name in face_hiding_decisions_made:
 				continue;
 			_unhide_face(face, true);
 			for neighbor in neighbors:
-				if neighbor != self and face is MeshInstance3D:
+				if neighbor != self and face is MeshInstance3D and neighbor.is_inside_tree() and not neighbor.position.is_equal_approx(position):
 					if _should_hide_face(face, neighbor):
 						_hide_face(face, true);
 		for neighbor in neighbors:
-			if neighbor != self and RECURSE > 0:
+			if neighbor != self and RECURSE > 0 and neighbor.is_inside_tree():
 				neighbor.do_face_hiding(RECURSE - 1, updater);
 	else:
 		for face in get_meshes():

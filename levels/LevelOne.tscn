@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://cqme67amutp8q" path="res://blocks/grass.tscn" id="2_vben3"]
 [ext_resource type="PackedScene" uid="uid://uvuxuv7lgur5" path="res://blocks/dirt.tscn" id="4_2ejtc"]
 [ext_resource type="PackedScene" uid="uid://davmt5ef6p3fx" path="res://blocks/water.tscn" id="5_ujjfn"]
-[ext_resource type="PackedScene" uid="uid://coo6u0jxsp0xg" path="res://entity/birch-trunk/birchTrunk.tscn" id="6_4sfkc"]
 [ext_resource type="PackedScene" uid="uid://dedaowjlm5ybs" path="res://entity/rock/rock.tscn" id="7_gro8w"]
-[ext_resource type="PackedScene" uid="uid://cigoiillqgcbd" path="res://entity/birch-leaves/birchLeaves.tscn" id="7_kc5n0"]
+[ext_resource type="PackedScene" uid="uid://mbokjw6vmweq" path="res://entity/sk_bush/sk_bush.tscn" id="9_csogu"]
 [ext_resource type="PackedScene" uid="uid://b0po3nuxc2k2f" path="res://entity/spawnPoint/spawnPoint.tscn" id="10_m1372"]
+[ext_resource type="PackedScene" uid="uid://dxikvuxhpa1di" path="res://entity/boulder/boulder.tscn" id="11_fe1pi"]
 
 [node name="LevelOne" type="Node3D"]
 script = ExtResource("1_3cm2k")
@@ -38,14 +38,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 grass_color = Color(0.203922, 0.603922, 0.305882, 1)
 hidden_faces = {
 "east": true,
-"west": true
+"north": true
 }
-old_neighbors = [NodePath("../grass6"), NodePath("../grass5")]
+old_neighbors = [NodePath("."), NodePath("../grass2"), NodePath("../grass4"), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("../grass32"), NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6"), NodePath("../dirt"), NodePath("../dirt2"), NodePath("../grass25"), NodePath("../dirt7"), NodePath("../dirt8"), NodePath("../dirt9"), NodePath("../dirt10"), NodePath("../dirt11"), NodePath("../dirt12"), NodePath("../grass29"), NodePath("../grass31")]
 
 [node name="grass2" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 1)
 grass_color = Color(0.203922, 0.603922, 0.305882, 1)
-old_neighbors = [NodePath(".")]
+hidden_faces = {
+"east": true
+}
+old_neighbors = [NodePath("../grass"), NodePath("."), NodePath("../grass4"), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("../grass32"), NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6"), NodePath("../dirt"), NodePath("../dirt2"), NodePath("../grass25"), NodePath("../dirt7"), NodePath("../dirt8"), NodePath("../dirt9"), NodePath("../dirt10"), NodePath("../dirt11"), NodePath("../dirt12"), NodePath("../grass29"), NodePath("../grass31")]
 
 [node name="grass4" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
@@ -54,24 +57,17 @@ hidden_faces = {
 "east": true,
 "north": true
 }
-old_neighbors = [NodePath("../BaseBlock"), NodePath("../BaseBlock3"), NodePath("../grass2")]
+old_neighbors = [NodePath("../grass"), NodePath("../grass2"), NodePath("."), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("../grass32"), NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6"), NodePath("../dirt"), NodePath("../dirt2"), NodePath("../grass25"), NodePath("../dirt7"), NodePath("../dirt8"), NodePath("../dirt9"), NodePath("../dirt10"), NodePath("../dirt11"), NodePath("../dirt12"), NodePath("../grass29"), NodePath("../grass31")]
 
 [node name="grass5" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 grass_color = Color(0.203922, 0.603922, 0.305882, 1)
 hidden_faces = {
 "east": true,
+"north": true,
 "west": true
 }
-old_neighbors = [NodePath("../grass"), NodePath("../BaseBlock3")]
-
-[node name="grass6" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
-grass_color = Color(0.85098, 0, 0, 1)
-hidden_faces = {
-"east": true
-}
-old_neighbors = [NodePath("../grass")]
+old_neighbors = [NodePath("../grass"), NodePath("../grass2"), NodePath("../grass4"), NodePath("."), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("../grass32"), NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6"), NodePath("../dirt"), NodePath("../dirt2"), NodePath("../grass25"), NodePath("../dirt7"), NodePath("../dirt8"), NodePath("../dirt9"), NodePath("../dirt10"), NodePath("../dirt11"), NodePath("../dirt12"), NodePath("../grass29"), NodePath("../grass31")]
 
 [node name="BaseBlock" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("4_2ejtc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
@@ -80,16 +76,15 @@ hidden_faces = {
 "south": true,
 "west": true
 }
-old_neighbors = [NodePath("../grass4"), NodePath("../BaseBlock2"), NodePath("../dirt5"), NodePath("../grass16")]
+old_neighbors = [NodePath("."), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6"), NodePath("../grass"), NodePath("../grass2"), NodePath("../grass4"), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("../grass32"), NodePath("../grass12"), NodePath("../grass13"), NodePath("../grass14"), NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../grass28"), NodePath("../grass27"), NodePath("../grass26")]
 
 [node name="BaseBlock2" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("4_2ejtc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 hidden_faces = {
 "north": true,
-"south": true,
-"west": true
+"south": true
 }
-old_neighbors = [NodePath("../BaseBlock"), NodePath("../grass11"), NodePath("../water2"), NodePath("../grass17")]
+old_neighbors = [NodePath("../BaseBlock"), NodePath("."), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6"), NodePath("../grass"), NodePath("../grass2"), NodePath("../grass4"), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("../grass32"), NodePath("../grass12"), NodePath("../grass13"), NodePath("../grass14"), NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../grass28"), NodePath("../grass27"), NodePath("../grass26")]
 
 [node name="BaseBlock3" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("4_2ejtc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
@@ -99,14 +94,14 @@ hidden_faces = {
 "south": true,
 "west": true
 }
-old_neighbors = [NodePath("../grass5"), NodePath("../dirt5"), NodePath("../dirt"), NodePath("../grass4")]
+old_neighbors = [NodePath("../grass"), NodePath("../grass2"), NodePath("../grass4"), NodePath("../grass5"), NodePath("."), NodePath("../grass30"), NodePath("../grass32"), NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6"), NodePath("../dirt"), NodePath("../dirt2"), NodePath("../grass25"), NodePath("../dirt7"), NodePath("../dirt8"), NodePath("../dirt9"), NodePath("../dirt10"), NodePath("../dirt11"), NodePath("../dirt12"), NodePath("../grass29"), NodePath("../grass31")]
 
 [node name="water2" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("5_ujjfn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -1)
 hidden_faces = {
 "west": true
 }
-old_neighbors = [NodePath("../dirt6"), NodePath("../dirt5"), NodePath("../grass10"), NodePath("../water4"), NodePath("../BaseBlock2")]
+old_neighbors = [NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("."), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6"), NodePath("../grass"), NodePath("../grass2"), NodePath("../grass4"), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("../grass32"), NodePath("../grass12"), NodePath("../grass13"), NodePath("../grass14"), NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../grass28"), NodePath("../grass27"), NodePath("../grass26")]
 transparency_mask = 2
 
 [node name="water3" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("5_ujjfn")]
@@ -114,43 +109,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
 hidden_faces = {
 "north": true
 }
-old_neighbors = [NodePath("../dirt3"), NodePath("../dirt"), NodePath("../water4"), NodePath("../grass3"), NodePath("../dirt5")]
+old_neighbors = [NodePath("."), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../dirt"), NodePath("../dirt2"), NodePath("../grass25"), NodePath("../dirt7"), NodePath("../dirt8"), NodePath("../dirt9"), NodePath("../dirt10"), NodePath("../dirt11"), NodePath("../dirt12"), NodePath("../grass19"), NodePath("../grass20"), NodePath("../grass21"), NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6")]
 transparency_mask = 2
 
 [node name="water4" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("5_ujjfn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2)
 hidden_faces = {
-"north": true,
-"south": true,
-"west": true
+"east": true,
+"south": true
 }
-old_neighbors = [NodePath("../dirt4"), NodePath("../water3"), NodePath("../grass9"), NodePath("../grass7"), NodePath("../water2")]
+old_neighbors = [NodePath("../water3"), NodePath("."), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../dirt"), NodePath("../dirt2"), NodePath("../grass25"), NodePath("../dirt7"), NodePath("../dirt8"), NodePath("../dirt9"), NodePath("../dirt10"), NodePath("../dirt11"), NodePath("../dirt12"), NodePath("../grass19"), NodePath("../grass20"), NodePath("../grass21"), NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6")]
 transparency_mask = 2
 
 [node name="dirt" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("4_2ejtc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)
 hidden_faces = {
+"east": true,
+"south": true,
 "west": true
 }
-old_neighbors = [NodePath("../water3"), NodePath("../dirt2"), NodePath("../BaseBlock3")]
+old_neighbors = [NodePath("."), NodePath("../dirt2"), NodePath("../grass25"), NodePath("../dirt7"), NodePath("../dirt8"), NodePath("../dirt9"), NodePath("../dirt10"), NodePath("../dirt11"), NodePath("../dirt12"), NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../grass"), NodePath("../grass2"), NodePath("../grass4"), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("../grass32")]
 
 [node name="dirt2" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("4_2ejtc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
 hidden_faces = {
 "east": true,
 "north": true,
+"south": true,
 "west": true
 }
-old_neighbors = [NodePath("../grass3"), NodePath("../grass25"), NodePath("../dirt")]
+old_neighbors = [NodePath("../dirt"), NodePath("."), NodePath("../grass25"), NodePath("../dirt7"), NodePath("../dirt8"), NodePath("../dirt9"), NodePath("../dirt10"), NodePath("../dirt11"), NodePath("../dirt12"), NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../grass"), NodePath("../grass2"), NodePath("../grass4"), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("../grass32")]
 
-[node name="BirchTrunk" parent="dirt2" instance=ExtResource("6_4sfkc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-
-[node name="BirchTrunk2" parent="dirt2" instance=ExtResource("6_4sfkc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.5, 0)
-
-[node name="BirchLeaves" parent="dirt2" instance=ExtResource("7_kc5n0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+[node name="SkBush" parent="dirt2" instance=ExtResource("9_csogu")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.5, 0)
 
 [node name="grass3" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
@@ -158,18 +149,19 @@ grass_color = Color(0.203922, 0.603922, 0.305882, 1)
 hidden_faces = {
 "east": true,
 "north": true,
-"south": true,
 "west": true
 }
-old_neighbors = [NodePath("../dirt2"), NodePath("../grass7"), NodePath("../water3")]
+old_neighbors = [NodePath("../water3"), NodePath("../water4"), NodePath("."), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../dirt"), NodePath("../dirt2"), NodePath("../grass25"), NodePath("../dirt7"), NodePath("../dirt8"), NodePath("../dirt9"), NodePath("../dirt10"), NodePath("../dirt11"), NodePath("../dirt12"), NodePath("../grass19"), NodePath("../grass20"), NodePath("../grass21"), NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6")]
 
 [node name="grass7" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3)
 grass_color = Color(0.203922, 0.603922, 0.305882, 1)
 hidden_faces = {
+"east": true,
+"north": true,
 "west": true
 }
-old_neighbors = [NodePath("../grass3"), NodePath("../water4")]
+old_neighbors = [NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("."), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../dirt"), NodePath("../dirt2"), NodePath("../grass25"), NodePath("../dirt7"), NodePath("../dirt8"), NodePath("../dirt9"), NodePath("../dirt10"), NodePath("../dirt11"), NodePath("../dirt12"), NodePath("../grass19"), NodePath("../grass20"), NodePath("../grass21"), NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6")]
 
 [node name="grass8" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -3)
@@ -180,36 +172,43 @@ hidden_faces = {
 "south": true,
 "west": true
 }
-old_neighbors = [NodePath("../grass7"), NodePath("../grass19"), NodePath("../grass22"), NodePath("../grass9")]
+old_neighbors = [NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("."), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../dirt"), NodePath("../dirt2"), NodePath("../grass25"), NodePath("../dirt7"), NodePath("../dirt8"), NodePath("../dirt9"), NodePath("../dirt10"), NodePath("../dirt11"), NodePath("../dirt12"), NodePath("../grass19"), NodePath("../grass20"), NodePath("../grass21"), NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6")]
 
 [node name="grass9" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
 grass_color = Color(0.203922, 0.603922, 0.305882, 1)
 hidden_faces = {
+"east": true,
 "north": true,
-"south": true,
-"west": true
+"south": true
 }
-old_neighbors = [NodePath("../water4"), NodePath("../grass20"), NodePath("../grass10")]
+old_neighbors = [NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("."), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../dirt"), NodePath("../dirt2"), NodePath("../grass25"), NodePath("../dirt7"), NodePath("../dirt8"), NodePath("../dirt9"), NodePath("../dirt10"), NodePath("../dirt11"), NodePath("../dirt12"), NodePath("../grass19"), NodePath("../grass20"), NodePath("../grass21"), NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6")]
 
 [node name="grass10" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -1)
 grass_color = Color(0.203922, 0.603922, 0.305882, 1)
 hidden_faces = {
 "north": true,
-"south": true,
-"west": true
+"south": true
 }
-old_neighbors = [NodePath("../water2"), NodePath("../grass9"), NodePath("../grass11")]
+old_neighbors = [NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("."), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6"), NodePath("../grass"), NodePath("../grass2"), NodePath("../grass4"), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("../grass32"), NodePath("../grass12"), NodePath("../grass13"), NodePath("../grass14"), NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../grass28"), NodePath("../grass27"), NodePath("../grass26")]
 
 [node name="grass11" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 grass_color = Color(0.203922, 0.603922, 0.305882, 1)
-old_neighbors = [NodePath("../BaseBlock2"), NodePath("../grass13"), NodePath("../grass10"), NodePath("../grass15")]
+hidden_faces = {
+"north": true,
+"west": true
+}
+old_neighbors = [NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("."), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6"), NodePath("../grass"), NodePath("../grass2"), NodePath("../grass4"), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("../grass32"), NodePath("../grass12"), NodePath("../grass13"), NodePath("../grass14"), NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../grass28"), NodePath("../grass27"), NodePath("../grass26")]
 
-[node name="grass12" parent="." instance=ExtResource("2_vben3")]
+[node name="grass12" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, -1)
 grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+hidden_faces = {
+"south": true
+}
+old_neighbors = [NodePath("."), NodePath("../grass13"), NodePath("../grass14"), NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6"), NodePath("../grass19"), NodePath("../grass20"), NodePath("../grass21"), NodePath("../grass18")]
 
 [node name="Rock" parent="grass12" instance=ExtResource("7_gro8w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -217,41 +216,68 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 [node name="grass13" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, 0)
 grass_color = Color(0.203922, 0.603922, 0.305882, 1)
-old_neighbors = [NodePath(".")]
+hidden_faces = {
+"north": true,
+"south": true
+}
+old_neighbors = [NodePath("../grass12"), NodePath("."), NodePath("../grass14"), NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6"), NodePath("../grass19"), NodePath("../grass20"), NodePath("../grass21"), NodePath("../grass18")]
+
+[node name="Boulder" parent="grass13" instance=ExtResource("11_fe1pi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="grass14" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, 1)
 grass_color = Color(0.203922, 0.603922, 0.305882, 1)
-old_neighbors = [NodePath(".")]
+hidden_faces = {
+"north": true,
+"west": true
+}
+old_neighbors = [NodePath("../grass12"), NodePath("../grass13"), NodePath("."), NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6"), NodePath("../grass19"), NodePath("../grass20"), NodePath("../grass21"), NodePath("../grass18")]
+
+[node name="SkBush" parent="grass14" instance=ExtResource("9_csogu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="grass15" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 1)
 grass_color = Color(0.203922, 0.603922, 0.305882, 1)
-old_neighbors = [NodePath(".")]
+hidden_faces = {
+"east": true,
+"west": true
+}
+old_neighbors = [NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("."), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6"), NodePath("../grass"), NodePath("../grass2"), NodePath("../grass4"), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("../grass32"), NodePath("../grass12"), NodePath("../grass13"), NodePath("../grass14"), NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../grass28"), NodePath("../grass27"), NodePath("../grass26")]
 
 [node name="grass16" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 1)
 grass_color = Color(0.203922, 0.603922, 0.305882, 1)
-old_neighbors = [NodePath("../BaseBlock")]
+hidden_faces = {
+"east": true,
+"west": true
+}
+old_neighbors = [NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("."), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6"), NodePath("../grass"), NodePath("../grass2"), NodePath("../grass4"), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("../grass32"), NodePath("../grass12"), NodePath("../grass13"), NodePath("../grass14"), NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../grass28"), NodePath("../grass27"), NodePath("../grass26")]
 
 [node name="grass17" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, 1)
 grass_color = Color(0.203922, 0.603922, 0.305882, 1)
-old_neighbors = [NodePath(".")]
+hidden_faces = {
+"east": true,
+"west": true
+}
+old_neighbors = [NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("."), NodePath("../dirt5"), NodePath("../dirt6"), NodePath("../grass"), NodePath("../grass2"), NodePath("../grass4"), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("../grass32"), NodePath("../grass12"), NodePath("../grass13"), NodePath("../grass14"), NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../grass28"), NodePath("../grass27"), NodePath("../grass26")]
 
 [node name="dirt3" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("4_2ejtc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, -2)
 hidden_faces = {
 "north": true
 }
-old_neighbors = [NodePath("../water3"), NodePath("../dirt4")]
+old_neighbors = [NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("."), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../dirt"), NodePath("../dirt2"), NodePath("../grass25"), NodePath("../dirt7"), NodePath("../dirt8"), NodePath("../dirt9"), NodePath("../dirt10"), NodePath("../dirt11"), NodePath("../dirt12"), NodePath("../grass19"), NodePath("../grass20"), NodePath("../grass21"), NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6")]
 
 [node name="dirt4" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("4_2ejtc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -1, -2)
 hidden_faces = {
-"east": true
+"east": true,
+"south": true
 }
-old_neighbors = [NodePath("../water4"), NodePath("../dirt6")]
+old_neighbors = [NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("."), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../dirt"), NodePath("../dirt2"), NodePath("../grass25"), NodePath("../dirt7"), NodePath("../dirt8"), NodePath("../dirt9"), NodePath("../dirt10"), NodePath("../dirt11"), NodePath("../dirt12"), NodePath("../grass19"), NodePath("../grass20"), NodePath("../grass21"), NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6")]
 
 [node name="dirt5" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("4_2ejtc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
@@ -259,21 +285,18 @@ hidden_faces = {
 "east": true,
 "south": true
 }
-old_neighbors = [NodePath("../BaseBlock3"), NodePath("../water2"), NodePath("../water3"), NodePath("../BaseBlock")]
+old_neighbors = [NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("."), NodePath("../dirt6"), NodePath("../grass"), NodePath("../grass2"), NodePath("../grass4"), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("../grass32"), NodePath("../grass12"), NodePath("../grass13"), NodePath("../grass14"), NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../grass28"), NodePath("../grass27"), NodePath("../grass26")]
 
 [node name="dirt6" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("4_2ejtc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -1, -1)
 hidden_faces = {
 "west": true
 }
-old_neighbors = [NodePath("../water2"), NodePath("../dirt4")]
+old_neighbors = [NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("."), NodePath("../grass"), NodePath("../grass2"), NodePath("../grass4"), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("../grass32"), NodePath("../grass12"), NodePath("../grass13"), NodePath("../grass14"), NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../grass28"), NodePath("../grass27"), NodePath("../grass26")]
 
 [node name="grass19" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -3)
 grass_color = Color(0.203922, 0.603922, 0.305882, 1)
-hidden_faces = {
-"west": true
-}
 old_neighbors = [NodePath("../grass8")]
 
 [node name="Rock" parent="grass19" instance=ExtResource("7_gro8w")]
@@ -282,9 +305,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 [node name="grass20" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -2)
 grass_color = Color(0.203922, 0.603922, 0.305882, 1)
-hidden_faces = {
-"west": true
-}
 old_neighbors = [NodePath("../grass9")]
 
 [node name="Rock" parent="grass20" instance=ExtResource("7_gro8w")]
@@ -310,9 +330,9 @@ hidden_faces = {
 "south": true,
 "west": true
 }
-old_neighbors = [NodePath("../grass23"), NodePath("../grass21"), NodePath("../grass8")]
+old_neighbors = [NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("."), NodePath("../grass23"), NodePath("../grass24"), NodePath("../dirt"), NodePath("../dirt2"), NodePath("../grass25"), NodePath("../dirt7"), NodePath("../dirt8"), NodePath("../dirt9"), NodePath("../dirt10"), NodePath("../dirt11"), NodePath("../dirt12"), NodePath("../grass19"), NodePath("../grass20"), NodePath("../grass21"), NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6")]
 
-[node name="Rock" parent="grass22" instance=ExtResource("7_gro8w")]
+[node name="Boulder" parent="grass22" instance=ExtResource("11_fe1pi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="grass23" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
@@ -323,7 +343,7 @@ hidden_faces = {
 "south": true,
 "west": true
 }
-old_neighbors = [NodePath("../grass24"), NodePath("../grass22"), NodePath("../grass7")]
+old_neighbors = [NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("."), NodePath("../grass24"), NodePath("../dirt"), NodePath("../dirt2"), NodePath("../grass25"), NodePath("../dirt7"), NodePath("../dirt8"), NodePath("../dirt9"), NodePath("../dirt10"), NodePath("../dirt11"), NodePath("../dirt12"), NodePath("../grass19"), NodePath("../grass20"), NodePath("../grass21"), NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6")]
 
 [node name="Rock" parent="grass23" instance=ExtResource("7_gro8w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -332,9 +352,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
 grass_color = Color(0.203922, 0.603922, 0.305882, 1)
 hidden_faces = {
-"south": true
+"east": true,
+"south": true,
+"west": true
 }
-old_neighbors = [NodePath("../grass3")]
+old_neighbors = [NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("."), NodePath("../dirt"), NodePath("../dirt2"), NodePath("../grass25"), NodePath("../dirt7"), NodePath("../dirt8"), NodePath("../dirt9"), NodePath("../dirt10"), NodePath("../dirt11"), NodePath("../dirt12"), NodePath("../grass19"), NodePath("../grass20"), NodePath("../grass21"), NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6")]
 
 [node name="Rock" parent="grass24" instance=ExtResource("7_gro8w")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.5, 0)
@@ -343,12 +365,166 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -4)
 grass_color = Color(0.203922, 0.603922, 0.305882, 1)
 hidden_faces = {
-"south": true
+"east": true,
+"south": true,
+"west": true
 }
-old_neighbors = [NodePath("../dirt2")]
+old_neighbors = [NodePath("../dirt"), NodePath("../dirt2"), NodePath("."), NodePath("../dirt7"), NodePath("../dirt8"), NodePath("../dirt9"), NodePath("../dirt10"), NodePath("../dirt11"), NodePath("../dirt12"), NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../grass"), NodePath("../grass2"), NodePath("../grass4"), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("../grass32")]
 
 [node name="Rock" parent="grass25" instance=ExtResource("7_gro8w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="SpawnPoint2" parent="." instance=ExtResource("10_m1372")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -1)
+[node name="grass18" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 2)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+hidden_faces = {
+"west": true
+}
+old_neighbors = [NodePath("."), NodePath("../grass28"), NodePath("../grass27"), NodePath("../grass26"), NodePath("../grass12"), NodePath("../grass13"), NodePath("../grass14")]
+
+[node name="Rock" parent="grass18" instance=ExtResource("7_gro8w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="grass26" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 2)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+hidden_faces = {
+"east": true,
+"west": true
+}
+old_neighbors = [NodePath("../grass28"), NodePath("../grass27"), NodePath("."), NodePath("../grass29"), NodePath("../grass31"), NodePath("../grass18"), NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6")]
+
+[node name="Rock" parent="grass26" instance=ExtResource("7_gro8w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="grass27" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 2)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+hidden_faces = {
+"east": true,
+"west": true
+}
+old_neighbors = [NodePath("../grass28"), NodePath("."), NodePath("../grass26"), NodePath("../grass29"), NodePath("../grass31"), NodePath("../grass18"), NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6")]
+
+[node name="Rock" parent="grass27" instance=ExtResource("7_gro8w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="grass28" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 2)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+hidden_faces = {
+"east": true,
+"west": true
+}
+old_neighbors = [NodePath("."), NodePath("../grass27"), NodePath("../grass26"), NodePath("../grass29"), NodePath("../grass31"), NodePath("../grass18"), NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6")]
+
+[node name="Boulder" parent="grass28" instance=ExtResource("11_fe1pi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="grass29" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 2)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+hidden_faces = {
+"east": true,
+"west": true
+}
+old_neighbors = [NodePath("."), NodePath("../grass31"), NodePath("../grass28"), NodePath("../grass27"), NodePath("../grass26"), NodePath("../grass"), NodePath("../grass2"), NodePath("../grass4"), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("../grass32")]
+
+[node name="Boulder" parent="grass29" instance=ExtResource("11_fe1pi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="grass30" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+hidden_faces = {
+"north": true,
+"south": true
+}
+old_neighbors = [NodePath("../grass"), NodePath("../grass2"), NodePath("../grass4"), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("."), NodePath("../grass32"), NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6"), NodePath("../dirt"), NodePath("../dirt2"), NodePath("../grass25"), NodePath("../dirt7"), NodePath("../dirt8"), NodePath("../dirt9"), NodePath("../dirt10"), NodePath("../dirt11"), NodePath("../dirt12"), NodePath("../grass29"), NodePath("../grass31")]
+
+[node name="Boulder" parent="grass30" instance=ExtResource("11_fe1pi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="grass31" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+hidden_faces = {
+"east": true,
+"north": true
+}
+old_neighbors = [NodePath("../grass29"), NodePath("."), NodePath("../grass28"), NodePath("../grass27"), NodePath("../grass26"), NodePath("../grass"), NodePath("../grass2"), NodePath("../grass4"), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("../grass32")]
+
+[node name="Boulder" parent="grass31" instance=ExtResource("11_fe1pi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="grass32" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("2_vben3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+hidden_faces = {
+"south": true
+}
+old_neighbors = [NodePath("../grass"), NodePath("../grass2"), NodePath("../grass4"), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("."), NodePath("../BaseBlock"), NodePath("../BaseBlock2"), NodePath("../water2"), NodePath("../grass10"), NodePath("../grass11"), NodePath("../grass15"), NodePath("../grass16"), NodePath("../grass17"), NodePath("../dirt5"), NodePath("../dirt6"), NodePath("../dirt"), NodePath("../dirt2"), NodePath("../grass25"), NodePath("../dirt7"), NodePath("../dirt8"), NodePath("../dirt9"), NodePath("../dirt10"), NodePath("../dirt11"), NodePath("../dirt12"), NodePath("../grass29"), NodePath("../grass31")]
+
+[node name="Rock" parent="grass32" instance=ExtResource("7_gro8w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="dirt7" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("4_2ejtc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+hidden_faces = {
+"east": true,
+"north": true,
+"south": true,
+"west": true
+}
+old_neighbors = [NodePath("../dirt"), NodePath("../dirt2"), NodePath("../grass25"), NodePath("."), NodePath("../dirt8"), NodePath("../dirt9"), NodePath("../dirt10"), NodePath("../dirt11"), NodePath("../dirt12"), NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../grass"), NodePath("../grass2"), NodePath("../grass4"), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("../grass32")]
+
+[node name="SkBush" parent="dirt7" instance=ExtResource("9_csogu")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.5, 0)
+
+[node name="dirt8" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("4_2ejtc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2)
+hidden_faces = {
+"east": true,
+"north": true,
+"west": true
+}
+old_neighbors = [NodePath("../dirt"), NodePath("../dirt2"), NodePath("../grass25"), NodePath("../dirt7"), NodePath("."), NodePath("../dirt9"), NodePath("../dirt10"), NodePath("../dirt11"), NodePath("../dirt12"), NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../grass"), NodePath("../grass2"), NodePath("../grass4"), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("../grass32")]
+
+[node name="SkBush" parent="dirt8" instance=ExtResource("9_csogu")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.5, 0)
+
+[node name="dirt9" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("4_2ejtc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+hidden_faces = {
+"east": true,
+"north": true,
+"south": true,
+"west": true
+}
+old_neighbors = [NodePath("../dirt"), NodePath("../dirt2"), NodePath("../grass25"), NodePath("../dirt7"), NodePath("../dirt8"), NodePath("."), NodePath("../dirt10"), NodePath("../dirt11"), NodePath("../dirt12"), NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../grass"), NodePath("../grass2"), NodePath("../grass4"), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("../grass32")]
+
+[node name="dirt10" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("4_2ejtc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
+hidden_faces = {
+"east": true,
+"north": true,
+"west": true
+}
+old_neighbors = [NodePath("../dirt"), NodePath("../dirt2"), NodePath("../grass25"), NodePath("../dirt7"), NodePath("../dirt8"), NodePath("../dirt9"), NodePath("."), NodePath("../dirt11"), NodePath("../dirt12"), NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../grass"), NodePath("../grass2"), NodePath("../grass4"), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("../grass32")]
+
+[node name="dirt11" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("4_2ejtc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+hidden_faces = {
+"east": true,
+"north": true,
+"south": true
+}
+old_neighbors = [NodePath("../dirt"), NodePath("../dirt2"), NodePath("../grass25"), NodePath("../dirt7"), NodePath("../dirt8"), NodePath("../dirt9"), NodePath("../dirt10"), NodePath("."), NodePath("../dirt12"), NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../grass"), NodePath("../grass2"), NodePath("../grass4"), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("../grass32")]
+
+[node name="dirt12" parent="." node_paths=PackedStringArray("old_neighbors") instance=ExtResource("4_2ejtc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -4)
+hidden_faces = {
+"east": true,
+"north": true
+}
+old_neighbors = [NodePath("../dirt"), NodePath("../dirt2"), NodePath("../grass25"), NodePath("../dirt7"), NodePath("../dirt8"), NodePath("../dirt9"), NodePath("../dirt10"), NodePath("../dirt11"), NodePath("."), NodePath("../water3"), NodePath("../water4"), NodePath("../grass3"), NodePath("../grass7"), NodePath("../grass8"), NodePath("../grass9"), NodePath("../dirt3"), NodePath("../dirt4"), NodePath("../grass22"), NodePath("../grass23"), NodePath("../grass24"), NodePath("../grass"), NodePath("../grass2"), NodePath("../grass4"), NodePath("../grass5"), NodePath("../BaseBlock3"), NodePath("../grass30"), NodePath("../grass32")]

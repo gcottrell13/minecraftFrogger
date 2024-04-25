@@ -20,9 +20,9 @@ func register_children():
 		manager = BlockManager.new();
 	for child in get_children():
 		if child is BaseBlock:
-			manager.register_block(Vector3i(child.position), child);
+			manager.register_block(child.position, child);
 
-func get_neighbors(vec: Vector3i) -> Array[BaseBlock]:
+func get_neighbors(vec: Vector3) -> Array[BaseBlock]:
 	return manager.get_neighbors(vec);
 
 func _unhandled_input(event: InputEvent):

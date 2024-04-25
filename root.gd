@@ -1,9 +1,9 @@
+class_name Root
 extends Node3D
 
 
 @onready var camera: InterpolatedCamera3D = $Camera;
-var lightAngle = 0;
-var height = 3;
+@onready var playArea: Node3D = $PlayArea;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,3 +18,9 @@ func _process(delta):
 		camera.target = camera_targets[0];
 	
 	# $ShapeCast3D.position = camera.project_position(DisplayServer.window_get_size() / 2, 1);
+
+
+func _on_level_select_on_click_level(scene: PackedScene):
+	for child in playArea.get_children():
+		playArea.remove_child(child);
+	playArea.add_child(scene.instantiate());

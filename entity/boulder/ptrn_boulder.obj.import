@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://221c01e0f5ee"
+path="res://.godot/imported/ptrn_boulder.obj-6a4ab474e912109b9c70059defe7a314.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ptrn_boulder.obj-6a4ab474e912109b9c70059defe7a314.mesh"]
+
+source_file="res://entity/boulder/ptrn_boulder.obj"
+dest_files=["res://.godot/imported/ptrn_boulder.obj-6a4ab474e912109b9c70059defe7a314.mesh", "res://.godot/imported/ptrn_boulder.obj-6a4ab474e912109b9c70059defe7a314.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

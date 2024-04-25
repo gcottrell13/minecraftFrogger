@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://oycb1vnx8d7i"]
+[gd_scene load_steps=8 format=3 uid="uid://oycb1vnx8d7i"]
 
 [ext_resource type="Script" path="res://characters/frog1/frog.gd" id="1_ihstt"]
 [ext_resource type="PackedScene" uid="uid://butdoukwltnrb" path="res://characters/frog1/frogidle.gltf" id="2_ludme"]
@@ -9,6 +9,9 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jf76c"]
 albedo_texture = ExtResource("3_gmv5g")
 texture_filter = 0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_m2an0"]
+radius = 0.363355
 
 [node name="Frog" type="Node3D"]
 rotation_order = 1
@@ -42,3 +45,11 @@ target_position = Vector3(0, 0, 0)
 collide_with_areas = true
 collide_with_bodies = false
 debug_shape_custom_color = Color(0.780392, 0, 0, 1)
+
+[node name="CharacterHitbox" type="Area3D" parent="."]
+collision_layer = 2
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterHitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.225437, 0)
+shape = SubResource("SphereShape3D_m2an0")

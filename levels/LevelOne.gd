@@ -18,9 +18,10 @@ func _ready():
 		for spawnchild in spawn_children:
 			if spawnchild.owner != self:
 				continue;
-			spawnchild.reparent(frog);
+			var dup = spawnchild.duplicate();
+			frog.add_child(dup);
 			if spawnchild is Camera3D:
-				CameraManager.add_camera_target(spawnchild, 0);
+				CameraManager.add_camera_target(dup, 0);
 	
 
 
