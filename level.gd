@@ -5,6 +5,7 @@ extends Node3D
 var manager : BlockManager;
 
 var current_control_layer = 0;
+@export var last_checkpoint_index = 0;
 
 
 # Called when the node enters the scene tree for the first time.
@@ -64,7 +65,39 @@ func _unhandled_input(event: InputEvent):
 	if handled:
 		get_viewport().set_input_as_handled();
 
+
+func on_fadetoblack_end(anim: FadeToBlackAnimation):
+	remove_child(anim);
+	fade_to(get_viewport().get_camera_3d(), on_fadefromblack_end, 1);
+	
+
+func on_fadefromblack_end(anim: FadeToBlackAnimation):
+	remove_child(anim);
+
+
 func fade_to(camera: Camera3D, handler, target_fade: float):
 	var fade = FadeToBlackAnimation.new(camera, 1, target_fade);
-	fade.done.connect(handler);
 	add_child(fade);
+	fade.done.connect(handler);
+
+func spawn_characters_from_save(char_scene: PackedScene):
+	spawn_characters(last_checkpoint_index, char_scene);
+
+func spawn_characters(index: int, char_scene: PackedScene):
+	for child in find_children("", "SpawnPoint"):
+		if child.index != index:
+			continue;
+		var spawn_children: Array[Node] = child.get_children();
+		var frog: Node3D = char_scene.instantiate();
+		add_child(frog);
+		frog.position = child.position;
+		frog.rotation = child.rotation;
+		ControllableManager.set_controllable(frog, 0);
+		for spawnchild in spawn_children:
+			if spawnchild.owner != self:
+				continue;
+			var dup = spawnchild.duplicate();
+			frog.add_child(dup);
+			if spawnchild is Camera3D:
+				CameraManager.add_camera_target(dup, 0);
+				fade_to(dup, on_fadefromblack_end, 1);

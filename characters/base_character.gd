@@ -1,6 +1,7 @@
 class_name BaseCharacter
 extends BaseEntity
 
+var is_dead : bool = false;
 
 var target_position: BlockNormal;
 var target_block: SolidBlock;
@@ -13,6 +14,19 @@ var animate_time_length: float = 0;
 var animate_current_time: float = 0;
 var animate_curve: Curve3D;
 var animate_prev_sample: Vector3 = Vector3.ZERO;
+
+enum DAMAGE_SOURCE {
+	Fall,
+	Water,
+	Cleaved,
+	Normal,
+}
+
+enum MOVE_RESULT {
+	CanMoveSafe,
+	CanMoveUnsafe,
+	CannotMove,
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,7 +57,7 @@ func move_character(dir: Vector3):
 	pass
 
 
-func base_move_character(dir: Vector3, lookahead: ShapeCast3D) -> bool:
+func base_move_character(dir: Vector3, lookahead: ShapeCast3D) -> MOVE_RESULT:
 	if meshCollection != null:
 		meshCollection.rotate_y(Vector3.FORWARD.signed_angle_to(dir, Vector3.UP) - meshCollection.rotation.y);
 	facing_dir = dir.normalized();
@@ -63,18 +77,23 @@ func base_move_character(dir: Vector3, lookahead: ShapeCast3D) -> bool:
 					moved_up = true;
 					break;
 				else:
-					return false;
+					return MOVE_RESULT.CannotMove;
 		if not moved_up:
 			break;
 	
 	if lookahead.position.y > max_y:
-		return false;
+		return MOVE_RESULT.CannotMove;
 	
 	if lookahead.position.y <= 0:
-		lookahead.position.y = -0.1;
+		lookahead.position.y = -0.3 * dir.length();
 		lookahead.force_shapecast_update();
 	
-	return check_hitbox(lookahead, true, 1);
+	if check_hitbox(lookahead, true, 1):
+		#lookahead.position = Vector3.ZERO;
+		return MOVE_RESULT.CanMoveSafe;
+	
+	#lookahead.position = Vector3.ZERO;
+	return MOVE_RESULT.CanMoveUnsafe;
 
 func animate_to_position(time_length: float, curve: Curve3D):
 	animate_curve = curve;
@@ -84,3 +103,9 @@ func animate_to_position(time_length: float, curve: Curve3D):
 
 func do_special():
 	pass
+
+func die(damage_source: DAMAGE_SOURCE):
+	ControllableManager.unset_controllable(self);
+	var parent = get_parent();
+	await get_tree().create_timer(1.0).timeout
+	parent.remove_child(self);

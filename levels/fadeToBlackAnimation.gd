@@ -16,8 +16,11 @@ func _init(camera: Camera3D, seconds: float, at_value: float = 0):
 	_done = false;
 	target_value = at_value;
 	target_camera = camera;
-	target_camera.environment.adjustment_brightness = 1 - target_value;
-	target_camera.environment.adjustment_enabled = true;
+	if target_camera.environment == null:
+		_done = true;
+	else:
+		target_camera.environment.adjustment_brightness = 1 - target_value;
+		target_camera.environment.adjustment_enabled = true;
 
 
 # Called when the node enters the scene tree for the first time.
@@ -32,7 +35,7 @@ func _process(delta):
 		
 	progress += delta;
 	if progress >= time_seconds:
-		done.emit();
+		done.emit(self);
 		target_camera.environment.adjustment_brightness = target_value;
 		_done = true;
 	else:

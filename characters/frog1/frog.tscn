@@ -33,6 +33,7 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 
 [node name="hitbox" type="ShapeCast3D" parent="Node3D"]
+transform = Transform3D(0.975, 0, 0, 0, 0.975, 0, 0, 0, 0.975, 0, 0, 0)
 shape = ExtResource("3_w3h01")
 target_position = Vector3(0, 0, 0)
 collide_with_areas = true

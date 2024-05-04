@@ -1,5 +1,5 @@
 @tool
-class_name GrassBlock
+class_name GrassyStoneBlock
 extends FullSolidBlock
 
 @export_color_no_alpha var grass_color:
@@ -8,6 +8,9 @@ extends FullSolidBlock
 
 func set_color(color: Color):
 	grass_color = color;
+	if not is_inside_tree():
+		return;
+		
 	var mat : StandardMaterial3D = $up.mesh.surface_get_material(0);
 	mat.albedo_color = color;
 	

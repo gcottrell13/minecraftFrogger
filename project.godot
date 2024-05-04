@@ -13,7 +13,13 @@ config_version=5
 config/name="frogger"
 run/main_scene="res://root.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+boot_splash/image="res://Godot_v4.2.1-stable_mono_win64_GtHr60ArLL.png"
 config/icon="res://Godot_v4.2.1-stable_mono_win64_GtHr60ArLL.png"
+
+[display]
+
+window/size/viewport_width=800
+window/size/viewport_height=800
 
 [dotnet]
 

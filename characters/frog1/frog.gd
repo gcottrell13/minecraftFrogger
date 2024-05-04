@@ -5,7 +5,6 @@ var cannot_move = false;
 
 @onready var lookahead : ShapeCast3D = $Node3D/lookahead;
 @onready var hitbox : ShapeCast3D = $Node3D/hitbox;
-@onready var curveJumpOne = $CurveJumpOne;
 
 
 var radius : float = 1;
@@ -19,24 +18,42 @@ func _ready():
 
 func move_character(dir: Vector3):
 	if not cannot_move and animate_curve == null:
-		if base_move_character(dir, lookahead):
-			var angle = Vector3.FORWARD.signed_angle_to(dir, Vector3.UP);
-			var curve = Curve3D.new();
-			curve.add_point(Vector3.ZERO);
-			curve.add_point((next_position - position) / 2 + Vector3.UP / 2);
-			curve.add_point(next_position - position);
-			animate_to_position(0.2 * dir.length_squared(), curve);
+		match base_move_character(dir, lookahead):
+			MOVE_RESULT.CanMoveSafe:
+				frog_jump(dir);
+			MOVE_RESULT.CanMoveUnsafe:
+				frog_jump(dir);
+
+func frog_jump(dir: Vector3):
+	var angle = Vector3.FORWARD.signed_angle_to(dir, Vector3.UP);
+	var curve = Curve3D.new();
+	curve.add_point(Vector3.ZERO);
+	curve.add_point((next_position - position) / 2 + Vector3.UP / 2);
+	curve.add_point(next_position - position);
+	var timelen = 0.2 * dir.length_squared();
+	animate_to_position(timelen, curve);
 
 func do_special():
 	move_character(facing_dir * 2);
 
+func die(src):
+	cannot_move = true;
+	is_dead = true;
+	super(src);
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	super(delta);
-	if animate_curve == null:
-		if check_hitbox(hitbox, true, radius):
-			fix_rotation();
+	if not is_dead:
+		if animate_curve == null:
+			if check_hitbox(hitbox, true, radius):
+				position = next_position;
+				fix_rotation();
+			else:
+				die(DAMAGE_SOURCE.Fall);
 		else:
-			cannot_move = true;
-	position = next_position;
-	check_collision(hitbox);
+			position = next_position;
+	elif animate_curve != null:
+		position = next_position;
+	if not is_dead:
+		check_collision(hitbox);

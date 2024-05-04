@@ -20,7 +20,7 @@ func check_hitbox(hitbox: ShapeCast3D, die_if_fall = true, radius=1) -> bool:
 			var angle = dir.angle_to(global_up);
 			if angle < angle_tolerance:
 				var d = (collision.global_position - hitbox.global_position).length_squared();
-				if d < closest_ground_dist:
+				if d < closest_ground_dist and d < radius:
 					closest_ground = collision;
 					closest_ground_dist = d;
 	
@@ -31,6 +31,9 @@ func check_hitbox(hitbox: ShapeCast3D, die_if_fall = true, radius=1) -> bool:
 		return true;
 	else:
 		# TODO: fall down, and if ground cannot be found within the max fall distance, die.
+		home_ray = null;
+		home_block = null;
+		next_position = position + Vector3(hitbox.position.x, 0, hitbox.position.z);
 		return false;
 
 func check_collision(hitbox: ShapeCast3D):

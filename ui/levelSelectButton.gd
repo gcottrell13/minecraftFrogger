@@ -10,6 +10,7 @@ func _init(v: String):
 	value = v;
 
 func _ready():
+	focus_mode = Control.FOCUS_NONE;
 	pressed.connect(on_press, CONNECT_PERSIST);
 
 func on_press():

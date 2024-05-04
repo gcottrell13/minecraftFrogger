@@ -21,7 +21,7 @@ func _process(delta):
 func _set_levels(value):
 	levels = value;
 	
-	if Engine.is_editor_hint():
+	if Engine.is_editor_hint() and is_inside_tree():
 		fix_children();
 
 func fix_children():

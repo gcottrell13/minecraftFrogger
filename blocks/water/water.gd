@@ -40,3 +40,10 @@ func do_face_hiding(RECURSE = 1, updater: float = 0):
 	super(RECURSE, updater);
 	if $top.visible:
 		$top.mesh.center_offset.y = -0.1;
+
+
+func _on_area_3d_area_entered(area: Area3D):
+	if area.name == "CharacterHitbox":
+		var p = area.get_parent();
+		if p is BaseCharacter:
+			p.die(BaseCharacter.DAMAGE_SOURCE.Water);

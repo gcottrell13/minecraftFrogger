@@ -62,5 +62,6 @@ func _on_timer_timeout():
 
 func _on_area_3d_area_entered(area: Area3D):
 	if area.name == "CharacterHitbox":
-		# kill character
-		print(area.name);
+		var p = area.get_parent();
+		if p is BaseCharacter:
+			p.die(BaseCharacter.DAMAGE_SOURCE.Cleaved);
