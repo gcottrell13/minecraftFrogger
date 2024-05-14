@@ -85,7 +85,7 @@ func base_move_character(dir: Vector3, lookahead: ShapeCast3D) -> MOVE_RESULT:
 		return MOVE_RESULT.CannotMove;
 	
 	if lookahead.position.y <= 0:
-		lookahead.position.y = -0.3 * dir.length();
+		lookahead.position.y = -0.3;
 		lookahead.force_shapecast_update();
 	
 	if check_hitbox(lookahead, true, 1):

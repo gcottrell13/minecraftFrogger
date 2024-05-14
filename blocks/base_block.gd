@@ -1,4 +1,3 @@
-@tool
 class_name BaseBlock
 extends Node3D
 
@@ -21,7 +20,7 @@ var level: Level;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_notify_local_transform(true);
+	#set_notify_local_transform(true);
 	if hidden_faces == null:
 		hidden_faces = {};
 	for child in get_meshes():

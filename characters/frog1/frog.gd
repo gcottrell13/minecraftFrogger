@@ -6,6 +6,8 @@ var cannot_move = false;
 @onready var lookahead : ShapeCast3D = $Node3D/lookahead;
 @onready var hitbox : ShapeCast3D = $Node3D/hitbox;
 
+var distance_fallen : float = 0;
+
 
 var radius : float = 1;
 
@@ -25,11 +27,11 @@ func move_character(dir: Vector3):
 				frog_jump(dir);
 
 func frog_jump(dir: Vector3):
-	var angle = Vector3.FORWARD.signed_angle_to(dir, Vector3.UP);
 	var curve = Curve3D.new();
+	var next = next_position - position;
 	curve.add_point(Vector3.ZERO);
-	curve.add_point((next_position - position) / 2 + Vector3.UP / 2);
-	curve.add_point(next_position - position);
+	curve.add_point(next / 2 + Vector3.UP / 2);
+	curve.add_point(next);
 	var timelen = 0.2 * dir.length_squared();
 	animate_to_position(timelen, curve);
 
@@ -49,6 +51,9 @@ func _process(delta):
 			if check_hitbox(hitbox, true, radius):
 				position = next_position;
 				fix_rotation();
+			elif distance_fallen < 1:
+				position.y -= 0.5;
+				distance_fallen += 0.5;
 			else:
 				die(DAMAGE_SOURCE.Fall);
 		else:

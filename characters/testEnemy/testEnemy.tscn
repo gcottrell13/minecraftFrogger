@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://r854hpgwmus3"]
+
+[ext_resource type="Script" path="res://characters/testEnemy/testEnemy.gd" id="1_hb3wa"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_6vkgb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_51frl"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_332hb"]
+
+[node name="TestEnemy" type="Node3D"]
+script = ExtResource("1_hb3wa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_6vkgb")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_51frl")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("PrismMesh_332hb")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

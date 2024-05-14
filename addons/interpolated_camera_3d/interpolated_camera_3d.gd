@@ -32,7 +32,7 @@ var target_before: Node3D;
 
 
 func _process(delta: float) -> void:
-	if not target is Node3D:
+	if target == null or not (target is Node3D):
 		return
 	
 	if target != target_before:

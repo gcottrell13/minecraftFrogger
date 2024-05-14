@@ -97,6 +97,7 @@ func spawn_characters(index: int, char_scene: PackedScene):
 			if spawnchild.owner != self:
 				continue;
 			var dup = spawnchild.duplicate();
+			dup.process_mode = Node.PROCESS_MODE_INHERIT;
 			frog.add_child(dup);
 			if spawnchild is Camera3D:
 				CameraManager.add_camera_target(dup, 0);

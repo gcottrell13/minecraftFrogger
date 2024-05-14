@@ -5,6 +5,9 @@ extends Level
 var started_fadeout = false;
 var respawning = false;
 
+@onready var movePlatform1 : PathFollow3D = $MOVEPLATFORM1/PathFollow3D;
+@onready var enemy1 : PathFollow3D = $ENEMY1/PathFollow3D;
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super();
@@ -15,7 +18,8 @@ func _ready():
 func _process(delta):
 	super(delta);
 	if not Engine.is_editor_hint():
-		pass
+		movePlatform1.progress += delta * 2;
+		enemy1.progress += delta * 2;
 
 func _on_no_controllables_left():
 	if not started_fadeout:
