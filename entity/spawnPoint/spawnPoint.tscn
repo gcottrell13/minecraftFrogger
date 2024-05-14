@@ -1,11 +1,84 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0po3nuxc2k2f"]
+[gd_scene load_steps=11 format=3 uid="uid://b0po3nuxc2k2f"]
 
 [ext_resource type="Script" path="res://entity/spawnPoint/spawnPoint.gd" id="1_4x2ry"]
 [ext_resource type="ArrayMesh" uid="uid://d236ykuavmi32" path="res://entity/spawnPoint/checkerboard.obj" id="2_eg7d7"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_s0g7w"]
+size = Vector3(0.881165, 0.428711, 0.883911)
+
+[sub_resource type="Gradient" id="Gradient_pj5em"]
+offsets = PackedFloat32Array(0, 0.516129, 1)
+colors = PackedColorArray(0, 0, 1, 1, 0.858889, 0.237945, 0.521176, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_etlwe"]
+gradient = SubResource("Gradient_pj5em")
+
+[sub_resource type="Gradient" id="Gradient_s8i3x"]
+offsets = PackedFloat32Array(0, 0.995392)
+colors = PackedColorArray(0, 0, 1, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8idrj"]
+gradient = SubResource("Gradient_s8i3x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lad20"]
+lifetime_randomness = 0.11
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+particle_flag_damping_as_friction = true
+emission_shape_offset = Vector3(0, 1, 0)
+emission_shape_scale = Vector3(0.7, 1, 0.7)
+emission_shape = 3
+emission_box_extents = Vector3(0.7, 0, 0.7)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+angular_velocity_min = -307.06
+angular_velocity_max = 264.71
+gravity = Vector3(0, -1, 0)
+damping_max = 1.0
+scale_min = 0.1
+scale_max = 0.1
+color = Color(0, 0.298039, 1, 1)
+color_ramp = SubResource("GradientTexture1D_8idrj")
+color_initial_ramp = SubResource("GradientTexture1D_etlwe")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+turbulence_enabled = true
+turbulence_noise_scale = 1.183
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ou80"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_guxv4"]
+material = SubResource("StandardMaterial3D_5ou80")
+
 [node name="SpawnPoint" type="Node3D"]
 script = ExtResource("1_4x2ry")
+hide = Callable()
+index = null
 
 [node name="Checkerboard" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.61, 0, 0, 0, 0.61, 0, 0, 0, 0.61, 0, 0, 0)
 mesh = ExtResource("2_eg7d7")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00436401, 0.285645, 0.00897217)
+shape = SubResource("BoxShape3D_s0g7w")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.952172, -0.305562, 0, 0.305562, 0.952172, 0, 0.105077, -0.0420559)
+cast_shadow = 0
+emitting = false
+amount = 30
+one_shot = true
+visibility_aabb = AABB(-0.418237, 0.0680813, -0.445888, 0.836474, 0.919257, 0.891776)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_lad20")
+draw_pass_1 = SubResource("QuadMesh_guxv4")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

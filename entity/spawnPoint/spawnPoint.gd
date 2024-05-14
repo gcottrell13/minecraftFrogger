@@ -1,8 +1,10 @@
 class_name SpawnPoint
-extends Node3D
+extends BaseEntity
 
 @export var hide : bool = false;
 @export var index : int = 0;
+
+@export var copy_children_from : SpawnPoint;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,3 +14,15 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _on_area_3d_area_entered(area):
+	if area.name != "CharacterHitbox":
+		return;
+	
+	var level = get_level();
+	if level.last_checkpoint_index >= index:
+		return;
+	level.last_checkpoint_index = index;
+	$GPUParticles3D.emitting = true;
+	

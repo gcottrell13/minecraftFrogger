@@ -69,3 +69,12 @@ func get_closest_dir(ray: BlockNormal) -> Vector3:
 			closest = ray.to_global(dir);
 			closest_dist = d;
 	return closest;
+
+func get_level() -> Level:
+	var parent = get_parent();
+	var root = get_tree().root;
+	while not (parent is Level):
+		parent = parent.get_parent();
+		if parent == root:
+			return null;
+	return parent;

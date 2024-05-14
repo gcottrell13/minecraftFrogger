@@ -87,12 +87,14 @@ func spawn_characters(index: int, char_scene: PackedScene):
 	for child in find_children("", "SpawnPoint"):
 		if child.index != index:
 			continue;
-		var spawn_children: Array[Node] = child.get_children();
 		var frog: Node3D = char_scene.instantiate();
 		add_child(frog);
 		frog.position = child.position;
 		frog.rotation = child.rotation;
 		ControllableManager.set_controllable(frog, 0);
+		if child.copy_children_from != null:
+			child = child.copy_children_from;
+		var spawn_children: Array[Node] = child.get_children();
 		for spawnchild in spawn_children:
 			if spawnchild.owner != self:
 				continue;
