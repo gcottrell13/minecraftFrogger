@@ -43,10 +43,6 @@ transform = Transform3D(0.61, 0, 0, 0, 0.61, 0, 0, 0, 0.61, 0, -0.00475698, 0)
 visible = false
 mesh = SubResource("ArrayMesh_20smo")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
-
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 0
 collision_mask = 2
@@ -56,5 +52,4 @@ monitoring = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.271935, 0)
 shape = ExtResource("5_075e2")
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

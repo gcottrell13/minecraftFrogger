@@ -16,7 +16,6 @@ var state = 0;
 ## the amount of time to remain extended and deadly.
 @export var extended_seconds: float = 2;
 
-@onready var timer: Timer = $Timer;
 @onready var hitbox: Area3D = $Area3D;
 
 # Called when the node enters the scene tree for the first time.
@@ -25,40 +24,22 @@ func _ready():
 	$telegraph.visible = false;
 	$spike.visible = false;
 	hitbox.monitoring = false;
-	if offset_seconds > 0:
-		timer.wait_time = offset_seconds;
-		state = -1;
-	else:
-		timer.wait_time = idle_seconds;
+
+func _process(delta):
+	var now = int(Time.get_unix_time_from_system() - offset_seconds);
+	var total = int(idle_seconds + telegraph_seconds + extended_seconds);
+	var phase = now % total;
+	if phase <= idle_seconds:
 		state = 0;
-	timer.start();
-
-
-
-func _on_timer_timeout():
-	match state:
-		-1:
-			timer.wait_time = idle_seconds;
-			state = 0;
-		0:
-			$idle.visible = false;
-			$telegraph.visible = true;
-			timer.wait_time = telegraph_seconds;
-			state = 1;
-		1:
-			$telegraph.visible = false;
-			$spike.visible = true;
-			timer.wait_time = extended_seconds;
-			hitbox.monitoring = true;
-			state = 2;
-		2:
-			$spike.visible = false;
-			$idle.visible = true;
-			timer.wait_time = idle_seconds;
-			hitbox.monitoring = false;
-			state = 0;
-	timer.start();
-
+	elif phase <= (idle_seconds + telegraph_seconds):
+		state = 1;
+	else:
+		state = 2;
+	
+	$idle.visible = (state == 0);
+	$telegraph.visible = (state == 1);
+	$spike.visible = (state == 2);
+	hitbox.monitoring = (state == 2);
 
 func _on_area_3d_area_entered(area: Area3D):
 	if area.name == "CharacterHitbox":
