@@ -19,10 +19,11 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="res___levels_LevelOne_tscn" type="Button" parent="VBoxContainer"]
+[node name="res___levels_testLevelOne_LevelOne_tscn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "res://levels/LevelOne.tscn"
+focus_mode = 0
+text = "res://levels/testLevelOne/LevelOne.tscn"
 script = ExtResource("3_36gsf")
 
-[connection signal="button_pressed_value" from="VBoxContainer/res___levels_LevelOne_tscn" to="." method="_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/res___levels_LevelOne_tscn" to="VBoxContainer/res___levels_LevelOne_tscn" method="on_press"]
+[connection signal="button_pressed_value" from="VBoxContainer/res___levels_testLevelOne_LevelOne_tscn" to="." method="_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/res___levels_testLevelOne_LevelOne_tscn" to="VBoxContainer/res___levels_testLevelOne_LevelOne_tscn" method="on_press"]

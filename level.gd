@@ -5,7 +5,7 @@ extends Node3D
 var manager : BlockManager;
 
 var current_control_layer = 0;
-@export var last_checkpoint_index = 0;
+@export var last_checkpoint_index: int = 0;
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,6 +18,16 @@ func _process(delta):
 		return;
 	if ControllableManager.get_controllables(get_tree(), -1).size() == 0:
 		_on_no_controllables_left();
+
+func setup_checkpoint_select(callback, spawnpoints: Array[SpawnPoint]):
+	var checkpoint_select = preload("res://ui/CheckpointSelect.tscn");
+	var ui: CheckpointSelect = checkpoint_select.instantiate();
+	add_child(ui);
+	ui.item_activated.connect(callback);
+	var ui_items: Array[String] = [];
+	for child in spawnpoints:
+		ui_items.append(child.debug_title);
+	ui.set_items(ui_items);
 
 func _on_no_controllables_left():
 	pass

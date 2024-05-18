@@ -78,6 +78,8 @@ func base_move_character(dir: Vector3, lookahead: ShapeCast3D) -> MOVE_RESULT:
 					break;
 				else:
 					return MOVE_RESULT.CannotMove;
+			else:
+				lookahead.position.y += 0.1;
 		if not moved_up:
 			break;
 	

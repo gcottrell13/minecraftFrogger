@@ -51,6 +51,7 @@ func _process(delta):
 			if check_hitbox(hitbox, true, radius):
 				position = next_position;
 				fix_rotation();
+				distance_fallen = 0;
 			elif distance_fallen < 1:
 				position.y -= 0.5;
 				distance_fallen += 0.5;

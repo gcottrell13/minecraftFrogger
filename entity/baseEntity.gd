@@ -38,8 +38,11 @@ func check_hitbox(hitbox: ShapeCast3D, die_if_fall = true, radius=1) -> bool:
 
 func check_collision(hitbox: ShapeCast3D):
 	var plane = Plane(global_up);
+	var count = 0;
 	
-	while true:
+	while count < 10:
+		count += 1;
+		
 		hitbox.force_shapecast_update();
 		var pushed_vector: Vector3 = Vector3.ZERO;
 		for i in range(hitbox.get_collision_count()):

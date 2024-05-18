@@ -3,6 +3,7 @@ extends BaseEntity
 
 @export var hide : bool = false;
 @export var index : int = 0;
+@export var debug_title : String = "";
 
 @export var copy_children_from : SpawnPoint;
 

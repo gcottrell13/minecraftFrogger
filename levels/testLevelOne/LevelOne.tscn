@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dgiqw5wo431t2"]
+[gd_scene load_steps=17 format=3 uid="uid://dgiqw5wo431t2"]
 
 [ext_resource type="Script" path="res://levels/testLevelOne/LevelOne.gd" id="1_sbvy5"]
 [ext_resource type="Environment" uid="uid://dtppb5yn26u6y" path="res://levels/testLevelOne/LevelOneEnvironment.tres" id="2_tkdyo"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ycxgs5xtiay" path="res://blocks/grassystone/grassystone.tscn" id="11_2xgy3"]
 [ext_resource type="PackedScene" uid="uid://dyc5v27ha5pme" path="res://blocks/invisibleBlock/invisibleBlock.tscn" id="12_7jecp"]
 [ext_resource type="PackedScene" uid="uid://r854hpgwmus3" path="res://characters/testEnemy/testEnemy.tscn" id="13_g58u7"]
+[ext_resource type="PackedScene" uid="uid://dr7t547b3hgxa" path="res://entity/spike/spike.tscn" id="14_8ktyu"]
 
 [sub_resource type="Curve3D" id="Curve3D_kkpyf"]
 _data = {
@@ -30,6 +31,7 @@ point_count = 5
 
 [node name="LevelOne" type="Node3D"]
 script = ExtResource("1_sbvy5")
+last_checkpoint_index = 2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_tkdyo")
@@ -37,7 +39,7 @@ environment = ExtResource("2_tkdyo")
 [node name="SpawnPoint" parent="." instance=ExtResource("3_e1xen")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -3)
 hide = true
-index = null
+debug_title = "start"
 
 [node name="Camera3D" type="Camera3D" parent="SpawnPoint"]
 process_mode = 4
@@ -478,7 +480,7 @@ hidden_faces = {
 }
 
 [node name="SkBush" parent="dirt8" instance=ExtResource("8_6v25v")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.5, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.732117, 0)
 
 [node name="dirt9" parent="." instance=ExtResource("6_3v3rn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
@@ -775,14 +777,241 @@ cubic_interp = false
 
 [node name="TestEnemy" parent="ENEMY1/PathFollow3D" instance=ExtResource("13_g58u7")]
 
-[node name="SpawnPoint2" parent="." node_paths=PackedStringArray("copy_children_from") instance=ExtResource("3_e1xen")]
+[node name="SpawnPoint3" parent="." node_paths=PackedStringArray("copy_children_from") instance=ExtResource("3_e1xen")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3.5, 9)
-hide = Callable()
 index = 2
+debug_title = "after gap1"
 copy_children_from = NodePath("../SpawnPoint")
 
-[node name="SpawnPoint3" parent="." node_paths=PackedStringArray("copy_children_from") instance=ExtResource("3_e1xen")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -2)
-hide = Callable()
+[node name="SpawnPoint2" parent="." node_paths=PackedStringArray("copy_children_from") instance=ExtResource("3_e1xen")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2.5, 3)
 index = 1
+debug_title = "enemy1"
 copy_children_from = NodePath("../SpawnPoint")
+
+[node name="InvisibleBlock13" parent="." instance=ExtResource("12_7jecp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, 2)
+
+[node name="InvisibleBlock14" parent="." instance=ExtResource("12_7jecp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 2)
+
+[node name="InvisibleBlock15" parent="." instance=ExtResource("12_7jecp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 2)
+
+[node name="InvisibleBlock16" parent="." instance=ExtResource("12_7jecp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, 2)
+
+[node name="InvisibleBlock17" parent="." instance=ExtResource("12_7jecp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, 2)
+
+[node name="InvisibleBlock18" parent="." instance=ExtResource("12_7jecp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 2)
+
+[node name="grass44" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3.5, 9)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass46" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3.5, 9)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass47" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3.5, 10)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass48" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3.5, 10)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass49" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 10)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="dirt16" parent="." instance=ExtResource("6_3v3rn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 10)
+
+[node name="dirt17" parent="." instance=ExtResource("6_3v3rn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.5, 9)
+
+[node name="dirt18" parent="." instance=ExtResource("6_3v3rn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2.5, 9)
+
+[node name="grassystone14" parent="." instance=ExtResource("11_2xgy3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 11)
+hidden_faces = {
+"north": true
+}
+
+[node name="grassystone15" parent="." instance=ExtResource("11_2xgy3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, 11)
+hidden_faces = {
+"north": true
+}
+
+[node name="grassystone16" parent="." instance=ExtResource("11_2xgy3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 5, 11)
+hidden_faces = {
+"north": true
+}
+
+[node name="dirt19" parent="." instance=ExtResource("6_3v3rn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, 11)
+
+[node name="dirt20" parent="." instance=ExtResource("6_3v3rn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, 11)
+
+[node name="dirt21" parent="." instance=ExtResource("6_3v3rn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4, 11)
+
+[node name="dirt22" parent="." instance=ExtResource("6_3v3rn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 11)
+
+[node name="grass50" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, 10)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass51" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 10)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="Spike" parent="." instance=ExtResource("14_8ktyu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, 10)
+
+[node name="grassystone17" parent="." instance=ExtResource("11_2xgy3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 11)
+hidden_faces = {
+"north": true
+}
+
+[node name="grassystone18" parent="." instance=ExtResource("11_2xgy3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, 11)
+hidden_faces = {
+"north": true
+}
+
+[node name="grassystone19" parent="." instance=ExtResource("11_2xgy3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 5, 10)
+hidden_faces = {
+"north": true
+}
+
+[node name="grassystone20" parent="." instance=ExtResource("11_2xgy3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 5, 11)
+hidden_faces = {
+"north": true
+}
+
+[node name="dirt23" parent="." instance=ExtResource("6_3v3rn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 4, 10)
+
+[node name="dirt24" parent="." instance=ExtResource("6_3v3rn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3.5, 10)
+
+[node name="dirt25" parent="." instance=ExtResource("6_3v3rn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 4, 11)
+
+[node name="Spike2" parent="." instance=ExtResource("14_8ktyu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 4, 10)
+offset_seconds = 2.0
+idle_seconds = 2.0
+
+[node name="Spike3" parent="." instance=ExtResource("14_8ktyu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 4.5, 11)
+idle_seconds = 2.0
+
+[node name="dirt26" parent="." instance=ExtResource("6_3v3rn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 4.5, 12)
+
+[node name="Spike4" parent="." instance=ExtResource("14_8ktyu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 5, 12)
+offset_seconds = 2.0
+idle_seconds = 2.0
+
+[node name="grassystone21" parent="." instance=ExtResource("11_2xgy3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 5, 12)
+hidden_faces = {
+"north": true
+}
+
+[node name="grassystone22" parent="." instance=ExtResource("11_2xgy3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 12)
+hidden_faces = {
+"north": true
+}
+
+[node name="grassystone24" parent="." instance=ExtResource("11_2xgy3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, 15)
+hidden_faces = {
+"north": true
+}
+
+[node name="grassystone26" parent="." instance=ExtResource("11_2xgy3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 5, 13)
+hidden_faces = {
+"north": true
+}
+
+[node name="grassystone27" parent="." instance=ExtResource("11_2xgy3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 5, 13)
+hidden_faces = {
+"north": true
+}
+
+[node name="grassystone28" parent="." instance=ExtResource("11_2xgy3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 15)
+hidden_faces = {
+"north": true
+}
+
+[node name="grass52" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 13)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass53" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 14)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}

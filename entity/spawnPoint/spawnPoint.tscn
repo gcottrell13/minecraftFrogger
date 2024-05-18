@@ -49,14 +49,15 @@ turbulence_noise_scale = 1.183
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ou80"]
 vertex_color_use_as_albedo = true
+metallic = 0.08
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.1
 
 [sub_resource type="QuadMesh" id="QuadMesh_guxv4"]
 material = SubResource("StandardMaterial3D_5ou80")
 
 [node name="SpawnPoint" type="Node3D"]
 script = ExtResource("1_4x2ry")
-hide = Callable()
-index = null
 
 [node name="Checkerboard" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.61, 0, 0, 0, 0.61, 0, 0, 0, 0.61, 0, 0, 0)
