@@ -66,6 +66,9 @@ func _unhandled_input(event: InputEvent):
 				else:
 					var dir = controllable.to_local(delta + controllable.global_position);
 					dir = Vector3(dir.x, 0, dir.z);
+					if dir.is_zero_approx():
+						return;
+						
 					if abs(dir.x) > abs(dir.z):
 						controllable.move_character(Vector3(sign(dir.x), 0, 0));
 					else:

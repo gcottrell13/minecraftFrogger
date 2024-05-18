@@ -5,9 +5,6 @@ extends Level
 var started_fadeout = false;
 var respawning = false;
 
-@onready var movePlatform1 : PathFollow3D = $MOVEPLATFORM1/PathFollow3D;
-@onready var enemy1 : PathFollow3D = $ENEMY1/PathFollow3D;
-
 var spawnpoints: Array[SpawnPoint] = [];
 
 # Called when the node enters the scene tree for the first time.
@@ -18,15 +15,13 @@ func _ready():
 			$SpawnPoint,
 			$SpawnPoint2,
 			$SpawnPoint3,
+			$SpawnPoint4,
 		];
 		setup_checkpoint_select(_checkpoint_select, spawnpoints);
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	super(delta);
-	if not Engine.is_editor_hint():
-		movePlatform1.progress += delta * 2;
-		enemy1.progress += delta * 2;
 
 func _on_no_controllables_left():
 	if not started_fadeout:

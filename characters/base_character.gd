@@ -56,11 +56,13 @@ func clear_target():
 func move_character(dir: Vector3):
 	pass
 
-
-func base_move_character(dir: Vector3, lookahead: ShapeCast3D) -> MOVE_RESULT:
+func rotate_to_dir(dir: Vector3):
 	if meshCollection != null:
 		meshCollection.rotate_y(Vector3.FORWARD.signed_angle_to(dir, Vector3.UP) - meshCollection.rotation.y);
 	facing_dir = dir.normalized();
+
+func base_move_character(dir: Vector3, lookahead: ShapeCast3D) -> MOVE_RESULT:
+	rotate_to_dir(dir);
 	lookahead.position = dir;
 	
 	var max_y = 0.5;

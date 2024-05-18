@@ -20,11 +20,14 @@ func _ready():
 
 func move_character(dir: Vector3):
 	if not cannot_move and animate_curve == null:
-		match base_move_character(dir, lookahead):
-			MOVE_RESULT.CanMoveSafe:
-				frog_jump(dir);
-			MOVE_RESULT.CanMoveUnsafe:
-				frog_jump(dir);
+		if Input.is_action_pressed("Modifier"):
+			rotate_to_dir(dir);
+		else:
+			match base_move_character(dir, lookahead):
+				MOVE_RESULT.CanMoveSafe:
+					frog_jump(dir);
+				MOVE_RESULT.CanMoveUnsafe:
+					frog_jump(dir);
 
 func frog_jump(dir: Vector3):
 	var curve = Curve3D.new();
