@@ -18,9 +18,15 @@ var level: Level;
 
 @export var transparency_mask : TransparencyMask = TransparencyMask.Solid;
 
+var last_position : Vector3 = Vector3.ZERO;
+var _intermediate_position : Vector3 = Vector3.ZERO;
+var last_tick_time : float = 0;
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#set_notify_local_transform(true);
+	last_position = position;
+	_intermediate_position = position;
 	if hidden_faces == null:
 		hidden_faces = {};
 	for child in get_meshes():
@@ -29,7 +35,9 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	last_position = _intermediate_position;
+	_intermediate_position = global_position;
+	last_tick_time = delta;
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_LOCAL_TRANSFORM_CHANGED:
@@ -42,6 +50,11 @@ func nearest_gridline():
 	#if value != transparency_mask:
 		#transparency_mask = value;
 		#do_face_hiding();
+
+func get_projected_position_delta(future_time: float) -> Vector3:
+	if last_tick_time <= 0:
+		return Vector3.ZERO;
+	return (global_position - last_position) * future_time / last_tick_time;
 
 func do_face_hiding(RECURSE = 1, updater: float = 0):
 	#print(name, ' hiding ', RECURSE);

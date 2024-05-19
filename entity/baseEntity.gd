@@ -9,7 +9,7 @@ var home_block: SolidBlock;
 
 var next_position: Vector3;
 
-func check_hitbox(hitbox: ShapeCast3D, die_if_fall = true, radius=1) -> bool:
+func get_collision_with_hitbox(hitbox: ShapeCast3D, radius = 1) -> BlockNormal:
 	var closest_ground: BlockNormal;
 	var closest_ground_dist = 100;
 	
@@ -23,7 +23,10 @@ func check_hitbox(hitbox: ShapeCast3D, die_if_fall = true, radius=1) -> bool:
 				if d < closest_ground_dist and d < radius:
 					closest_ground = collision;
 					closest_ground_dist = d;
-	
+	return closest_ground;
+
+func check_hitbox(hitbox: ShapeCast3D, radius=1) -> bool:
+	var closest_ground = get_collision_with_hitbox(hitbox, radius);
 	if closest_ground != null:
 		home_ray = closest_ground;
 		home_block = closest_ground.get_parent();

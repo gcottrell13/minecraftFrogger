@@ -3,7 +3,8 @@ extends BaseEntity
 
 var is_dead : bool = false;
 
-var target_position: BlockNormal;
+var target_position: Vector3;
+var target_ray : BlockNormal;
 var target_block: SolidBlock;
 
 var meshCollection : Node3D;
@@ -49,7 +50,7 @@ func _process(delta):
 
 
 func clear_target():
-	target_position = null;
+	target_ray = null;
 	target_block = null;
 
 
@@ -64,10 +65,10 @@ func rotate_to_dir(dir: Vector3):
 func base_move_character(dir: Vector3, lookahead: ShapeCast3D) -> MOVE_RESULT:
 	rotate_to_dir(dir);
 	lookahead.position = dir;
+	lookahead.force_shapecast_update();
 	
 	var max_y = 0.5;
 	while lookahead.position.y <= max_y:
-		lookahead.force_shapecast_update();
 		var moved_up = false;
 		for i in range(lookahead.get_collision_count()):
 			var collision = lookahead.get_collider(i);
@@ -76,26 +77,32 @@ func base_move_character(dir: Vector3, lookahead: ShapeCast3D) -> MOVE_RESULT:
 			elif collision is Area3D:
 				if lookahead.position.y < max_y:
 					lookahead.position.y += 0.1;
+					lookahead.force_shapecast_update();
 					moved_up = true;
 					break;
 				else:
 					return MOVE_RESULT.CannotMove;
 			else:
 				lookahead.position.y += 0.1;
+				lookahead.force_shapecast_update();
 		if not moved_up:
 			break;
 	
 	if lookahead.position.y > max_y:
 		return MOVE_RESULT.CannotMove;
 	
-	if lookahead.position.y <= 0:
-		lookahead.position.y = -0.3;
+	while lookahead.position.y > -0.3:
+		var closest_ground = get_collision_with_hitbox(lookahead, 1.5);
+		if closest_ground != null:
+			target_block = closest_ground.get_parent();
+			target_ray = closest_ground;
+			target_position = get_parent().to_local(closest_ground.global_position);
+			return MOVE_RESULT.CanMoveSafe;
+		lookahead.position.y -= 0.1;
 		lookahead.force_shapecast_update();
 	
-	if check_hitbox(lookahead, true, 1):
-		#lookahead.position = Vector3.ZERO;
-		return MOVE_RESULT.CanMoveSafe;
-	
+	clear_target();
+	target_position = position + dir;
 	#lookahead.position = Vector3.ZERO;
 	return MOVE_RESULT.CanMoveUnsafe;
 

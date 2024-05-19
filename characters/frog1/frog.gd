@@ -31,11 +31,16 @@ func move_character(dir: Vector3):
 
 func frog_jump(dir: Vector3):
 	var curve = Curve3D.new();
-	var next = next_position - position;
+	var timelen = 0.2 * dir.length_squared();
+	
+	var next_delta = Vector3.ZERO;
+	if target_block != null:
+		next_delta = target_block.get_projected_position_delta(timelen);
+	
+	var next = target_position + next_delta - position;
 	curve.add_point(Vector3.ZERO);
 	curve.add_point(next / 2 + Vector3.UP / 2);
 	curve.add_point(next);
-	var timelen = 0.2 * dir.length_squared();
 	animate_to_position(timelen, curve);
 
 func do_special():
@@ -51,7 +56,7 @@ func _process(delta):
 	super(delta);
 	if not is_dead:
 		if animate_curve == null:
-			if check_hitbox(hitbox, true, radius):
+			if check_hitbox(hitbox, radius):
 				position = next_position;
 				fix_rotation();
 				distance_fallen = 0;

@@ -56,7 +56,6 @@ up_vector_enabled = false
 
 [node name="LevelOne" type="Node3D"]
 script = ExtResource("1_sbvy5")
-last_checkpoint_index = 2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_tkdyo")
@@ -663,8 +662,8 @@ script = ExtResource("12_bgd4d")
 speed = 2.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="MOVEPLATFORM1"]
-transform = Transform3D(0.999994, 0, 0, 0, 0.999994, 0, 0, 0, 1, 1.768, 0, 0)
-progress = 8.768
+transform = Transform3D(0.999994, 0, 0, 0, 0.999994, 0, 0, 0, 1, -1.64, 0, 0)
+progress = 5.36
 rotation_mode = 0
 cubic_interp = false
 tilt_enabled = false
@@ -765,8 +764,8 @@ script = ExtResource("12_bgd4d")
 speed = 2.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="ENEMY1"]
-transform = Transform3D(-4.37101e-08, 0, -0.999971, 0, 1, 0, 0.999971, 0, -4.37101e-08, 0.232, 0, -1)
-progress = 6.768
+transform = Transform3D(-0.999912, 0, -8.74151e-08, 0, 1, 0, 8.74151e-08, 0, -0.999912, 3, 0, -0.36)
+progress = 3.36
 use_model_front = true
 cubic_interp = false
 
@@ -1051,8 +1050,8 @@ curve = SubResource("Curve3D_03beo")
 script = ExtResource("12_bgd4d")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.385, 0, 0)
-progress = 1.385
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, 0, 0)
+progress = 5.68
 rotation_mode = 0
 cubic_interp = false
 tilt_enabled = false
@@ -1069,8 +1068,8 @@ curve = SubResource("Curve3D_ynv5y")
 script = ExtResource("12_bgd4d")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.385)
-progress = 1.385
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.32)
+progress = 5.68
 rotation_mode = 0
 cubic_interp = false
 tilt_enabled = false
@@ -1087,8 +1086,8 @@ curve = SubResource("Curve3D_musfr")
 script = ExtResource("12_bgd4d")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.615, 0, -3)
-progress = 7.385
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2.68)
+progress = 5.68
 rotation_mode = 0
 cubic_interp = false
 tilt_enabled = false

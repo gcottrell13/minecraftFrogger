@@ -5,12 +5,13 @@ extends Node3D
 var manager : BlockManager;
 
 var current_control_layer = 0;
-@export var last_checkpoint_index: int = 0;
+var last_checkpoint_index: int = 0;
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	manager = BlockManager.new();
+	last_checkpoint_index = 0;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
