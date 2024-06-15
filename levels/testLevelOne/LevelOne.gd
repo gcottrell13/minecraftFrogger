@@ -18,6 +18,7 @@ func _ready():
 			$SpawnPoint4,
 		];
 		setup_checkpoint_select(_checkpoint_select, spawnpoints);
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -47,3 +48,14 @@ func on_fadefromblack_end(anim: FadeToBlackAnimation):
 	if respawning:
 		started_fadeout = false;
 		respawning = false;
+
+
+func _on_long_jump_tut_trigger_area_entered(area):
+	if area.get_parent() is Frog1:
+		var tut: Control = $LongJumpTutorial;
+		tut.visible = true;
+	
+func _on_long_jump_tut_trigger_area_exited(area):
+	if area.get_parent() is Frog1:
+		var tut: Control = $LongJumpTutorial;
+		tut.visible = false;

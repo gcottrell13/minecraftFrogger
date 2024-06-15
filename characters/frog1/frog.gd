@@ -31,7 +31,7 @@ func move_character(dir: Vector3):
 
 func frog_jump(dir: Vector3):
 	var curve = Curve3D.new();
-	var timelen = 0.2 * dir.length_squared();
+	var timelen = 0.1 * dir.length_squared();
 	
 	var next_delta = Vector3.ZERO;
 	if target_block != null:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dgiqw5wo431t2"]
+[gd_scene load_steps=27 format=3 uid="uid://dgiqw5wo431t2"]
 
 [ext_resource type="Script" path="res://levels/testLevelOne/LevelOne.gd" id="1_sbvy5"]
 [ext_resource type="Environment" uid="uid://dtppb5yn26u6y" path="res://levels/testLevelOne/LevelOneEnvironment.tres" id="2_tkdyo"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" path="res://levels/mover.gd" id="12_bgd4d"]
 [ext_resource type="PackedScene" uid="uid://r854hpgwmus3" path="res://characters/testEnemy/testEnemy.tscn" id="13_g58u7"]
 [ext_resource type="PackedScene" uid="uid://dr7t547b3hgxa" path="res://entity/spike/spike.tscn" id="14_8ktyu"]
+[ext_resource type="PackedScene" uid="uid://coo6u0jxsp0xg" path="res://entity/birch-trunk/birchTrunk.tscn" id="16_0fxbn"]
+[ext_resource type="PackedScene" uid="uid://cigoiillqgcbd" path="res://entity/birch-leaves/birchLeaves.tscn" id="17_fba01"]
 
 [sub_resource type="Curve3D" id="Curve3D_kkpyf"]
 _data = {
@@ -25,10 +27,17 @@ point_count = 3
 
 [sub_resource type="Curve3D" id="Curve3D_oolvg"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
-point_count = 5
+point_count = 6
+
+[sub_resource type="Curve3D" id="Curve3D_6fqt0"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
 
 [sub_resource type="Curve3D" id="Curve3D_03beo"]
 _data = {
@@ -40,10 +49,10 @@ up_vector_enabled = false
 
 [sub_resource type="Curve3D" id="Curve3D_ynv5y"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-"tilts": PackedFloat32Array(0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 0, 0, 0, 0, 0, -1, 0, -3, 0, 0, 0, 0, 0, 0, -1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
-point_count = 3
+point_count = 5
 up_vector_enabled = false
 
 [sub_resource type="Curve3D" id="Curve3D_musfr"]
@@ -53,6 +62,23 @@ _data = {
 }
 point_count = 5
 up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_2mrhs"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_0ldf6"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -12),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yj5ec"]
 
 [node name="LevelOne" type="Node3D"]
 script = ExtResource("1_sbvy5")
@@ -75,9 +101,10 @@ size = 7.0
 script = ExtResource("4_qjwu1")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.974703, -4.35727e-08, 0.223505, -0.213805, 0.291403, 0.932401, -0.0651301, -0.9566, 0.284031, -2, 25.3322, 11.9711)
+transform = Transform3D(0.974703, -1.10853e-07, 0.223505, -0.157104, 0.711278, 0.685129, -0.158974, -0.702911, 0.693285, -2, 25.3322, 11.9711)
 shadow_enabled = true
 directional_shadow_mode = 1
+directional_shadow_max_distance = 8192.0
 sky_mode = 1
 
 [node name="grass" parent="." instance=ExtResource("5_ygbws")]
@@ -175,9 +202,6 @@ hidden_faces = {
 
 [node name="SkBush" parent="dirt2" instance=ExtResource("8_6v25v")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.5, 0)
-
-[node name="SkBush2" parent="dirt2" instance=ExtResource("8_6v25v")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 2.5, 11)
 
 [node name="grass3" parent="." instance=ExtResource("5_ygbws")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
@@ -566,7 +590,7 @@ hidden_faces = {
 
 [node name="grass37" parent="." instance=ExtResource("5_ygbws")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 3)
-grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+grass_color = Color(0.219608, 0.603922, 0.301961, 1)
 hidden_faces = {
 "east": true,
 "south": true,
@@ -584,7 +608,7 @@ hidden_faces = {
 
 [node name="grass39" parent="." instance=ExtResource("5_ygbws")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3)
-grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+grass_color = Color(0.2, 0.603922, 0.301961, 1)
 hidden_faces = {
 "east": true,
 "south": true,
@@ -660,10 +684,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 6)
 curve = SubResource("Curve3D_kkpyf")
 script = ExtResource("12_bgd4d")
 speed = 2.0
+length = 10.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="MOVEPLATFORM1"]
-transform = Transform3D(0.999994, 0, 0, 0, 0.999994, 0, 0, 0, 1, -1.64, 0, 0)
-progress = 5.36
+transform = Transform3D(0.999994, 0, 0, 0, 0.999994, 0, 0, 0, 1, 0.39123, 0, 0)
+progress = 7.39123
 rotation_mode = 0
 cubic_interp = false
 tilt_enabled = false
@@ -734,6 +759,9 @@ hidden_faces = {
 "north": true
 }
 
+[node name="SkBush2" parent="grassystone13" instance=ExtResource("8_6v25v")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.5, 0)
+
 [node name="grass45" parent="." instance=ExtResource("5_ygbws")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, 9)
 grass_color = Color(0.203922, 0.603922, 0.305882, 1)
@@ -762,14 +790,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 4)
 curve = SubResource("Curve3D_oolvg")
 script = ExtResource("12_bgd4d")
 speed = 2.0
+length = 8.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="ENEMY1"]
-transform = Transform3D(-0.999912, 0, -8.74151e-08, 0, 1, 0, 8.74151e-08, 0, -0.999912, 3, 0, -0.36)
-progress = 3.36
+transform = Transform3D(-4.3705e-08, 0, 0.999854, 0, 1, 0, -0.999854, 0, -4.3705e-08, 2.39131, 0, 0)
+progress = 1.39131
 use_model_front = true
 cubic_interp = false
 
 [node name="TestEnemy" parent="ENEMY1/PathFollow3D" instance=ExtResource("13_g58u7")]
+
+[node name="ENEMY2" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6, 17)
+curve = SubResource("Curve3D_6fqt0")
+script = ExtResource("12_bgd4d")
+speed = 2.0
+length = 6.0
+
+[node name="PathFollow3D" type="PathFollow3D" parent="ENEMY2"]
+transform = Transform3D(-0.999859, 0, -8.74105e-08, 0, 1, 0, 8.74105e-08, 0, -0.999859, 0, 0, -1.39145)
+progress = 1.39145
+use_model_front = true
+cubic_interp = false
+
+[node name="TestEnemy" parent="ENEMY2/PathFollow3D" instance=ExtResource("13_g58u7")]
 
 [node name="SpawnPoint3" parent="." node_paths=PackedStringArray("copy_children_from") instance=ExtResource("3_e1xen")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3.5, 9)
@@ -963,13 +1007,13 @@ hidden_faces = {
 }
 
 [node name="grassystone22" parent="." instance=ExtResource("11_2xgy3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, 12)
 hidden_faces = {
 "north": true
 }
 
 [node name="grassystone24" parent="." instance=ExtResource("11_2xgy3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, 15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 15)
 hidden_faces = {
 "north": true
 }
@@ -987,13 +1031,13 @@ hidden_faces = {
 }
 
 [node name="grassystone28" parent="." instance=ExtResource("11_2xgy3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, 15)
 hidden_faces = {
 "north": true
 }
 
 [node name="grass52" parent="." instance=ExtResource("5_ygbws")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, 13)
 grass_color = Color(0.203922, 0.603922, 0.305882, 1)
 hidden_faces = {
 "east": true,
@@ -1002,7 +1046,7 @@ hidden_faces = {
 }
 
 [node name="grass54" parent="." instance=ExtResource("5_ygbws")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, 16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 16)
 grass_color = Color(0.329412, 0.568627, 0.505882, 1)
 hidden_faces = {
 "east": true,
@@ -1011,7 +1055,7 @@ hidden_faces = {
 }
 
 [node name="grass55" parent="." instance=ExtResource("5_ygbws")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, 17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 17)
 grass_color = Color(0.329412, 0.568627, 0.505882, 1)
 hidden_faces = {
 "east": true,
@@ -1020,7 +1064,7 @@ hidden_faces = {
 }
 
 [node name="grass56" parent="." instance=ExtResource("5_ygbws")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 5, 17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 5, 17)
 grass_color = Color(0.329412, 0.568627, 0.505882, 1)
 hidden_faces = {
 "east": true,
@@ -1029,14 +1073,14 @@ hidden_faces = {
 }
 
 [node name="grassystone25" parent="." instance=ExtResource("11_2xgy3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 5, 18)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 5, 18)
 grass_color = Color(0.329412, 0.568627, 0.505882, 1)
 hidden_faces = {
 "north": true
 }
 
 [node name="grass53" parent="." instance=ExtResource("5_ygbws")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, 14)
 grass_color = Color(0.203922, 0.603922, 0.305882, 1)
 hidden_faces = {
 "east": true,
@@ -1048,10 +1092,11 @@ hidden_faces = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 5, 20)
 curve = SubResource("Curve3D_03beo")
 script = ExtResource("12_bgd4d")
+length = 6.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, 0, 0)
-progress = 5.68
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.695605, 0, 0)
+progress = 0.695605
 rotation_mode = 0
 cubic_interp = false
 tilt_enabled = false
@@ -1063,13 +1108,17 @@ hidden_faces = {
 }
 
 [node name="Path3D2" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 5, 24)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, 25)
 curve = SubResource("Curve3D_ynv5y")
 script = ExtResource("12_bgd4d")
+speed = -2.0
+offset_distance = 1.0
+loop = true
+length = 12.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.32)
-progress = 5.68
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -0.0500002)
+progress = 8.95
 rotation_mode = 0
 cubic_interp = false
 tilt_enabled = false
@@ -1084,10 +1133,13 @@ hidden_faces = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 5, 24)
 curve = SubResource("Curve3D_musfr")
 script = ExtResource("12_bgd4d")
+speed = 2.0
+loop = true
+length = 12.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2.68)
-progress = 5.68
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -1.05)
+progress = 4.05
 rotation_mode = 0
 cubic_interp = false
 tilt_enabled = false
@@ -1099,7 +1151,7 @@ hidden_faces = {
 }
 
 [node name="grass57" parent="." instance=ExtResource("5_ygbws")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, 26)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, 29)
 grass_color = Color(0.329412, 0.568627, 0.505882, 1)
 hidden_faces = {
 "east": true,
@@ -1108,7 +1160,7 @@ hidden_faces = {
 }
 
 [node name="grass58" parent="." instance=ExtResource("5_ygbws")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 26)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 29)
 grass_color = Color(0.329412, 0.568627, 0.505882, 1)
 hidden_faces = {
 "east": true,
@@ -1117,7 +1169,7 @@ hidden_faces = {
 }
 
 [node name="grass59" parent="." instance=ExtResource("5_ygbws")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, 27)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, 30)
 grass_color = Color(0.329412, 0.568627, 0.505882, 1)
 hidden_faces = {
 "east": true,
@@ -1126,7 +1178,7 @@ hidden_faces = {
 }
 
 [node name="grass60" parent="." instance=ExtResource("5_ygbws")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 27)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 30)
 grass_color = Color(0.329412, 0.568627, 0.505882, 1)
 hidden_faces = {
 "east": true,
@@ -1135,7 +1187,468 @@ hidden_faces = {
 }
 
 [node name="SpawnPoint4" parent="." node_paths=PackedStringArray("copy_children_from") instance=ExtResource("3_e1xen")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 27)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 30)
 index = 3
-debug_title = "after floating"
+debug_title = "fallingrocks"
 copy_children_from = NodePath("../SpawnPoint")
+
+[node name="Path3D4" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 17)
+curve = SubResource("Curve3D_2mrhs")
+script = ExtResource("12_bgd4d")
+length = 6.0
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.695605)
+progress = 0.695605
+rotation_mode = 0
+cubic_interp = false
+tilt_enabled = false
+
+[node name="grassystone29" parent="Path3D4/PathFollow3D" instance=ExtResource("11_2xgy3")]
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"north": true
+}
+
+[node name="grass61" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 12)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass62" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, 12)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass63" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 12)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="BirchTrunk" parent="." instance=ExtResource("16_0fxbn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 12)
+
+[node name="BirchTrunk2" parent="." instance=ExtResource("16_0fxbn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 5.5, 12)
+
+[node name="BirchTrunk3" parent="." instance=ExtResource("16_0fxbn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, 12)
+
+[node name="BirchTrunk4" parent="." instance=ExtResource("16_0fxbn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6, 12)
+
+[node name="BirchLeaves" parent="." instance=ExtResource("17_fba01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 7, 12)
+
+[node name="grass64" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 5, 12)
+grass_color = Color(0.203922, 0.603922, 0.305882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="BirchLeaves2" parent="." instance=ExtResource("17_fba01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 6.5, 12)
+
+[node name="grassystone23" parent="." instance=ExtResource("11_2xgy3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 8)
+hidden_faces = {
+"north": true
+}
+
+[node name="grassystone29" parent="." instance=ExtResource("11_2xgy3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, 8)
+hidden_faces = {
+"north": true
+}
+
+[node name="SkBush3" parent="grassystone29" instance=ExtResource("8_6v25v")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.5, 0)
+
+[node name="grass65" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 5, 17)
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="SkBush4" parent="grass65" instance=ExtResource("8_6v25v")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.5, 0)
+
+[node name="ENEMY3" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 43)
+curve = SubResource("Curve3D_0ldf6")
+script = ExtResource("12_bgd4d")
+speed = 3.0
+loop = true
+remove_when_done = true
+length = 12.0
+
+[node name="PathFollow3D" type="PathFollow3D" parent="ENEMY3"]
+transform = Transform3D(-0.99987, 0, -8.7411e-08, 0, 1, 0, 8.74114e-08, 0, -0.999865, 0, 0, -0.0750008)
+progress = 0.0750008
+use_model_front = true
+cubic_interp = false
+loop = false
+
+[node name="TestEnemy" parent="ENEMY3/PathFollow3D" instance=ExtResource("13_g58u7")]
+transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0, 0)
+
+[node name="grass68" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 31)
+grass_color = Color(0.435294, 0.545098, 0.466667, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass69" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 32)
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass70" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 33)
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass71" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 34)
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass72" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 35)
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="SkBush4" parent="grass72" instance=ExtResource("8_6v25v")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.5, 0)
+
+[node name="grass73" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, 32)
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass74" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, 31)
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass75" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, 33)
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass76" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 36)
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass77" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 37)
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass78" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 38)
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass79" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 37)
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass80" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, 37)
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="ENEMY4" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 6, 43)
+curve = SubResource("Curve3D_0ldf6")
+script = ExtResource("12_bgd4d")
+speed = 3.0
+offset_distance = 3.0
+loop = true
+remove_when_done = true
+length = 12.0
+
+[node name="PathFollow3D" type="PathFollow3D" parent="ENEMY4"]
+transform = Transform3D(-0.99987, 0, -8.7411e-08, 0, 1, 0, 8.74114e-08, 0, -0.999865, 0, 0, -3.075)
+progress = 3.075
+use_model_front = true
+cubic_interp = false
+loop = false
+
+[node name="TestEnemy" parent="ENEMY4/PathFollow3D" instance=ExtResource("13_g58u7")]
+transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0, 0)
+
+[node name="grass81" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 6, 31)
+grass_color = Color(0.435294, 0.545098, 0.466667, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass82" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 38)
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="SkBush4" parent="grass82" instance=ExtResource("8_6v25v")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.5, 0)
+
+[node name="grass83" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 36)
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass84" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 35)
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass85" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 34)
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass86" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 33)
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass87" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 32)
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass66" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 30)
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="SkBush4" parent="grass66" instance=ExtResource("8_6v25v")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.5, 0)
+
+[node name="grass67" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 29)
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="SkBush4" parent="grass67" instance=ExtResource("8_6v25v")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.5, 0)
+
+[node name="ENEMY5" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 43)
+curve = SubResource("Curve3D_0ldf6")
+script = ExtResource("12_bgd4d")
+speed = 3.0
+offset_distance = 6.0
+loop = true
+remove_when_done = true
+length = 12.0
+
+[node name="PathFollow3D" type="PathFollow3D" parent="ENEMY5"]
+transform = Transform3D(-0.99987, 0, -8.7411e-08, 0, 1, 0, 8.74114e-08, 0, -0.999865, 0, 0, -6.078)
+progress = 6.078
+use_model_front = true
+cubic_interp = false
+loop = false
+
+[node name="TestEnemy" parent="ENEMY5/PathFollow3D" instance=ExtResource("13_g58u7")]
+transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0, 0)
+
+[node name="ENEMY6" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 6, 43)
+curve = SubResource("Curve3D_0ldf6")
+script = ExtResource("12_bgd4d")
+speed = 3.0
+offset_distance = 9.0
+loop = true
+remove_when_done = true
+length = 12.0
+
+[node name="PathFollow3D" type="PathFollow3D" parent="ENEMY6"]
+transform = Transform3D(-0.99987, 0, -8.7411e-08, 0, 1, 0, 8.74114e-08, 0, -0.999865, 0, 0, -9.078)
+progress = 9.078
+use_model_front = true
+cubic_interp = false
+loop = false
+
+[node name="TestEnemy" parent="ENEMY6/PathFollow3D" instance=ExtResource("13_g58u7")]
+transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0, 0)
+
+[node name="grass88" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 39)
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass89" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 39)
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass90" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, 39)
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="grass91" parent="." instance=ExtResource("5_ygbws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 5, 39)
+grass_color = Color(0.329412, 0.568627, 0.505882, 1)
+hidden_faces = {
+"east": true,
+"south": true,
+"west": true
+}
+
+[node name="SpawnPoint5" parent="." node_paths=PackedStringArray("copy_children_from") instance=ExtResource("3_e1xen")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 5.5, 39)
+index = 4
+debug_title = "END"
+copy_children_from = NodePath("../SpawnPoint")
+
+[node name="LongJumpTutorial" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 7.0
+offset_top = 679.0
+offset_right = 279.0
+offset_bottom = 719.0
+text = " Press SPACE to do a Long Jump!"
+fit_content = true
+shortcut_keys_enabled = false
+
+[node name="ColorRect" type="ColorRect" parent="LongJumpTutorial"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 251.0
+offset_bottom = 38.0
+color = Color(0.160784, 0.160784, 0.160784, 1)
+
+[node name="LongJumpTutTrigger" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, 10)
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LongJumpTutTrigger"]
+shape = SubResource("SphereShape3D_yj5ec")
+
+[connection signal="area_entered" from="LongJumpTutTrigger" to="." method="_on_long_jump_tut_trigger_area_entered"]
+[connection signal="area_exited" from="LongJumpTutTrigger" to="." method="_on_long_jump_tut_trigger_area_exited"]
