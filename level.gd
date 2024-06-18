@@ -57,24 +57,23 @@ func _unhandled_input(event: InputEvent):
 		var vec = Vector3(Input.get_axis("Left", "Right"), Input.get_axis("Down", "Up"), 0);
 		var delta = current_camera.to_global(vec) - current_camera.global_position;
 		
-		var controllables: Array[Node] = ControllableManager.get_controllables(get_tree(), current_control_layer);
+		var controllables: Array[BaseCharacter] = ControllableManager.get_controllables(get_tree(), current_control_layer);
 		for controllable in controllables:
 			if not self.is_ancestor_of(controllable):
 				continue;
-			if controllable is BaseCharacter:
-				if event.is_action("Jump"):
-					controllable.do_special();
+			if event.is_action("Jump"):
+				controllable.do_special();
+			else:
+				var dir = controllable.to_local(delta + controllable.global_position);
+				dir = Vector3(dir.x, 0, dir.z);
+				if dir.is_zero_approx():
+					return;
+					
+				if abs(dir.x) > abs(dir.z):
+					controllable.move_character(Vector3(sign(dir.x), 0, 0));
 				else:
-					var dir = controllable.to_local(delta + controllable.global_position);
-					dir = Vector3(dir.x, 0, dir.z);
-					if dir.is_zero_approx():
-						return;
-						
-					if abs(dir.x) > abs(dir.z):
-						controllable.move_character(Vector3(sign(dir.x), 0, 0));
-					else:
-						controllable.move_character(Vector3(0, 0, sign(dir.z)));
-					handled = true;
+					controllable.move_character(Vector3(0, 0, sign(dir.z)));
+				handled = true;
 	
 	if handled:
 		get_viewport().set_input_as_handled();

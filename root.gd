@@ -23,7 +23,6 @@ func _process(delta):
 func _on_level_select_on_click_level(scene: PackedScene):
 	for child in playArea.get_children():
 		playArea.remove_child(child);
-	var instance = scene.instantiate();
+	var instance: Level = scene.instantiate();
 	playArea.add_child(instance);
-	if instance is Level:
-		instance.spawn_characters(0, preload("res://characters/frog1/frog.tscn"));
+	instance.spawn_characters(0, preload("res://characters/frog1/frog.tscn"));

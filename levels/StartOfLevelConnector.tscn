@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgvtj0i5xr8se"]
+
+[ext_resource type="Script" path="res://levels/StartOfLevelConnector.gd" id="1_yxcbq"]
+
+[node name="StartOfLevelConnector" type="Node3D"]
+script = ExtResource("1_yxcbq")

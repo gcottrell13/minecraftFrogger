@@ -17,7 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://dr7t547b3hgxa" path="res://entity/spike/spike.tscn" id="14_8ktyu"]
 [ext_resource type="PackedScene" uid="uid://coo6u0jxsp0xg" path="res://entity/birch-trunk/birchTrunk.tscn" id="16_0fxbn"]
 [ext_resource type="PackedScene" uid="uid://cigoiillqgcbd" path="res://entity/birch-leaves/birchLeaves.tscn" id="17_fba01"]
-[ext_resource type="Texture2D" uid="uid://dvih067ev68h7" path="res://info.png" id="18_qp0lh"]
+[ext_resource type="PackedScene" uid="uid://fnkqk2prteak" path="res://tutorial_trigger.tscn" id="18_h62yu"]
+[ext_resource type="PackedScene" uid="uid://d2qgnco70rfsr" path="res://levels/EndOfLevelConnector.tscn" id="19_4hqjo"]
 
 [sub_resource type="Curve3D" id="Curve3D_kkpyf"]
 _data = {
@@ -78,8 +79,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_yj5ec"]
 
 [node name="LevelOne" type="Node3D"]
 script = ExtResource("1_sbvy5")
@@ -691,8 +690,8 @@ speed = 2.0
 length = 10.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="MOVEPLATFORM1"]
-transform = Transform3D(0.999994, 0, 0, 0, 0.999994, 0, 0, 0, 1, -0.0329552, 0, 0)
-progress = 6.96704
+transform = Transform3D(0.999994, 0, 0, 0, 0.999994, 0, 0, 0, 1, 1.48746, 0, 0)
+progress = 1.51254
 rotation_mode = 0
 cubic_interp = false
 tilt_enabled = false
@@ -804,8 +803,8 @@ speed = 2.0
 length = 8.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="ENEMY1"]
-transform = Transform3D(0.999849, 0, 0, 0, 1, 0, 0, 0, 0.999849, 0, 0, -0.0351076)
-progress = 6.96489
+transform = Transform3D(-4.37047e-08, 0, 0.999846, 0, 1, 0, -0.999846, 0, -4.37047e-08, 2.51268, 0, 0)
+progress = 1.51268
 use_model_front = true
 cubic_interp = false
 
@@ -819,8 +818,8 @@ speed = 2.0
 length = 6.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="ENEMY2"]
-transform = Transform3D(-0.999855, 0, -8.74101e-08, 0, 1, 0, 8.74101e-08, 0, -0.999855, 0, 0, -0.965018)
-progress = 0.965018
+transform = Transform3D(-0.999854, 0, -8.741e-08, 0, 1, 0, 8.741e-08, 0, -0.999854, 0, 0, -1.51279)
+progress = 1.51279
 use_model_front = true
 cubic_interp = false
 
@@ -1119,8 +1118,8 @@ script = ExtResource("12_bgd4d")
 length = 6.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5157, 0, 0)
-progress = 3.4843
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.756231, 0, 0)
+progress = 0.756231
 rotation_mode = 0
 cubic_interp = false
 tilt_enabled = false
@@ -1141,8 +1140,8 @@ loop = true
 length = 12.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0.12)
-progress = 9.12
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1.408)
+progress = 7.592
 rotation_mode = 0
 cubic_interp = false
 tilt_enabled = false
@@ -1162,8 +1161,8 @@ loop = true
 length = 12.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -0.88)
-progress = 3.88
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2.408)
+progress = 5.408
 rotation_mode = 0
 cubic_interp = false
 tilt_enabled = false
@@ -1223,8 +1222,8 @@ script = ExtResource("12_bgd4d")
 length = 6.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5157)
-progress = 3.4843
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.756231)
+progress = 0.756231
 rotation_mode = 0
 cubic_interp = false
 tilt_enabled = false
@@ -1328,8 +1327,8 @@ remove_when_done = true
 length = 12.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="ENEMY3"]
-transform = Transform3D(-0.99987, 0, -8.7411e-08, 0, 1, 0, 8.74114e-08, 0, -0.999865, 0, 0, -11.91)
-progress = 11.91
+transform = Transform3D(-0.99987, 0, -8.7411e-08, 0, 1, 0, 8.74114e-08, 0, -0.999865, 0, 0, -4.056)
+progress = 4.056
 use_model_front = true
 cubic_interp = false
 loop = false
@@ -1468,8 +1467,8 @@ remove_when_done = true
 length = 12.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="ENEMY4"]
-transform = Transform3D(-0.99987, 0, -8.7411e-08, 0, 1, 0, 8.74114e-08, 0, -0.999865, 0, 0, -2.91)
-progress = 2.91
+transform = Transform3D(-0.99987, 0, -8.7411e-08, 0, 1, 0, 8.74114e-08, 0, -0.999865, 0, 0, -7.056)
+progress = 7.056
 use_model_front = true
 cubic_interp = false
 loop = false
@@ -1578,8 +1577,8 @@ remove_when_done = true
 length = 12.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="ENEMY5"]
-transform = Transform3D(-0.99987, 0, -8.7411e-08, 0, 1, 0, 8.74114e-08, 0, -0.999865, 0, 0, -5.91)
-progress = 5.91
+transform = Transform3D(-0.99987, 0, -8.7411e-08, 0, 1, 0, 8.74114e-08, 0, -0.999865, 0, 0, -10.056)
+progress = 10.056
 use_model_front = true
 cubic_interp = false
 loop = false
@@ -1598,8 +1597,8 @@ remove_when_done = true
 length = 12.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="ENEMY6"]
-transform = Transform3D(-0.99987, 0, -8.7411e-08, 0, 1, 0, 8.74114e-08, 0, -0.999865, 0, 0, -8.91)
-progress = 8.91
+transform = Transform3D(-0.99987, 0, -8.7411e-08, 0, 1, 0, 8.74114e-08, 0, -0.999865, 0, 0, -1.056)
+progress = 1.056
 use_model_front = true
 cubic_interp = false
 loop = false
@@ -1668,18 +1667,10 @@ offset_right = 251.0
 offset_bottom = 38.0
 color = Color(0.160784, 0.160784, 0.160784, 1)
 
-[node name="LongJumpTutTrigger" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, 10)
-collision_layer = 0
-collision_mask = 3
+[node name="LongJumpTutTrigger" parent="." instance=ExtResource("18_h62yu")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LongJumpTutTrigger"]
-shape = SubResource("SphereShape3D_yj5ec")
-
-[node name="Sprite3D" type="Sprite3D" parent="LongJumpTutTrigger"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.244584, 0)
-billboard = 1
-texture = ExtResource("18_qp0lh")
+[node name="EndOfLevelConnector" parent="." instance=ExtResource("19_4hqjo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 5, 39)
 
 [connection signal="area_entered" from="LongJumpTutTrigger" to="." method="_on_long_jump_tut_trigger_area_entered"]
 [connection signal="area_exited" from="LongJumpTutTrigger" to="." method="_on_long_jump_tut_trigger_area_exited"]
