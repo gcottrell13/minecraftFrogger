@@ -7,6 +7,8 @@ var manager : BlockManager;
 var current_control_layer = 0;
 var last_checkpoint_index: int = 0;
 
+var last_spawned_char_scene: PackedScene;
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -96,14 +98,19 @@ func fade_to(camera: Camera3D, handler, target_fade: float):
 func spawn_characters_from_save(char_scene: PackedScene):
 	spawn_characters(last_checkpoint_index, char_scene);
 
-func spawn_characters(index: int, char_scene: PackedScene):
+func spawn_characters(index: int, char_scene: PackedScene = null):
 	for child in find_children("", "SpawnPoint"):
 		if child.index != index:
 			continue;
-		var frog: Node3D = char_scene.instantiate();
+		if char_scene == null:
+			char_scene = last_spawned_char_scene;
+		else:
+			last_spawned_char_scene = char_scene;
+		var frog: BaseCharacter = char_scene.instantiate();
 		add_child(frog);
 		frog.position = child.position;
 		frog.rotation = child.rotation;
+		frog.global_up = child.quaternion * Vector3.UP;
 		ControllableManager.set_controllable(frog, 0);
 		if child.copy_children_from != null:
 			child = child.copy_children_from;

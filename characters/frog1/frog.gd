@@ -39,7 +39,7 @@ func frog_jump(dir: Vector3):
 	
 	var next = target_position + next_delta - position;
 	curve.add_point(Vector3.ZERO);
-	curve.add_point(next / 2 + Vector3.UP / 2);
+	curve.add_point(next / 2 + global_up / 2);
 	curve.add_point(next);
 	animate_to_position(timelen, curve);
 
@@ -61,7 +61,7 @@ func _process(delta):
 				fix_rotation();
 				distance_fallen = 0;
 			elif distance_fallen < 1:
-				position.y -= 0.5;
+				position -= global_up * 0.5;
 				distance_fallen += 0.5;
 			else:
 				die(DAMAGE_SOURCE.Fall);

@@ -35,6 +35,9 @@ func _process(delta: float) -> void:
 	if target == null or not (target is Node3D):
 		return
 	
+	if !target.is_inside_tree():
+		return
+	
 	if target != target_before:
 		if target_before == null and instant_if_null_target_before:
 			set_global_transform(target.global_transform);

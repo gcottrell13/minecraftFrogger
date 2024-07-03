@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cv50phhpcyhf0"
+path="res://.godot/imported/button_down.obj-7f5799a718e1a72ad5f986e0e8a912fe.mesh"
+
+[deps]
+
+files=["res://.godot/imported/button_down.obj-7f5799a718e1a72ad5f986e0e8a912fe.mesh"]
+
+source_file="res://entity/button/button_down.obj"
+dest_files=["res://.godot/imported/button_down.obj-7f5799a718e1a72ad5f986e0e8a912fe.mesh", "res://.godot/imported/button_down.obj-7f5799a718e1a72ad5f986e0e8a912fe.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
