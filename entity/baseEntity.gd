@@ -9,6 +9,9 @@ var home_block: SolidBlock;
 
 var next_position: Vector3;
 
+func _ready():
+	global_up = global_transform.basis * Vector3.UP;
+
 func get_collision_with_hitbox(hitbox: ShapeCast3D, radius = 1) -> BlockNormal:
 	var closest_ground: BlockNormal;
 	var closest_ground_dist = 100;

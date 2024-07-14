@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwon84w566ppq"]
+
+[ext_resource type="Script" path="res://blocks/graybrick/GrayBrick.gd" id="1_rhbwb"]
+[ext_resource type="PackedScene" uid="uid://br004r67nju56" path="res://blocks/blocknormal.tscn" id="2_3cjt2"]
+[ext_resource type="ArrayMesh" uid="uid://dassqexnww7r4" path="res://blocks/graybrick/graybrick.obj" id="3_wh7ow"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4sj2t"]
+resource_local_to_scene = true
+margin = 0.0
+
+[node name="GrayBrick" type="Node3D"]
+script = ExtResource("1_rhbwb")
+
+[node name="collision" type="Area3D" parent="."]
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collision"]
+shape = SubResource("BoxShape3D_4sj2t")
+
+[node name="normalnorth" parent="." instance=ExtResource("2_3cjt2")]
+transform = Transform3D(1, 0, 0, 0, -2.18557e-07, 1, 0, -1, -2.18557e-07, 0, 0, -0.5)
+
+[node name="normaldown" parent="." instance=ExtResource("2_3cjt2")]
+transform = Transform3D(1, 0, 0, 0, -1, -8.74226e-08, 0, 8.74226e-08, -1, 0, -0.5, 0)
+
+[node name="normalup" parent="." instance=ExtResource("2_3cjt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 0.5, 0)
+
+[node name="normalsouth" parent="." instance=ExtResource("2_3cjt2")]
+transform = Transform3D(1, 0, 0, 0, 2.68221e-07, -1, 0, 1, 2.68221e-07, 0, 0, 0.5)
+
+[node name="normaleast" parent="." instance=ExtResource("2_3cjt2")]
+transform = Transform3D(-4.37114e-08, 1, 2.18557e-07, 0, -2.18557e-07, 1, 1, 4.37114e-08, 9.55343e-15, 0.5, 0, 0)
+
+[node name="normalwest" parent="." instance=ExtResource("2_3cjt2")]
+transform = Transform3D(4.37114e-08, -1, -1.31134e-07, 3.82137e-15, 1.31134e-07, -1, 1, 4.37114e-08, 9.55343e-15, -0.5, 0, 0)
+
+[node name="Graybrick" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.588, 0, 0, 0, 0.588, 0, 0, 0, 0.588, 0, 0, 0)
+mesh = ExtResource("3_wh7ow")

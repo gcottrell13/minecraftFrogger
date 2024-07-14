@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwk5g2vxd0k5o"]
+
+[ext_resource type="Script" path="res://levels/testLevel03/Level3.gd" id="1_pg1kf"]
+[ext_resource type="Environment" uid="uid://dtppb5yn26u6y" path="res://levels/testLevel01/LevelOneEnvironment.tres" id="2_qd13b"]
+[ext_resource type="PackedScene" uid="uid://bwon84w566ppq" path="res://blocks/graybrick/GrayBrick.tscn" id="3_gsjtk"]
+[ext_resource type="PackedScene" uid="uid://b0po3nuxc2k2f" path="res://entity/spawnPoint/spawnPoint.tscn" id="4_b1hd7"]
+
+[node name="Level03" type="Node3D"]
+script = ExtResource("1_pg1kf")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_qd13b")
+
+[node name="GrayBrick" parent="." instance=ExtResource("3_gsjtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+
+[node name="GrayBrick2" parent="." instance=ExtResource("3_gsjtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 10, 0)
+
+[node name="GrayBrick3" parent="." instance=ExtResource("3_gsjtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 10, 1)
+
+[node name="GrayBrick4" parent="." instance=ExtResource("3_gsjtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 1)
+
+[node name="SpawnPoint" parent="." instance=ExtResource("4_b1hd7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
+debug_title = "start"
+
+[node name="Camera3D" type="Camera3D" parent="SpawnPoint"]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 6, 1)
+environment = ExtResource("2_qd13b")
+fov = 56.3
+size = 7.0
+near = 0.03
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SpawnPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38831, 0)
+
+[node name="GrayBrick5" parent="." instance=ExtResource("3_gsjtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)

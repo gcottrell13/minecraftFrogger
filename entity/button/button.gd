@@ -1,5 +1,5 @@
 class_name FloorButton
-extends Node3D
+extends BaseEntity
 
 @export var sticky : bool = false:
 	set(value):
@@ -15,12 +15,15 @@ var touching_this_button: Array[Area3D] = [];
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	super();
 	_update_graphics();
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if check_hitbox($hitbox):
+		position = next_position;
+		fix_rotation();
 
 
 func _on_area_3d_area_entered(area):
@@ -46,8 +49,10 @@ func _update_graphics():
 	if triggered:
 		$ButtonDown.visible = true;
 		$ButtonUp.visible = false;
+		$ButtonUpSticky.visible = false;
 	else:
 		$ButtonDown.visible = false;
-		$ButtonUp.visible = true;
-	$PushIndicator.visible = not triggered and not sticky;
-	$StickyIndicator.visible = not triggered and sticky;
+		$ButtonUp.visible = not sticky;
+		$ButtonUpSticky.visible = sticky;
+	#$PushIndicator.visible = not triggered and not sticky;
+	#$StickyIndicator.visible = not triggered and sticky;

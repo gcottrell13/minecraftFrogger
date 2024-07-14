@@ -1,16 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://dp3h87sbulig4"]
+[gd_scene load_steps=7 format=3 uid="uid://dp3h87sbulig4"]
 
 [ext_resource type="Script" path="res://root.gd" id="1_80yoo"]
 [ext_resource type="PackedScene" uid="uid://fyfrxkop2yos" path="res://ui/levelSelect.tscn" id="2_s6m1k"]
-[ext_resource type="PackedScene" uid="uid://dgiqw5wo431t2" path="res://levels/testLevelOne/LevelOne.tscn" id="3_1sa5h"]
+[ext_resource type="PackedScene" uid="uid://dgiqw5wo431t2" path="res://levels/testLevel01/LevelOne.tscn" id="3_1sa5h"]
 [ext_resource type="Script" path="res://addons/interpolated_camera_3d/interpolated_camera_3d.gd" id="3_mwkyu"]
-[ext_resource type="PackedScene" uid="uid://bvcssj17dyw6n" path="res://levels/testLevelTwo/LevelTwo.tscn" id="4_5sfvx"]
+[ext_resource type="PackedScene" uid="uid://bvcssj17dyw6n" path="res://levels/testLevel02/LevelTwo.tscn" id="4_5sfvx"]
+[ext_resource type="PackedScene" uid="uid://bwk5g2vxd0k5o" path="res://levels/testLevel03/Level03.tscn" id="5_bfv1f"]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_80yoo")
 
 [node name="LevelSelect" parent="." instance=ExtResource("2_s6m1k")]
-levels = Array[PackedScene]([ExtResource("3_1sa5h"), ExtResource("4_5sfvx")])
+levels = Array[PackedScene]([ExtResource("3_1sa5h"), ExtResource("4_5sfvx"), ExtResource("5_bfv1f")])
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.66318)

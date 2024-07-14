@@ -4,11 +4,14 @@
 [ext_resource type="Script" path="res://entity/button/button.gd" id="1_yt3v4"]
 [ext_resource type="ArrayMesh" uid="uid://cv50phhpcyhf0" path="res://entity/button/button_down.obj" id="3_8qtq8"]
 [ext_resource type="ArrayMesh" uid="uid://bnqcm3qbet83a" path="res://entity/button/button_up.obj" id="4_6uetx"]
-[ext_resource type="Texture2D" uid="uid://dlq1cju7j4bo5" path="res://entity/button/push.png" id="5_bylhp"]
-[ext_resource type="Texture2D" uid="uid://b4oencld42xf6" path="res://entity/button/sticky.png" id="6_dj233"]
+[ext_resource type="ArrayMesh" uid="uid://db4tbltis5p8p" path="res://entity/button/button_up_sticky.obj" id="5_dnqjq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s3mtr"]
+size = Vector3(1, 0.49, 1)
 
 [node name="Button" type="Node3D"]
 script = ExtResource("1_yt3v4")
+sticky = null
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 0
@@ -26,17 +29,15 @@ mesh = ExtResource("3_8qtq8")
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.029217, -0.0246124, 0.0296254)
 mesh = ExtResource("4_6uetx")
 
-[node name="PushIndicator" type="Sprite3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.276001, 0)
-billboard = 1
-texture_filter = 0
-texture = ExtResource("5_bylhp")
+[node name="ButtonUpSticky" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.0329821, 0, 0.0280861)
+mesh = ExtResource("5_dnqjq")
 
-[node name="StickyIndicator" type="Sprite3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.269287, 0)
-billboard = 1
-texture_filter = 0
-texture = ExtResource("6_dj233")
+[node name="hitbox" type="ShapeCast3D" parent="."]
+shape = SubResource("BoxShape3D_s3mtr")
+target_position = Vector3(0, 0.25, 0)
+collide_with_areas = true
+collide_with_bodies = false
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]

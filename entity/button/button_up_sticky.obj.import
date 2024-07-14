@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://db4tbltis5p8p"
+path="res://.godot/imported/button_up_sticky.obj-744fdeca7107c4ee24f7b60cda35c741.mesh"
+
+[deps]
+
+files=["res://.godot/imported/button_up_sticky.obj-744fdeca7107c4ee24f7b60cda35c741.mesh"]
+
+source_file="res://entity/button/button_up_sticky.obj"
+dest_files=["res://.godot/imported/button_up_sticky.obj-744fdeca7107c4ee24f7b60cda35c741.mesh", "res://.godot/imported/button_up_sticky.obj-744fdeca7107c4ee24f7b60cda35c741.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
