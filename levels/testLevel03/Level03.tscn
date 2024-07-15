@@ -1,10 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwk5g2vxd0k5o"]
+[gd_scene load_steps=10 format=3 uid="uid://bwk5g2vxd0k5o"]
 
 [ext_resource type="Script" path="res://levels/testLevel03/Level3.gd" id="1_pg1kf"]
 [ext_resource type="Environment" uid="uid://dtppb5yn26u6y" path="res://levels/testLevel01/LevelOneEnvironment.tres" id="2_qd13b"]
 [ext_resource type="PackedScene" uid="uid://b0po3nuxc2k2f" path="res://entity/spawnPoint/spawnPoint.tscn" id="4_b1hd7"]
 [ext_resource type="PackedScene" uid="uid://bwon84w566ppq" path="res://blocks/graybrick/GrayBrick.tscn" id="4_ij30c"]
-[ext_resource type="Script" path="res://blocks/graybrick/GrayBrick.gd" id="5_pyirg"]
+[ext_resource type="PackedScene" uid="uid://cyq0xflwf5g5l" path="res://entity/button/button.tscn" id="6_18fg7"]
+[ext_resource type="Script" path="res://levels/testLevel03/elevator1.gd" id="6_ffxqv"]
+[ext_resource type="ArrayMesh" uid="uid://care4k6re2yuy" path="res://entity/blackroundcube/roundcube.obj" id="7_do30s"]
+[ext_resource type="Script" path="res://blocks/graybrick/spinner1.gd" id="7_gs1gr"]
+
+[sub_resource type="Curve3D" id="Curve3D_8w2ha"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -7, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [node name="Level03" type="Node3D"]
 script = ExtResource("1_pg1kf")
@@ -13,12 +23,13 @@ script = ExtResource("1_pg1kf")
 environment = ExtResource("2_qd13b")
 
 [node name="SpawnPoint" parent="." instance=ExtResource("4_b1hd7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+visible = false
 debug_title = "start"
 
 [node name="Camera3D" type="Camera3D" parent="SpawnPoint"]
 process_mode = 4
-transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 6, 1)
+transform = Transform3D(1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 4.1153, 2.06252)
 environment = ExtResource("2_qd13b")
 fov = 56.3
 size = 7.0
@@ -29,832 +40,836 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38831, 0)
 
 [node name="Node3D2" type="Node3D" parent="."]
 
-[node name="GrayBrick" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="GrayBrick" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -15.5, 0)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27907" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27907" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15.5, 0)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27908" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27908" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, -1, 0)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27909" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27909" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.997778, -0.0666296, 0, 0.0666296, 0.997778, 0, 0, 0, 1, -15.4678, -1.96613, -0.001)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27910" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27910" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.991121, -0.132963, 0, 0.132963, 0.991121, 0, 0, 0, 1, -15.3713, -2.92797, 0)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27911" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27911" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.980059, -0.198706, 0, 0.198706, 0.980059, 0, 0, 0, 1, -15.2109, -3.88123, -0.001)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27912" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27912" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.964642, -0.263565, 0, 0.263565, 0.964642, 0, 0, 0, 1, -14.9873, -4.82169, 0)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27913" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27913" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.944937, -0.327253, 0, 0.327253, 0.944937, 0, 0, 0, 1, -14.7016, -5.74517, -0.001)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27914" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27914" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.921032, -0.389487, 0, 0.389487, 0.921032, 0, 0, 0, 1, -14.355, -6.64756, 0)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27915" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27915" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.893034, -0.449989, 0, 0.449989, 0.893034, 0, 0, 0, 1, -13.949, -7.52484, -0.001)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27916" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27916" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.861067, -0.508492, 0, 0.508492, 0.861067, 0, 0, 0, 1, -13.4855, -8.37313, 0)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27917" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27917" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.825273, -0.564734, 0, 0.564734, 0.825273, 0, 0, 0, 1, -12.9665, -9.18865, -0.001)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27918" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27918" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.785811, -0.618467, 0, 0.618467, 0.785811, 0, 0, 0, 1, -12.3943, -9.96777, 0)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27919" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27919" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.742856, -0.669451, 0, 0.669451, 0.742856, 0, 0, 0, 1, -11.7714, -10.707, -0.001)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27920" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27920" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.6966, -0.717459, 0, 0.717459, 0.6966, 0, 0, 0, 1, -11.1007, -11.4032, 0)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27921" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27921" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.647248, -0.762279, 0, 0.762279, 0.647248, 0, 0, 0, 1, -10.3851, -12.053, -0.001)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27922" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27922" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.59502, -0.803711, 0, 0.803711, 0.59502, 0, 0, 0, 1, -9.62778, -12.6538, 0)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27923" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27923" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.540146, -0.841571, 0, 0.841571, 0.540146, 0, 0, 0, 1, -8.83212, -13.2028, -0.001)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27924" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27924" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.482873, -0.875691, 0, 0.875691, 0.482873, 0, 0, 0, 1, -8.00165, -13.6975, 0)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27925" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27925" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.423452, -0.905918, 0, 0.905918, 0.423452, 0, 0, 0, 1, -7.14006, -14.1358, -0.001)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27926" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27926" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.36215, -0.93212, 0, 0.93212, 0.36215, 0, 0, 0, 1, -6.25118, -14.5157, 0)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27927" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27927" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.299239, -0.954178, 0, 0.954178, 0.299239, 0, 0, 0, 1, -5.33897, -14.8356, -0.001)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27928" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27928" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.234997, -0.971996, 0, 0.971996, 0.234997, 0, 0, 0, 1, -4.40746, -15.0939, 0)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27929" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27929" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.169712, -0.985494, 0, 0.985494, 0.169712, 0, 0, 0, 1, -3.46082, -15.2897, -0.001)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27930" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27930" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.103671, -0.994612, 0, 0.994612, 0.103671, 0, 0, 0, 1, -2.50323, -15.4219, 0)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27931" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27931" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.0371704, -0.999309, 0, 0.999309, 0.0371704, 0, 0, 0, 1, -1.53897, -15.49, -0.001)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27932" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27932" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -15.5)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27933" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27933" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.5)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27934" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27934" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15.5, -1)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27935" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27935" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 0.997778, -0.0666296, 0, 0.0666296, 0.997778, -0.001, -15.4678, -1.96613)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27936" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27936" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 0.991121, -0.132963, 0, 0.132963, 0.991121, 0, -15.3713, -2.92797)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27937" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27937" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 0.980059, -0.198706, 0, 0.198706, 0.980059, -0.001, -15.2109, -3.88123)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27938" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27938" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 0.964642, -0.263565, 0, 0.263565, 0.964642, 0, -14.9873, -4.82169)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27939" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27939" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 0.944937, -0.327253, 0, 0.327253, 0.944937, -0.001, -14.7016, -5.74517)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27940" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27940" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 0.921032, -0.389487, 0, 0.389487, 0.921032, 0, -14.355, -6.64756)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27941" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27941" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 0.893034, -0.449989, 0, 0.449989, 0.893034, -0.001, -13.949, -7.52484)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27942" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27942" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 0.861067, -0.508492, 0, 0.508492, 0.861067, 0, -13.4855, -8.37313)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27943" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27943" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 0.825273, -0.564734, 0, 0.564734, 0.825273, -0.001, -12.9665, -9.18865)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27944" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27944" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 0.785811, -0.618467, 0, 0.618467, 0.785811, 0, -12.3943, -9.96777)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27945" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27945" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 0.742856, -0.669451, 0, 0.669451, 0.742856, -0.001, -11.7714, -10.707)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27946" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27946" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 0.6966, -0.717459, 0, 0.717459, 0.6966, 0, -11.1007, -11.4032)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27947" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27947" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 0.647248, -0.762279, 0, 0.762279, 0.647248, -0.001, -10.3851, -12.053)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27948" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27948" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 0.59502, -0.803711, 0, 0.803711, 0.59502, 0, -9.62778, -12.6538)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27949" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27949" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 0.540146, -0.841571, 0, 0.841571, 0.540146, -0.001, -8.83212, -13.2028)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27950" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27950" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 0.482873, -0.875691, 0, 0.875691, 0.482873, 0, -8.00165, -13.6975)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27951" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27951" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 0.423452, -0.905918, 0, 0.905918, 0.423452, -0.001, -7.14006, -14.1358)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27952" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27952" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 0.36215, -0.93212, 0, 0.93212, 0.36215, 0, -6.25118, -14.5157)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27953" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27953" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 0.299239, -0.954178, 0, 0.954178, 0.299239, -0.001, -5.33897, -14.8356)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27954" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27954" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 0.234997, -0.971996, 0, 0.971996, 0.234997, 0, -4.40746, -15.0939)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27955" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27955" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 0.169712, -0.985494, 0, 0.985494, 0.169712, -0.001, -3.46082, -15.2897)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27956" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27956" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 0.103671, -0.994612, 0, 0.994612, 0.103671, 0, -2.50323, -15.4219)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27957" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27957" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 0.0371704, -0.999309, 0, 0.999309, 0.0371704, -0.001, -1.53897, -15.49)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27958" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27958" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, -1)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27959" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27959" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 0)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27960" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27960" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -15.5)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27961" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27961" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.997778, 0, 0.0666296, 0, 1, 0, -0.0666296, 0, 0.997778, -1.96613, -0.001, -15.4678)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27962" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27962" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.991121, 0, 0.132963, 0, 1, 0, -0.132963, 0, 0.991121, -2.92797, 0, -15.3713)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27963" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27963" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.980059, 0, 0.198706, 0, 1, 0, -0.198706, 0, 0.980059, -3.88123, -0.001, -15.2109)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27964" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27964" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.964642, 0, 0.263565, 0, 1, 0, -0.263565, 0, 0.964642, -4.82169, 0, -14.9873)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27965" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27965" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.944937, 0, 0.327253, 0, 1, 0, -0.327253, 0, 0.944937, -5.74517, -0.001, -14.7016)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27966" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27966" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.921032, 0, 0.389487, 0, 1, 0, -0.389487, 0, 0.921032, -6.64756, 0, -14.355)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27967" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27967" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.893034, 0, 0.449989, 0, 1, 0, -0.449989, 0, 0.893034, -7.52484, -0.001, -13.949)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27968" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27968" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.861067, 0, 0.508492, 0, 1, 0, -0.508492, 0, 0.861067, -8.37313, 0, -13.4855)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27969" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27969" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.825273, 0, 0.564734, 0, 1, 0, -0.564734, 0, 0.825273, -9.18865, -0.001, -12.9665)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27970" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27970" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.785811, 0, 0.618467, 0, 1, 0, -0.618467, 0, 0.785811, -9.96777, 0, -12.3943)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27971" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27971" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.742856, 0, 0.669451, 0, 1, 0, -0.669451, 0, 0.742856, -10.707, -0.001, -11.7714)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27972" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27972" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.6966, 0, 0.717459, 0, 1, 0, -0.717459, 0, 0.6966, -11.4032, 0, -11.1007)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27973" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27973" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.647248, 0, 0.762279, 0, 1, 0, -0.762279, 0, 0.647248, -12.053, -0.001, -10.3851)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27974" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27974" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.59502, 0, 0.803711, 0, 1, 0, -0.803711, 0, 0.59502, -12.6538, 0, -9.62778)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27975" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27975" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.540146, 0, 0.841571, 0, 1, 0, -0.841571, 0, 0.540146, -13.2028, -0.001, -8.83212)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27976" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27976" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.482873, 0, 0.875691, 0, 1, 0, -0.875691, 0, 0.482873, -13.6975, 0, -8.00165)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27977" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27977" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.423452, 0, 0.905918, 0, 1, 0, -0.905918, 0, 0.423452, -14.1358, -0.001, -7.14006)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27978" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27978" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.36215, 0, 0.93212, 0, 1, 0, -0.93212, 0, 0.36215, -14.5157, 0, -6.25118)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27979" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27979" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.299239, 0, 0.954178, 0, 1, 0, -0.954178, 0, 0.299239, -14.8356, -0.001, -5.33897)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27980" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27980" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.234997, 0, 0.971996, 0, 1, 0, -0.971996, 0, 0.234997, -15.0939, 0, -4.40746)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27981" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27981" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.169712, 0, 0.985494, 0, 1, 0, -0.985494, 0, 0.169712, -15.2897, -0.001, -3.46082)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27982" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27982" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.103671, 0, 0.994612, 0, 1, 0, -0.994612, 0, 0.103671, -15.4219, 0, -2.50323)
-script = ExtResource("5_pyirg")
 
-[node name="@Node3D@27983" type="Node3D" parent="Node3D2" instance=ExtResource("4_ij30c")]
+[node name="@Node3D@27983" parent="Node3D2" instance=ExtResource("4_ij30c")]
 transform = Transform3D(0.0371704, 0, 0.999309, 0, 1, 0, -0.999309, 0, 0.0371704, -15.49, -0.001, -1.53897)
-script = ExtResource("5_pyirg")
 
 [node name="Node3D" type="Node3D" parent="."]
 
-[node name="GrayBrick" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 25.5, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30837" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 25.5, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30838" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 25.5, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30839" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 25.5, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30840" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 25.5, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30841" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.5, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30842" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 5, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30843" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 4, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30844" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 3, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30845" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 2, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30846" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 1, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30847" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.998866, -0.0476055, 0, 0.0476055, 0.998866, 0, 0, 0, 1, 25.4768, 5.97591, 0.001)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30848" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.995467, -0.0951032, 0, 0.0951032, 0.995467, 0, 0, 0, 1, 25.4071, 6.94961, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30849" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.989811, -0.142385, 0, 0.142385, 0.989811, 0, 0, 0, 1, 25.2911, 7.91889, 0.001)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30850" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.981911, -0.189344, 0, 0.189344, 0.981911, 0, 0, 0, 1, 25.1292, 8.88156, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30851" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.971784, -0.235874, 0, 0.235874, 0.971784, 0, 0, 0, 1, 24.9216, 9.83541, 0.001)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30852" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.959453, -0.281869, 0, 0.281869, 0.959453, 0, 0, 0, 1, 24.6688, 10.7783, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30853" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.944947, -0.327224, 0, 0.327224, 0.944947, 0, 0, 0, 1, 24.3714, 11.7081, 0.001)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30854" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.928298, -0.371838, 0, 0.371838, 0.928298, 0, 0, 0, 1, 24.0301, 12.6227, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30855" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.909544, -0.415609, 0, 0.415609, 0.909544, 0, 0, 0, 1, 23.6456, 13.52, 0.001)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30856" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.888727, -0.458437, 0, 0.458437, 0.888727, 0, 0, 0, 1, 23.2189, 14.398, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30857" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.865895, -0.500225, 0, 0.500225, 0.865895, 0, 0, 0, 1, 22.7509, 15.2546, 0.001)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30858" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.8411, -0.54088, 0, 0.54088, 0.8411, 0, 0, 0, 1, 22.2425, 16.088, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30859" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.814398, -0.580307, 0, 0.580307, 0.814398, 0, 0, 0, 1, 21.6951, 16.8963, 0.001)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30860" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.785848, -0.618419, 0, 0.618419, 0.785848, 0, 0, 0, 1, 21.1099, 17.6776, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30861" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.755517, -0.655129, 0, 0.655129, 0.755517, 0, 0, 0, 1, 20.4881, 18.4301, 0.001)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30862" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.723473, -0.690353, 0, 0.690353, 0.723473, 0, 0, 0, 1, 19.8312, 19.1522, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30863" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.689788, -0.724012, 0, 0.724012, 0.689788, 0, 0, 0, 1, 19.1407, 19.8422, 0.001)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30864" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.654539, -0.756028, 0, 0.756028, 0.654539, 0, 0, 0, 1, 18.418, 20.4986, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30865" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.617806, -0.786331, 0, 0.786331, 0.617806, 0, 0, 0, 1, 17.665, 21.1198, 0.001)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30866" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.579671, -0.81485, 0, 0.81485, 0.579671, 0, 0, 0, 1, 16.8833, 21.7044, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30867" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.540223, -0.841522, 0, 0.841522, 0.540223, 0, 0, 0, 1, 16.0746, 22.2512, 0.001)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30868" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.499549, -0.866286, 0, 0.866286, 0.499549, 0, 0, 0, 1, 15.2408, 22.7589, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30869" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.457743, -0.889085, 0, 0.889085, 0.457743, 0, 0, 0, 1, 14.3837, 23.2262, 0.001)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30870" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.414898, -0.909868, 0, 0.909868, 0.414898, 0, 0, 0, 1, 13.5054, 23.6523, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30871" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.371113, -0.928588, 0, 0.928588, 0.371113, 0, 0, 0, 1, 12.6078, 24.036, 0.001)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30872" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.326487, -0.945202, 0, 0.945202, 0.326487, 0, 0, 0, 1, 11.693, 24.3766, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30873" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.28112, -0.959673, 0, 0.959673, 0.28112, 0, 0, 0, 1, 10.763, 24.6733, 0.001)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30874" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.235115, -0.971968, 0, 0.971968, 0.235115, 0, 0, 0, 1, 9.81986, 24.9253, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30875" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.188577, -0.982058, 0, 0.982058, 0.188577, 0, 0, 0, 1, 8.86584, 25.1322, 0.001)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30876" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.141612, -0.989922, 0, 0.989922, 0.141612, 0, 0, 0, 1, 7.90305, 25.2934, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30877" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.0943258, -0.995541, 0, 0.995541, 0.0943258, 0, 0, 0, 1, 6.93368, 25.4086, 0.001)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30878" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.0468256, -0.998903, 0, 0.998903, 0.0468256, 0, 0, 0, 1, 5.95993, 25.4775, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30879" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 25.5)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30880" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 25.5)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30881" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 25.5)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30882" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 25.5)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30883" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 25.5)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30884" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.5)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30885" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.5, 5)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30886" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.5, 4)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30887" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.5, 3)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30888" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.5, 2)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30889" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.5, 1)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30890" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.998866, -0.0476055, 0, 0.0476055, 0.998866, 0.001, 25.4768, 5.97591)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30891" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.995467, -0.0951032, 0, 0.0951032, 0.995467, 0, 25.4071, 6.94961)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30892" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.989811, -0.142385, 0, 0.142385, 0.989811, 0.001, 25.2911, 7.91889)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30893" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.981911, -0.189344, 0, 0.189344, 0.981911, 0, 25.1292, 8.88156)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30894" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.971784, -0.235874, 0, 0.235874, 0.971784, 0.001, 24.9216, 9.83541)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30895" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.959453, -0.281869, 0, 0.281869, 0.959453, 0, 24.6688, 10.7783)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30896" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.944947, -0.327224, 0, 0.327224, 0.944947, 0.001, 24.3714, 11.7081)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30897" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.928298, -0.371838, 0, 0.371838, 0.928298, 0, 24.0301, 12.6227)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30898" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.909544, -0.415609, 0, 0.415609, 0.909544, 0.001, 23.6456, 13.52)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30899" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.888727, -0.458437, 0, 0.458437, 0.888727, 0, 23.2189, 14.398)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30900" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.865895, -0.500225, 0, 0.500225, 0.865895, 0.001, 22.7509, 15.2546)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30901" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.8411, -0.54088, 0, 0.54088, 0.8411, 0, 22.2425, 16.088)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30902" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.814398, -0.580307, 0, 0.580307, 0.814398, 0.001, 21.6951, 16.8963)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30903" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.785848, -0.618419, 0, 0.618419, 0.785848, 0, 21.1099, 17.6776)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30904" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.755517, -0.655129, 0, 0.655129, 0.755517, 0.001, 20.4881, 18.4301)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30905" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.723473, -0.690353, 0, 0.690353, 0.723473, 0, 19.8312, 19.1522)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30906" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.689788, -0.724012, 0, 0.724012, 0.689788, 0.001, 19.1407, 19.8422)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30907" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.654539, -0.756028, 0, 0.756028, 0.654539, 0, 18.418, 20.4986)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30908" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.617806, -0.786331, 0, 0.786331, 0.617806, 0.001, 17.665, 21.1198)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30909" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.579671, -0.81485, 0, 0.81485, 0.579671, 0, 16.8833, 21.7044)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30910" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.540223, -0.841522, 0, 0.841522, 0.540223, 0.001, 16.0746, 22.2512)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30911" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.499549, -0.866286, 0, 0.866286, 0.499549, 0, 15.2408, 22.7589)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30912" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.457743, -0.889085, 0, 0.889085, 0.457743, 0.001, 14.3837, 23.2262)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30913" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.414898, -0.909868, 0, 0.909868, 0.414898, 0, 13.5054, 23.6523)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30914" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.371113, -0.928588, 0, 0.928588, 0.371113, 0.001, 12.6078, 24.036)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30915" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.326487, -0.945202, 0, 0.945202, 0.326487, 0, 11.693, 24.3766)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30916" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.28112, -0.959673, 0, 0.959673, 0.28112, 0.001, 10.763, 24.6733)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30917" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.235115, -0.971968, 0, 0.971968, 0.235115, 0, 9.81986, 24.9253)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30918" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.188577, -0.982058, 0, 0.982058, 0.188577, 0.001, 8.86584, 25.1322)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30919" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.141612, -0.989922, 0, 0.989922, 0.141612, 0, 7.90305, 25.2934)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30920" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.0943258, -0.995541, 0, 0.995541, 0.0943258, 0.001, 6.93368, 25.4086)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30921" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.0468256, -0.998903, 0, 0.998903, 0.0468256, 0, 5.95993, 25.4775)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30922" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0, 5)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30923" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0, 4)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30924" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0, 3)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30925" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0, 2)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30926" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0, 1)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30927" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0, 0)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30928" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 25.5)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30929" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 25.5)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30930" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 25.5)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30931" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 25.5)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30932" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 25.5)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30933" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.998866, 0, 0.0476055, 0, 1, 0, -0.0476055, 0, 0.998866, 5.97591, 0.001, 25.4768)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30934" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.995467, 0, 0.0951032, 0, 1, 0, -0.0951032, 0, 0.995467, 6.94961, 0, 25.4071)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30935" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.989811, 0, 0.142385, 0, 1, 0, -0.142385, 0, 0.989811, 7.91889, 0.001, 25.2911)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30936" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.981911, 0, 0.189344, 0, 1, 0, -0.189344, 0, 0.981911, 8.88156, 0, 25.1292)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30937" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.971784, 0, 0.235874, 0, 1, 0, -0.235874, 0, 0.971784, 9.83541, 0.001, 24.9216)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30938" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.959453, 0, 0.281869, 0, 1, 0, -0.281869, 0, 0.959453, 10.7783, 0, 24.6688)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30939" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.944947, 0, 0.327224, 0, 1, 0, -0.327224, 0, 0.944947, 11.7081, 0.001, 24.3714)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30940" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.928298, 0, 0.371838, 0, 1, 0, -0.371838, 0, 0.928298, 12.6227, 0, 24.0301)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30941" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.909544, 0, 0.415609, 0, 1, 0, -0.415609, 0, 0.909544, 13.52, 0.001, 23.6456)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30942" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.888727, 0, 0.458437, 0, 1, 0, -0.458437, 0, 0.888727, 14.398, 0, 23.2189)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30943" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.865895, 0, 0.500225, 0, 1, 0, -0.500225, 0, 0.865895, 15.2546, 0.001, 22.7509)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30944" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.8411, 0, 0.54088, 0, 1, 0, -0.54088, 0, 0.8411, 16.088, 0, 22.2425)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30945" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.814398, 0, 0.580307, 0, 1, 0, -0.580307, 0, 0.814398, 16.8963, 0.001, 21.6951)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30946" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.785848, 0, 0.618419, 0, 1, 0, -0.618419, 0, 0.785848, 17.6776, 0, 21.1099)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30947" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.755517, 0, 0.655129, 0, 1, 0, -0.655129, 0, 0.755517, 18.4301, 0.001, 20.4881)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30948" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.723473, 0, 0.690353, 0, 1, 0, -0.690353, 0, 0.723473, 19.1522, 0, 19.8312)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30949" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.689788, 0, 0.724012, 0, 1, 0, -0.724012, 0, 0.689788, 19.8422, 0.001, 19.1407)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30950" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.654539, 0, 0.756028, 0, 1, 0, -0.756028, 0, 0.654539, 20.4986, 0, 18.418)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30951" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.617806, 0, 0.786331, 0, 1, 0, -0.786331, 0, 0.617806, 21.1198, 0.001, 17.665)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30952" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.579671, 0, 0.81485, 0, 1, 0, -0.81485, 0, 0.579671, 21.7044, 0, 16.8833)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30953" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.540223, 0, 0.841522, 0, 1, 0, -0.841522, 0, 0.540223, 22.2512, 0.001, 16.0746)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30954" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.499549, 0, 0.866286, 0, 1, 0, -0.866286, 0, 0.499549, 22.7589, 0, 15.2408)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30955" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.457743, 0, 0.889085, 0, 1, 0, -0.889085, 0, 0.457743, 23.2262, 0.001, 14.3837)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30956" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.414898, 0, 0.909868, 0, 1, 0, -0.909868, 0, 0.414898, 23.6523, 0, 13.5054)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30957" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.371113, 0, 0.928588, 0, 1, 0, -0.928588, 0, 0.371113, 24.036, 0.001, 12.6078)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30958" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.326487, 0, 0.945202, 0, 1, 0, -0.945202, 0, 0.326487, 24.3766, 0, 11.693)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30959" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.28112, 0, 0.959673, 0, 1, 0, -0.959673, 0, 0.28112, 24.6733, 0.001, 10.763)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30960" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.235115, 0, 0.971968, 0, 1, 0, -0.971968, 0, 0.235115, 24.9253, 0, 9.81986)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30961" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.188577, 0, 0.982058, 0, 1, 0, -0.982058, 0, 0.188577, 25.1322, 0.001, 8.86584)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30962" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.141612, 0, 0.989922, 0, 1, 0, -0.989922, 0, 0.141612, 25.2934, 0, 7.90305)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30963" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.0943258, 0, 0.995541, 0, 1, 0, -0.995541, 0, 0.0943258, 25.4086, 0.001, 6.93368)
-script = ExtResource("5_pyirg")
-
-[node name="@Node3D@30964" type="Node3D" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(0.0468256, 0, 0.998903, 0, 1, 0, -0.998903, 0, 0.0468256, 25.4775, 0, 5.95993)
-script = ExtResource("5_pyirg")
+[node name="GrayBrick" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 11.5, 0.001)
+
+[node name="@Node3D@37661" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 11.5, 0)
+
+[node name="@Node3D@37662" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 11.5, 0)
+
+[node name="@Node3D@37663" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 11.5, 0)
+
+[node name="@Node3D@37664" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 11.5, 0)
+
+[node name="@Node3D@37665" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.5, 0)
+
+[node name="@Node3D@37666" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 5, 0)
+
+[node name="@Node3D@37667" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 4, 0)
+
+[node name="@Node3D@37668" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 3, 0)
+
+[node name="@Node3D@37669" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 2, 0)
+
+[node name="@Node3D@37670" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 1, 0)
+
+[node name="@Node3D@37671" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.989796, -0.142492, 0, 0.142492, 0.989796, 0, 0, 0, 1, 11.4337, 5.9262, 0.001)
+
+[node name="@Node3D@37672" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.959392, -0.282077, 0, 0.282077, 0.959392, 0, 0, 0, 1, 11.236, 6.8335, 0)
+
+[node name="@Node3D@37673" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.909409, -0.415904, 0, 0.415904, 0.909409, 0, 0, 0, 1, 10.9112, 7.70338, 0.001)
+
+[node name="@Node3D@37674" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.840866, -0.541244, 0, 0.541244, 0.840866, 0, 0, 0, 1, 10.4656, 8.51808, 0)
+
+[node name="@Node3D@37675" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.755162, -0.655538, 0, 0.655538, 0.755162, 0, 0, 0, 1, 9.90856, 9.261, 0.001)
+
+[node name="@Node3D@37676" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.654048, -0.756453, 0, 0.756453, 0.654048, 0, 0, 0, 1, 9.25131, 9.91695, 0)
+
+[node name="@Node3D@37677" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.539585, -0.841931, 0, 0.841931, 0.539585, 0, 0, 0, 1, 8.5073, 10.4726, 0.001)
+
+[node name="@Node3D@37678" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.41411, -0.910227, 0, 0.910227, 0.41411, 0, 0, 0, 1, 7.69172, 10.9165, 0)
+
+[node name="@Node3D@37679" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.280184, -0.959946, 0, 0.959946, 0.280184, 0, 0, 0, 1, 6.8212, 11.2397, 0.001)
+
+[node name="@Node3D@37680" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.140541, -0.990075, 0, 0.990075, 0.140541, 0, 0, 0, 1, 5.91351, 11.4355, 0)
+
+[node name="@Node3D@37681" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001, 5, 11.5)
+
+[node name="@Node3D@37682" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 11.5)
+
+[node name="@Node3D@37683" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 11.5)
+
+[node name="@Node3D@37684" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 11.5)
+
+[node name="@Node3D@37685" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 11.5)
+
+[node name="@Node3D@37686" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.5)
+
+[node name="@Node3D@37687" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.5, 5)
+
+[node name="@Node3D@37688" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.5, 4)
+
+[node name="@Node3D@37689" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.5, 3)
+
+[node name="@Node3D@37690" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.5, 2)
+
+[node name="@Node3D@37691" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.5, 1)
+
+[node name="@Node3D@37692" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 0.989796, -0.142492, 0, 0.142492, 0.989796, 0.001, 11.4337, 5.9262)
+
+[node name="@Node3D@37693" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 0.959392, -0.282077, 0, 0.282077, 0.959392, 0, 11.236, 6.8335)
+
+[node name="@Node3D@37694" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 0.909409, -0.415904, 0, 0.415904, 0.909409, 0.001, 10.9112, 7.70338)
+
+[node name="@Node3D@37695" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 0.840866, -0.541244, 0, 0.541244, 0.840866, 0, 10.4656, 8.51808)
+
+[node name="@Node3D@37696" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 0.755162, -0.655538, 0, 0.655538, 0.755162, 0.001, 9.90856, 9.261)
+
+[node name="@Node3D@37697" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 0.654048, -0.756453, 0, 0.756453, 0.654048, 0, 9.25131, 9.91695)
+
+[node name="@Node3D@37698" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 0.539585, -0.841931, 0, 0.841931, 0.539585, 0.001, 8.5073, 10.4726)
+
+[node name="@Node3D@37699" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 0.41411, -0.910227, 0, 0.910227, 0.41411, 0, 7.69172, 10.9165)
+
+[node name="@Node3D@37700" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 0.280184, -0.959946, 0, 0.959946, 0.280184, 0.001, 6.8212, 11.2397)
+
+[node name="@Node3D@37701" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 0.140541, -0.990075, 0, 0.990075, 0.140541, 0, 5.91351, 11.4355)
+
+[node name="@Node3D@37702" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0.001, 5)
+
+[node name="@Node3D@37703" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, 4)
+
+[node name="@Node3D@37704" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, 3)
+
+[node name="@Node3D@37705" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, 2)
+
+[node name="@Node3D@37706" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, 1)
+
+[node name="@Node3D@37707" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, 0)
+
+[node name="@Node3D@37708" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 11.5)
+
+[node name="@Node3D@37709" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 11.5)
+
+[node name="@Node3D@37710" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 11.5)
+
+[node name="@Node3D@37711" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 11.5)
+
+[node name="@Node3D@37712" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 11.5)
+
+[node name="@Node3D@37713" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.989796, 0, 0.142492, 0, 1, 0, -0.142492, 0, 0.989796, 5.9262, 0.001, 11.4337)
+
+[node name="@Node3D@37714" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.959392, 0, 0.282077, 0, 1, 0, -0.282077, 0, 0.959392, 6.8335, 0, 11.236)
+
+[node name="@Node3D@37715" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.909409, 0, 0.415904, 0, 1, 0, -0.415904, 0, 0.909409, 7.70338, 0.001, 10.9112)
+
+[node name="@Node3D@37716" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.840866, 0, 0.541244, 0, 1, 0, -0.541244, 0, 0.840866, 8.51808, 0, 10.4656)
+
+[node name="@Node3D@37717" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.755162, 0, 0.655538, 0, 1, 0, -0.655538, 0, 0.755162, 9.261, 0.001, 9.90856)
+
+[node name="@Node3D@37718" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.654048, 0, 0.756453, 0, 1, 0, -0.756453, 0, 0.654048, 9.91695, 0, 9.25131)
+
+[node name="@Node3D@37719" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.539585, 0, 0.841931, 0, 1, 0, -0.841931, 0, 0.539585, 10.4726, 0.001, 8.5073)
+
+[node name="@Node3D@37720" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.41411, 0, 0.910227, 0, 1, 0, -0.910227, 0, 0.41411, 10.9165, 0, 7.69172)
+
+[node name="@Node3D@37721" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.280184, 0, 0.959946, 0, 1, 0, -0.959946, 0, 0.280184, 11.2397, 0.001, 6.8212)
+
+[node name="@Node3D@37722" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.140541, 0, 0.990075, 0, 1, 0, -0.990075, 0, 0.140541, 11.4355, 0, 5.91351)
+
+[node name="Node3D" type="Node3D" parent="Node3D"]
+
+[node name="_Node3D_37664" parent="Node3D/Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 12.5, -1)
+
+[node name="_Node3D_37665" parent="Node3D/Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.5, -1)
+
+[node name="_Node3D_37666" parent="Node3D/Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 12.5, 0)
+
+[node name="_Node3D_37667" parent="Node3D/Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 13, -1)
+
+[node name="_Node3D_37668" parent="Node3D/Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 12.5, 1)
+
+[node name="Node3D2" type="Node3D" parent="Node3D"]
+transform = Transform3D(0, 1, 4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="_Node3D_37664" parent="Node3D/Node3D2" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 12.5, -1)
+
+[node name="_Node3D_37665" parent="Node3D/Node3D2" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.5, -1)
+
+[node name="_Node3D_37666" parent="Node3D/Node3D2" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, -8.35187e-23, 0, 0, 1, -1, 12.5, -7.10543e-15)
+
+[node name="_Node3D_37667" parent="Node3D/Node3D2" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, -8.35187e-23, 0, 0, 1, -1, 13.5, -1)
+
+[node name="_Node3D_37668" parent="Node3D/Node3D2" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 12.5, 1)
+
+[node name="_Node3D_37669" parent="Node3D/Node3D2" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, -8.35187e-23, 0, 0, 1, 0, 11.5, -1)
+
+[node name="_Node3D_37670" parent="Node3D/Node3D2" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, -8.35187e-23, 0, 0, 1, 0, 12.5, -2.001)
+
+[node name="_Node3D_37671" parent="Node3D/Node3D2" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, -8.35187e-23, 0, 0, 1, 0, 11.5, -2)
+
+[node name="_Node3D_37672" parent="Node3D/Node3D2" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, -8.35187e-23, 0, 0, 1, -0.5, 13.5, -2)
+
+[node name="_Node3D_37673" parent="Node3D/Node3D2" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, -8.35187e-23, 0, 0, 1, -1, 12.5, -1)
+
+[node name="Node3D3" type="Node3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 1, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 0, 0, 0, 0)
+
+[node name="_Node3D_37664" parent="Node3D/Node3D3" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 12.5, -1)
+
+[node name="_Node3D_37665" parent="Node3D/Node3D3" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.5, -1)
+
+[node name="_Node3D_37666" parent="Node3D/Node3D3" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 12.5, 0)
+
+[node name="_Node3D_37667" parent="Node3D/Node3D3" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 13, -1)
+
+[node name="_Node3D_37668" parent="Node3D/Node3D3" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 12.5, 1)
+
+[node name="elevator1" type="Path3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 11.5, -1)
+curve = SubResource("Curve3D_8w2ha")
+script = ExtResource("6_ffxqv")
+speed = 1.5
+offset_distance = 9.0
+active = false
+editor_tool = false
+length = 12.0
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Node3D/elevator1"]
+transform = Transform3D(-4.37057e-08, 1, -4.37055e-08, 0, -4.37114e-08, -0.999865, -0.99987, -4.37114e-08, 1.91043e-15, 0, 0, 0)
+use_model_front = true
+cubic_interp = false
+loop = false
+
+[node name="elevator1" parent="Node3D/elevator1/PathFollow3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(-1.00013, 0, 8.74342e-08, 0, 1, 0, -8.74346e-08, 0, -1.00014, 0, 0, 0)
+
+[node name="elevator1button" parent="Node3D/elevator1/PathFollow3D/elevator1" instance=ExtResource("6_18fg7")]
+transform = Transform3D(4.37114e-08, 8.74228e-08, 1, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 1, -8.74228e-08, 5.96046e-08, 0, 0.5)
+sticky = false
+
+[node name="_Node3D_37661" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 10.5, 0)
+
+[node name="_Node3D_37662" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 9.5, 0)
+
+[node name="_Node3D_37663" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 8.5, 0)
+
+[node name="_Node3D_37664" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 7.5, 0)
+
+[node name="_Node3D_37665" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 10.5, 0)
+
+[node name="_Node3D_37666" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 9.5, 0)
+
+[node name="_Node3D_37667" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 8.5, 0)
+
+[node name="_Node3D_37668" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 7.5, 0)
+
+[node name="_Node3D_37669" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 10.5, 0)
+
+[node name="_Node3D_37670" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 9.5, 0)
+
+[node name="_Node3D_37671" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 8.5, 0)
+
+[node name="_Node3D_37672" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 7.5, 0)
+
+[node name="_Node3D_37673" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 7.5, -1)
+
+[node name="_Node3D_37674" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 8.5, -1)
+
+[node name="_Node3D_37675" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 9.5, -1)
+
+[node name="_Node3D_37676" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 10.5, -1)
+
+[node name="_Node3D_37677" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 11.5, -1)
+
+[node name="GrayBrick2" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 11.5, -0.999)
+
+[node name="GrayBrick3" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 10.5, -0.999)
+
+[node name="GrayBrick4" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 9.5, -0.999)
+
+[node name="GrayBrick5" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 8.5, -0.999)
+
+[node name="GrayBrick6" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 7.5, -0.999)
+
+[node name="GrayBrick7" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4.5, -1.999)
+
+[node name="GrayBrick8" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 6.5, -0.999)
+
+[node name="GrayBrick9" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5.5, -0.999)
+
+[node name="GrayBrick10" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4.5, -0.999)
+
+[node name="GrayBrick11" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 6.5, -0.999)
+
+[node name="GrayBrick12" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 5.5, -0.999)
+
+[node name="GrayBrick13" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 4.5, -0.999)
+
+[node name="_Node3D_37678" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 2, -1)
+
+[node name="_Node3D_37679" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 3, -1)
+
+[node name="_Node3D_37680" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 4, -1)
+
+[node name="_Node3D_37681" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 5, -1)
+
+[node name="_Node3D_37682" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.989796, -0.142492, 0, 0.142492, 0.989796, 0, 0, 0, 1, 12.4235, 6.06869, -0.999)
+
+[node name="_Node3D_37683" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.959392, -0.282077, 0, 0.282077, 0.959392, 0, 0, 0, 1, 12.1954, 7.11557, -1)
+
+[node name="_Node3D_37684" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.909409, -0.415904, 0, 0.415904, 0.909409, 0, 0, 0, 1, 11.8206, 8.11928, -0.999)
+
+[node name="_Node3D_37685" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.840866, -0.541244, 0, 0.541244, 0.840866, 0, 0, 0, 1, 11.3065, 9.05933, -1)
+
+[node name="GrayBrick14" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 4.5, -1.999)
+
+[node name="GrayBrick15" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 4.5, -2.001)
+
+[node name="GrayBrick17" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 0.93612, -0.351682, 0, 0.351682, 0.93612, 2, 5.27122, -0.228783)
+script = ExtResource("7_gs1gr")
+speed = 0.3
+
+[node name="GrayBrick19" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 0.999831, -0.0183598, 0, 0.0183598, 0.999831, 2, 6.5, 0)
+
+[node name="GrayBrick20" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 7.5, 0)
+
+[node name="_Node3D_37686" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.840866, -0.541244, 0, 0.541244, 0.840866, 0, 0, 0, 1, 12.1474, 9.60057, -1)
+
+[node name="_Node3D_37687" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.840866, -0.541244, 0, 0.541244, 0.840866, 0, 0, 0, 1, 12.9882, 10.1418, -1)
+
+[node name="_Node3D_37689" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 3, -1)
+
+[node name="_Node3D_37690" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 3, -1)
+
+[node name="GrayBrick21" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5.5, -1.999)
+
+[node name="GrayBrick22" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 6.5, -1.999)
+
+[node name="GrayBrick23" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 7.5, -1.999)
+
+[node name="GrayBrick24" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 8.5, 0)
+
+[node name="GrayBrick25" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 9.5, 0)
+
+[node name="GrayBrick26" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 10.5, -0.5)
+
+[node name="GrayBrick27" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 11.5, -0.999)
+
+[node name="GrayBrick28" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 11.5, -0.999)
+
+[node name="GrayBrick29" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 11.5, -1.999)
+
+[node name="GrayBrick30" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 11.5, -1.999)
+
+[node name="GrayBrick31" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.5, -1.999)
+
+[node name="GrayBrick32" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 11.5, -1.999)
+
+[node name="GrayBrick18" parent="Node3D" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 0.564131, 0.825685, 0, -0.825685, 0.564131, 0.769709, 6.16492, 0.0988101)
+
+[node name="Node3D3" type="Node3D" parent="."]
+transform = Transform3D(0.999835, -0.0181679, 0, 0.0181679, 0.999835, 0, 0, 0, 1, 0.05, -0.03, 0)
+
+[node name="@Node3D@77913" parent="Node3D3" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 5, -1)
+
+[node name="@Node3D@77914" parent="Node3D3" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 4, -1)
+
+[node name="@Node3D@77915" parent="Node3D3" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 3, -1)
+
+[node name="@Node3D@77918" parent="Node3D3" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.995868, -0.0908151, 0, 0.0908151, 0.995868, 0, 0, 0, 1, 15.4566, 5.95356, -0.999)
+
+[node name="@Node3D@77919" parent="Node3D3" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.983505, -0.18088, 0, 0.18088, 0.983505, 0, 0, 0, 1, 15.3268, 6.89924, -1)
+
+[node name="@Node3D@77920" parent="Node3D3" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.963015, -0.269449, 0, 0.269449, 0.963015, 0, 0, 0, 1, 15.1117, 7.82922, -0.999)
+
+[node name="@Node3D@77921" parent="Node3D3" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.934565, -0.355792, 0, 0.355792, 0.934565, 0, 0, 0, 1, 14.8129, 8.73582, -1)
+
+[node name="@Node3D@77922" parent="Node3D3" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.898392, -0.439195, 0, 0.439195, 0.898392, 0, 0, 0, 1, 14.4331, 9.61154, -0.999)
+
+[node name="@Node3D@77923" parent="Node3D3" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.854794, -0.518967, 0, 0.518967, 0.854794, 0, 0, 0, 1, 13.9753, 10.4492, -1)
+
+[node name="@Node3D@77924" parent="Node3D3" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.804132, -0.594451, 0, 0.594451, 0.804132, 0, 0, 0, 1, 13.4434, 11.2417, -0.999)
+
+[node name="@Node3D@77925" parent="Node3D3" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.746824, -0.665022, 0, 0.665022, 0.746824, 0, 0, 0, 1, 12.8416, 11.9827, -1)
+
+[node name="@Node3D@77926" parent="Node3D3" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.683344, -0.730097, 0, 0.730097, 0.683344, 0, 0, 0, 1, 12.1751, 12.666, -0.999)
+
+[node name="@Node3D@77927" parent="Node3D3" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.614216, -0.789138, 0, 0.789138, 0.614216, 0, 0, 0, 1, 11.4493, 13.2859, -1)
+
+[node name="@Node3D@77928" parent="Node3D3" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.540012, -0.841657, 0, 0.841657, 0.540012, 0, 0, 0, 1, 10.6701, 13.8374, -0.999)
+
+[node name="@Node3D@77929" parent="Node3D3" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.461346, -0.887221, 0, 0.887221, 0.461346, 0, 0, 0, 1, 9.84413, 14.3158, -1)
+
+[node name="@Node3D@77930" parent="Node3D3" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.378866, -0.925451, 0, 0.925451, 0.378866, 0, 0, 0, 1, 8.97809, 14.7172, -0.999)
+
+[node name="@Node3D@77931" parent="Node3D3" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.293256, -0.956034, 0, 0.956034, 0.293256, 0, 0, 0, 1, 8.07918, 15.0384, -1)
+
+[node name="Roundcube" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.22788e-07, 0, -5.6, 0, 5.6, 0, 5.6, 0, 4.22788e-07, 0.55, 11.75, 0.55)
+mesh = ExtResource("7_do30s")
+
+[node name="Node3D4" type="Node3D" parent="."]
+transform = Transform3D(-4.37042e-08, 7.94143e-10, -1, 0.0181679, 0.999835, 0, 0.999835, -0.0181679, -4.37114e-08, 0.05, -0.03, 0)
+
+[node name="_Node3D_77913" parent="Node3D4" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 5, -1)
+
+[node name="_Node3D_77914" parent="Node3D4" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 4, -1)
+
+[node name="_Node3D_77915" parent="Node3D4" instance=ExtResource("4_ij30c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 3, -1)
+
+[node name="_Node3D_77918" parent="Node3D4" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.995868, -0.0908151, 0, 0.0908151, 0.995868, 0, 0, 0, 1, 15.4566, 5.95356, -0.999)
+
+[node name="_Node3D_77919" parent="Node3D4" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.983505, -0.18088, 0, 0.18088, 0.983505, 0, 0, 0, 1, 15.3268, 6.89924, -1)
+
+[node name="_Node3D_77920" parent="Node3D4" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.963015, -0.269449, 0, 0.269449, 0.963015, 0, 0, 0, 1, 15.1117, 7.82922, -0.999)
+
+[node name="_Node3D_77921" parent="Node3D4" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.934565, -0.355792, 0, 0.355792, 0.934565, 0, 0, 0, 1, 14.8129, 8.73582, -1)
+
+[node name="_Node3D_77922" parent="Node3D4" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.898392, -0.439195, 0, 0.439195, 0.898392, 0, 0, 0, 1, 14.4331, 9.61154, -0.999)
+
+[node name="_Node3D_77923" parent="Node3D4" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.854794, -0.518967, 0, 0.518967, 0.854794, 0, 0, 0, 1, 13.9753, 10.4492, -1)
+
+[node name="_Node3D_77924" parent="Node3D4" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.804132, -0.594451, 0, 0.594451, 0.804132, 0, 0, 0, 1, 13.4434, 11.2417, -0.999)
+
+[node name="_Node3D_77925" parent="Node3D4" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.746824, -0.665022, 0, 0.665022, 0.746824, 0, 0, 0, 1, 12.8416, 11.9827, -1)
+
+[node name="_Node3D_77926" parent="Node3D4" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.683344, -0.730097, 0, 0.730097, 0.683344, 0, 0, 0, 1, 12.1751, 12.666, -0.999)
+
+[node name="_Node3D_77927" parent="Node3D4" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.614216, -0.789138, 0, 0.789138, 0.614216, 0, 0, 0, 1, 11.4493, 13.2859, -1)
+
+[node name="_Node3D_77928" parent="Node3D4" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.540012, -0.841657, 0, 0.841657, 0.540012, 0, 0, 0, 1, 10.6701, 13.8374, -0.999)
+
+[node name="_Node3D_77929" parent="Node3D4" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.461346, -0.887221, 0, 0.887221, 0.461346, 0, 0, 0, 1, 9.84413, 14.3158, -1)
+
+[node name="_Node3D_77930" parent="Node3D4" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.378866, -0.925451, 0, 0.925451, 0.378866, 0, 0, 0, 1, 8.97809, 14.7172, -0.999)
+
+[node name="_Node3D_77931" parent="Node3D4" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.293256, -0.956034, 0, 0.956034, 0.293256, 0, 0, 0, 1, 8.07918, 15.0384, -1)
+
+[node name="_Node3D_77932" parent="Node3D4" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.293256, -0.956034, 0, 0.956034, 0.293256, 0, 0, 3.55271e-15, 1, 7.78593, 14.0823, -1)
+
+[node name="_Node3D_77933" parent="Node3D4" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.293256, -0.956034, 0, 0.956034, 0.293256, 0, 0, 3.55271e-15, 1, 7.49267, 13.1263, -1)
+
+[node name="_Node3D_77934" parent="Node3D4" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.293256, -0.956034, 0, 0.956034, 0.293256, 0, 0, 3.55271e-15, 1, 7.19942, 12.1703, -1)
+
+[node name="_Node3D_77935" parent="Node3D4" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.293256, -0.956034, 0, 0.956034, 0.293256, 0, 0, 3.55271e-15, 1, 6.90616, 11.2142, -1)
+
+[node name="_Node3D_77936" parent="Node3D4" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.995868, -0.0908151, 0, 0.0908151, 0.995868, 0, 0, 0, 1, 14.4607, 5.86274, -0.999)
+
+[node name="_Node3D_77937" parent="Node3D4" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.995868, -0.0908151, 0, 0.0908151, 0.995868, 0, 0, 0, 1, 13.4649, 5.77193, -0.999)
+
+[node name="_Node3D_77938" parent="Node3D4" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.995868, -0.0908151, 0, 0.0908151, 0.995868, 0, 0, 0, 1, 12.469, 5.68111, -0.999)
+
+[node name="_Node3D_77939" parent="Node3D4" instance=ExtResource("4_ij30c")]
+transform = Transform3D(0.995868, -0.0908151, 0, 0.0908151, 0.995868, 0, 0, 0, 1, 11.4731, 5.5903, -0.999)
+
+[connection signal="on_trigger" from="Node3D/elevator1/PathFollow3D/elevator1/elevator1button" to="Node3D/elevator1" method="_on_elevator_1_button_on_trigger"]
+[connection signal="on_untrigger" from="Node3D/elevator1/PathFollow3D/elevator1/elevator1button" to="Node3D/elevator1" method="_on_elevator_1_button_on_untrigger"]

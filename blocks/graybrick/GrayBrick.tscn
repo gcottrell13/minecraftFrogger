@@ -37,5 +37,5 @@ transform = Transform3D(-4.37114e-08, 1, 2.18557e-07, 0, -2.18557e-07, 1, 1, 4.3
 transform = Transform3D(4.37114e-08, -1, -1.31134e-07, 3.82137e-15, 1.31134e-07, -1, 1, 4.37114e-08, 9.55343e-15, -0.5, 0, 0)
 
 [node name="Graybrick" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.588, 0, 0, 0, 0.588, 0, 0, 0, 0.588, 0, 0, 0)
+transform = Transform3D(0.59, 0, 0, 0, 0.59, 0, 0, 0, 0.59, 0, 0, 0)
 mesh = ExtResource("3_wh7ow")

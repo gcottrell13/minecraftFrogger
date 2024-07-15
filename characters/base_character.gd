@@ -103,7 +103,7 @@ func base_move_character(dir: Vector3, lookahead: ShapeCast3D) -> MOVE_RESULT:
 	
 	clear_target();
 	
-	target_position = position + dir * quaternion;
+	target_position = get_parent_node_3d().to_local(to_global(dir));
 	#lookahead.position = Vector3.ZERO;
 	return MOVE_RESULT.CanMoveUnsafe;
 

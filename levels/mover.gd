@@ -60,7 +60,7 @@ func _process(delta):
 		pathFollow.process_mode = Node.PROCESS_MODE_INHERIT;
 	elif offset_progress < time_offset:
 		offset_progress += delta;
-	elif pathFollow.progress < length:
-		pathFollow.progress += speed * delta;
+	elif pathFollow.progress <= length and pathFollow.progress >= 0:
+		pathFollow.progress = clampf(pathFollow.progress + speed * delta, 0, length);
 	elif remove_when_done and owner == null:
 		get_parent().remove_child(self);

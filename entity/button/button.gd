@@ -1,5 +1,5 @@
 class_name FloorButton
-extends BaseEntity
+extends Node3D
 
 @export var sticky : bool = false:
 	set(value):
@@ -15,15 +15,7 @@ var touching_this_button: Array[Area3D] = [];
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	super();
 	_update_graphics();
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if check_hitbox($hitbox):
-		position = next_position;
-		fix_rotation();
 
 
 func _on_area_3d_area_entered(area):

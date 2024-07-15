@@ -56,8 +56,7 @@ func _unhandled_input(event: InputEvent):
 		if not event.pressed or event.is_echo():
 			return;
 		
-		var vec = Vector3(Input.get_axis("Left", "Right"), Input.get_axis("Down", "Up"), 0);
-		var delta = current_camera.to_global(vec) - current_camera.global_position;
+		var delta = Vector3(Input.get_axis("Left", "Right"), 0, Input.get_axis("Up", "Down"));
 		
 		var controllables: Array[BaseCharacter] = ControllableManager.get_controllables(get_tree(), current_control_layer);
 		for controllable in controllables:
@@ -66,15 +65,15 @@ func _unhandled_input(event: InputEvent):
 			if event.is_action("Jump"):
 				controllable.do_special();
 			else:
-				var dir = controllable.to_local(delta + controllable.global_position);
-				dir = Vector3(dir.x, 0, dir.z);
-				if dir.is_zero_approx():
-					return;
-					
-				if abs(dir.x) > abs(dir.z):
-					controllable.move_character(Vector3(sign(dir.x), 0, 0));
+				#var dir = controllable.to_local(delta + controllable.global_position);
+				#dir = Vector3(dir.x, 0, dir.z);
+				#if dir.is_zero_approx():
+					#return;
+				
+				if abs(delta.x) > abs(delta.z):
+					controllable.move_character(Vector3(sign(delta.x), 0, 0));
 				else:
-					controllable.move_character(Vector3(0, 0, sign(dir.z)));
+					controllable.move_character(Vector3(0, 0, sign(delta.z)));
 				handled = true;
 	
 	if handled:
