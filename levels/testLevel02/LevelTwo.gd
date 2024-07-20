@@ -11,6 +11,7 @@ func _ready():
 	super();
 	if not Engine.is_editor_hint() and OS.is_debug_build():
 		spawnpoints = [
+			null,
 			$SpawnPoint,
 			$SpawnPoint2,
 		];
@@ -29,6 +30,9 @@ func _on_no_controllables_left():
 
 func _checkpoint_select(index: int):
 	var spawn = spawnpoints[index];
+	if spawn == null:
+		get_parent().remove_child(self);
+		return;
 	last_checkpoint_index = spawn.index;
 	for child in get_children():
 		if child is Frog1:

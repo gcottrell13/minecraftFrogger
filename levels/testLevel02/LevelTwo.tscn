@@ -114,5 +114,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 3, 
 grass_color = Color(0.196078, 0.498039, 0.596078, 1)
 
 [connection signal="on_trigger" from="Node3D/grassystone3/Button3" to="." method="_on_button_3_on_trigger"]
+[connection signal="on_trigger" from="Button" to="." method="_on_button_on_trigger"]
 [connection signal="on_trigger" from="Button2" to="Node3D" method="_on_button_2_on_trigger"]
 [connection signal="on_untrigger" from="Button2" to="Node3D" method="_on_button_2_on_untrigger"]

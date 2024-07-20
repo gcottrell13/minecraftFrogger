@@ -691,8 +691,7 @@ loop = true
 length = 10.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="MOVEPLATFORM1"]
-transform = Transform3D(0.999994, 0, 0, 0, 0.999994, 0, 0, 0, 1, 0.0780001, 0, 0)
-progress = 7.078
+transform = Transform3D(0.999994, 0, 0, 0, 0.999994, 0, 0, 0, 1, 3, 0, 0)
 rotation_mode = 0
 cubic_interp = false
 tilt_enabled = false
@@ -805,8 +804,7 @@ loop = true
 length = 8.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="ENEMY1"]
-transform = Transform3D(-0.581207, 0, -0.813567, 0, 1, 0, 0.813567, 0, -0.581207, 2.922, 0, -1)
-progress = 3.078
+transform = Transform3D(-4.37047e-08, 0, 0.999846, 0, 1, 0, -0.999846, 0, -4.37047e-08, 1, 0, 0)
 use_model_front = true
 cubic_interp = false
 
@@ -821,8 +819,7 @@ loop = true
 length = 6.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="ENEMY2"]
-transform = Transform3D(-0.999854, 0, -8.741e-08, 0, 1, 0, 8.741e-08, 0, -0.999854, 0, 0, -1.078)
-progress = 1.078
+transform = Transform3D(-0.999854, 0, -8.741e-08, 0, 1, 0, 8.741e-08, 0, -0.999854, 0, 0, 0)
 use_model_front = true
 cubic_interp = false
 
@@ -1121,7 +1118,6 @@ script = ExtResource("12_bgd4d")
 length = 6.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-progress = 6.0
 rotation_mode = 0
 cubic_interp = false
 tilt_enabled = false
@@ -1142,8 +1138,7 @@ loop = true
 length = 12.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.92, 0, -3)
-progress = 5.92
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 rotation_mode = 0
 cubic_interp = false
 tilt_enabled = false
@@ -1163,8 +1158,6 @@ loop = true
 length = 12.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.92, 0, -3)
-progress = 7.08
 rotation_mode = 0
 cubic_interp = false
 tilt_enabled = false
@@ -1225,8 +1218,6 @@ loop = true
 length = 6.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.46)
-progress = 3.54
 rotation_mode = 0
 cubic_interp = false
 tilt_enabled = false
@@ -1330,8 +1321,7 @@ remove_when_done = true
 length = 12.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="ENEMY3"]
-transform = Transform3D(-0.99987, 0, -8.7411e-08, 0, 1, 0, 8.74114e-08, 0, -0.999865, 0, 0, -2.31)
-progress = 2.31
+transform = Transform3D(-0.99987, 0, -8.7411e-08, 0, 1, 0, 8.74114e-08, 0, -0.999865, 0, 0, 0)
 use_model_front = true
 cubic_interp = false
 loop = false
@@ -1470,8 +1460,7 @@ remove_when_done = true
 length = 12.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="ENEMY4"]
-transform = Transform3D(-0.99987, 0, -8.7411e-08, 0, 1, 0, 8.74114e-08, 0, -0.999865, 0, 0, -5.31)
-progress = 5.31
+transform = Transform3D(-0.99987, 0, -8.7411e-08, 0, 1, 0, 8.74114e-08, 0, -0.999865, 0, 0, 0)
 use_model_front = true
 cubic_interp = false
 loop = false
@@ -1580,8 +1569,7 @@ remove_when_done = true
 length = 12.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="ENEMY5"]
-transform = Transform3D(-0.99987, 0, -8.7411e-08, 0, 1, 0, 8.74114e-08, 0, -0.999865, 0, 0, -8.31)
-progress = 8.31
+transform = Transform3D(-0.99987, 0, -8.7411e-08, 0, 1, 0, 8.74114e-08, 0, -0.999865, 0, 0, 0)
 use_model_front = true
 cubic_interp = false
 loop = false
@@ -1600,8 +1588,7 @@ remove_when_done = true
 length = 12.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="ENEMY6"]
-transform = Transform3D(-0.99987, 0, -8.7411e-08, 0, 1, 0, 8.74114e-08, 0, -0.999865, 0, 0, -11.31)
-progress = 11.31
+transform = Transform3D(-0.99987, 0, -8.7411e-08, 0, 1, 0, 8.74114e-08, 0, -0.999865, 0, 0, 0)
 use_model_front = true
 cubic_interp = false
 loop = false

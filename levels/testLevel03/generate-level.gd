@@ -1,7 +1,7 @@
 @tool
 extends EditorScript
 
-var radius = 11.0;
+var radius = 14.0;  # good values are 7, 14, 21, 28, 35, 42
 var platform_width = 10.0;
 var block_scene = preload("res://blocks/graybrick/GrayBrick.tscn");
 

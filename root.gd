@@ -17,6 +17,9 @@ func _process(delta):
 	if camera_targets.size() == 1:
 		camera.target = camera_targets[0];
 	
+	if $PlayArea.get_child_count() == 0:
+		$LevelSelect.visible = true;
+	
 	# $ShapeCast3D.position = camera.project_position(DisplayServer.window_get_size() / 2, 1);
 
 
@@ -26,3 +29,4 @@ func _on_level_select_on_click_level(scene: PackedScene):
 	var instance: Level = scene.instantiate();
 	playArea.add_child(instance);
 	instance.spawn_characters(0, preload("res://characters/frog1/frog.tscn"));
+	$LevelSelect.visible = false;

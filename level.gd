@@ -29,7 +29,10 @@ func setup_checkpoint_select(callback, spawnpoints: Array[SpawnPoint]):
 	ui.item_activated.connect(callback);
 	var ui_items: Array[String] = [];
 	for child in spawnpoints:
-		ui_items.append(child.debug_title);
+		if child == null:
+			ui_items.append("exit level");
+		else:
+			ui_items.append(child.debug_title);
 	ui.set_items(ui_items);
 
 func _on_no_controllables_left():

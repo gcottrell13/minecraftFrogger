@@ -127,3 +127,17 @@ func get_meshes():
 		if child is MeshInstance3D:
 			meshes.append(child);
 	return meshes;
+
+func block_disable():
+	visible = false;
+	process_mode = Node.PROCESS_MODE_DISABLED;
+
+func block_enable():
+	visible = true;
+	process_mode = Node.PROCESS_MODE_INHERIT;
+
+func block_toggle():
+	if visible:
+		block_disable();
+	else:
+		block_enable();
