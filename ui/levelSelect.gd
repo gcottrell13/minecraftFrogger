@@ -35,7 +35,7 @@ func fix_children():
 			
 		var button = LevelSelectButton.new(v1.resource_path);
 		button.name = v1.resource_path;
-		button.text = v1.resource_path;
+		button.text = v1.resource_path.split("/")[-1];
 		button.button_pressed_value.connect(_button_pressed, CONNECT_PERSIST);
 		vbox.add_child(button);
 		button.owner = self;

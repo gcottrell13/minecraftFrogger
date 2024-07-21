@@ -13,7 +13,6 @@ func _ready():
 		spawnpoints = [
 			null,
 			$SpawnPoint,
-			$SpawnPoint2,
 		];
 		setup_checkpoint_select(_checkpoint_select, spawnpoints);
 		

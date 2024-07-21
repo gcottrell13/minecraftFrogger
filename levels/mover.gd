@@ -4,8 +4,14 @@ extends Path3D
 
 @export var speed : float = 1;
 @export var offset_distance : float = 0;
-@export var active : bool = true;
+@export var active : bool = true:
+	set(value):
+		if not active:
+			time_offset += Time.get_unix_time_from_system() - time_last_active;
+		active = value;
 @export var editor_tool : bool = true;
+
+var time_last_active = 0;
 
 @export var loop : bool:
 	set(value):
@@ -48,13 +54,14 @@ func _ready():
 func _process(delta):
 	if pathFollow == null or not active:
 		return;
+	time_last_active = Time.get_unix_time_from_system();
 	if Engine.is_editor_hint() and not editor_tool:
 		return;
 	length = curve.get_baked_length();
 	if length == 0:
 		return;
 	if loop:
-		pathFollow.progress = fmod(Time.get_unix_time_from_system() * speed + offset_distance, length);
+		pathFollow.progress = fmod((Time.get_unix_time_from_system() - time_offset) * speed + offset_distance, length);
 	elif offset_progress >= time_offset and not pathFollow.visible:
 		pathFollow.visible = true;
 		pathFollow.process_mode = Node.PROCESS_MODE_INHERIT;

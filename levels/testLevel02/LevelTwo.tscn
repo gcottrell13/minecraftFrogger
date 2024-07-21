@@ -1,40 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvcssj17dyw6n"]
+[gd_scene load_steps=10 format=3 uid="uid://bvcssj17dyw6n"]
 
 [ext_resource type="Script" path="res://levels/testLevel02/LevelTwo.gd" id="1_cl348"]
 [ext_resource type="Environment" uid="uid://dtppb5yn26u6y" path="res://levels/testLevel01/LevelOneEnvironment.tres" id="2_gljh4"]
-[ext_resource type="Script" path="res://levels/testLevel02/spinny.gd" id="3_n2ycw"]
 [ext_resource type="PackedScene" uid="uid://ycxgs5xtiay" path="res://blocks/grassystone/grassystone.tscn" id="3_s84bl"]
 [ext_resource type="PackedScene" uid="uid://b0po3nuxc2k2f" path="res://entity/spawnPoint/spawnPoint.tscn" id="4_24wsc"]
+[ext_resource type="PackedScene" uid="uid://cmbtnr2icwa66" path="res://blocks/brownbox/BrownBox.tscn" id="6_l5t6l"]
 [ext_resource type="PackedScene" uid="uid://cyq0xflwf5g5l" path="res://entity/button/button.tscn" id="6_n4oig"]
+[ext_resource type="Script" path="res://levels/testLevel02/bridge.gd" id="6_uwggk"]
+[ext_resource type="Script" path="res://levels/mover.gd" id="8_w5p8n"]
+
+[sub_resource type="Curve3D" id="Curve3D_nq6nj"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
 
 [node name="LevelTwo" type="Node3D"]
 script = ExtResource("1_cl348")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_gljh4")
-
-[node name="Node3D" type="Node3D" parent="."]
-script = ExtResource("3_n2ycw")
-
-[node name="grassystone" parent="Node3D" instance=ExtResource("3_s84bl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-grass_color = Color(0.196078, 0.498039, 0.596078, 1)
-
-[node name="grassystone2" parent="Node3D" instance=ExtResource("3_s84bl")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 3, 0, 0)
-grass_color = Color(0.196078, 0.498039, 0.596078, 1)
-
-[node name="grassystone3" parent="Node3D" instance=ExtResource("3_s84bl")]
-transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 0, -3, 0)
-grass_color = Color(0.196078, 0.498039, 0.596078, 1)
-
-[node name="Button3" parent="Node3D/grassystone3" instance=ExtResource("6_n4oig")]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -3.5, -3, 0)
-sticky = true
-
-[node name="grassystone4" parent="Node3D" instance=ExtResource("3_s84bl")]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -3, 0, 0)
-grass_color = Color(0.196078, 0.498039, 0.596078, 1)
 
 [node name="grassystone" parent="." instance=ExtResource("3_s84bl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 1)
@@ -54,32 +40,6 @@ near = 0.03
 
 [node name="OmniLight3D" type="OmniLight3D" parent="SpawnPoint"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38831, 0)
-
-[node name="grassystone2" parent="." instance=ExtResource("3_s84bl")]
-transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 0, -3, 1)
-grass_color = Color(0.196078, 0.498039, 0.596078, 1)
-
-[node name="grassystone3" parent="." instance=ExtResource("3_s84bl")]
-transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 0, -3, 2)
-grass_color = Color(0.196078, 0.498039, 0.596078, 1)
-
-[node name="grassystone4" parent="." instance=ExtResource("3_s84bl")]
-transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 1, -3, 2)
-grass_color = Color(0.196078, 0.498039, 0.596078, 1)
-
-[node name="grassystone5" parent="." instance=ExtResource("3_s84bl")]
-transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 1, -3, 1)
-grass_color = Color(0.196078, 0.498039, 0.596078, 1)
-
-[node name="SpawnPoint2" parent="." node_paths=PackedStringArray("copy_children_from") instance=ExtResource("4_24wsc")]
-transform = Transform3D(-1, -7.64274e-15, -8.74228e-08, 0, -1, 8.74228e-08, -8.74228e-08, 8.74228e-08, 1, 0, -3.5, 1)
-index = 1
-debug_title = "flipped"
-copy_children_from = NodePath("../SpawnPoint")
-
-[node name="Button" parent="." instance=ExtResource("6_n4oig")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 1, -3.5, 1)
-sticky = false
 
 [node name="grassystone6" parent="." instance=ExtResource("3_s84bl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, 1)
@@ -113,7 +73,38 @@ grass_color = Color(0.196078, 0.498039, 0.596078, 1)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 3, 3)
 grass_color = Color(0.196078, 0.498039, 0.596078, 1)
 
-[connection signal="on_trigger" from="Node3D/grassystone3/Button3" to="." method="_on_button_3_on_trigger"]
-[connection signal="on_trigger" from="Button" to="." method="_on_button_on_trigger"]
-[connection signal="on_trigger" from="Button2" to="Node3D" method="_on_button_2_on_trigger"]
-[connection signal="on_untrigger" from="Button2" to="Node3D" method="_on_button_2_on_untrigger"]
+[node name="grassystone13" parent="." instance=ExtResource("3_s84bl")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 3, -2)
+grass_color = Color(0.196078, 0.498039, 0.596078, 1)
+
+[node name="grassystone14" parent="." instance=ExtResource("3_s84bl")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3, -2)
+grass_color = Color(0.196078, 0.498039, 0.596078, 1)
+
+[node name="Bridge" type="Node3D" parent="."]
+script = ExtResource("6_uwggk")
+
+[node name="Path3D" type="Path3D" parent="Bridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3, -0.5)
+curve = SubResource("Curve3D_nq6nj")
+script = ExtResource("8_w5p8n")
+active = false
+loop = true
+length = 12.0
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Bridge/Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+rotation_mode = 0
+tilt_enabled = false
+
+[node name="BrownBox" parent="Bridge/Path3D/PathFollow3D" instance=ExtResource("6_l5t6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+
+[node name="BrownBox2" parent="Bridge/Path3D/PathFollow3D" instance=ExtResource("6_l5t6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -0.5)
+
+[node name="BrownBox3" parent="Bridge/Path3D/PathFollow3D" instance=ExtResource("6_l5t6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -0.5)
+
+[connection signal="on_trigger" from="Button2" to="Bridge" method="_on_button_2_on_trigger"]
+[connection signal="on_untrigger" from="Button2" to="Bridge" method="_on_button_2_on_untrigger"]

@@ -537,10 +537,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 11.5, -1)
 curve = SubResource("Curve3D_8w2ha")
 script = ExtResource("6_ffxqv")
 speed = 1.5
-offset_distance = 9.0
-active = false
-editor_tool = false
-length = 12.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Node3D/elevator1"]
 transform = Transform3D(-4.37057e-08, 1, -4.37055e-08, 0, -4.37114e-08, -0.999865, -0.99987, -4.37114e-08, 1.91043e-15, 0, 0, 0)
@@ -673,7 +669,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 4.5, -1.999)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 4.5, -2.001)
 
 [node name="GrayBrick17" parent="Node3D" instance=ExtResource("4_ij30c")]
-transform = Transform3D(1, 0, 0, 0, 0.376872, -0.926266, 0, 0.926266, 0.376872, 2, 4.746, -0.754001)
+transform = Transform3D(1, 0, 0, 0, 0.423014, -0.906124, 0, 0.906124, 0.423014, 2, 4.77805, -0.721944)
 script = ExtResource("7_gs1gr")
 speed = 0.3
 
